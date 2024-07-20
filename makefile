@@ -6,8 +6,8 @@ BUILD_DIR := ./bin
 
 default: build
 
-build: $(BUILD_DIR)/game.o $(BUILD_DIR)/main.o
-	$(CC) $(BUILD_DIR)/main.o $(BUILD_DIR)/game.o -o $(PROG) $(CPPFLAGS)
+build: $(BUILD_DIR)/game.o $(BUILD_DIR)/main.o $(BUILD_DIR)/player.o
+	$(CC) $(BUILD_DIR)/main.o $(BUILD_DIR)/game.o $(BUILD_DIR)/player.o -o $(PROG) $(CPPFLAGS)
 
 run:
 	./$(PROG)
@@ -17,3 +17,6 @@ $(BUILD_DIR)/game.o: $(SRC_DIR)/game.cpp
 
 $(BUILD_DIR)/main.o: $(SRC_DIR)/game.cpp
 	$(CC) -c $(SRC_DIR)/main.cpp -o $(BUILD_DIR)/main.o $(CPPFLAGS)
+
+$(BUILD_DIR)/player.o: $(SRC_DIR)/player.cpp
+	$(CC) -c $(SRC_DIR)/player.cpp -o $(BUILD_DIR)/player.o $(CPPFLAGS)
