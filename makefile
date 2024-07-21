@@ -6,8 +6,8 @@ BUILD_DIR := ./bin
 
 default: build
 
-build: $(BUILD_DIR)/game.o $(BUILD_DIR)/main.o $(BUILD_DIR)/player.o
-	$(CC) $(BUILD_DIR)/main.o $(BUILD_DIR)/game.o $(BUILD_DIR)/player.o -o $(PROG) $(CPPFLAGS)
+build: $(BUILD_DIR)/game.o $(BUILD_DIR)/main.o $(BUILD_DIR)/player.o $(BUILD_DIR)/PhysicalObject.o $(BUILD_DIR)/bullet.o
+	$(CC) $(BUILD_DIR)/main.o $(BUILD_DIR)/game.o $(BUILD_DIR)/player.o $(BUILD_DIR)/PhysicalObject.o $(BUILD_DIR)/bullet.o -o $(PROG) $(CPPFLAGS)
 
 run:
 	./$(PROG)
@@ -20,3 +20,9 @@ $(BUILD_DIR)/main.o: $(SRC_DIR)/game.cpp
 
 $(BUILD_DIR)/player.o: $(SRC_DIR)/player.cpp
 	$(CC) -c $(SRC_DIR)/player.cpp -o $(BUILD_DIR)/player.o $(CPPFLAGS)
+
+$(BUILD_DIR)/bullet.o: $(SRC_DIR)/bullet.cpp
+	$(CC) -c $(SRC_DIR)/bullet.cpp -o $(BUILD_DIR)/bullet.o $(CPPFLAGS)
+
+$(BUILD_DIR)/PhysicalObject.o: $(SRC_DIR)/PhysicalObject.cpp
+	$(CC) -c $(SRC_DIR)/PhysicalObject.cpp -o $(BUILD_DIR)/PhysicalObject.o $(CPPFLAGS)

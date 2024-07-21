@@ -1,5 +1,6 @@
 #include <iostream>
 #include <player.hpp>
+#include <bullet.hpp>
 
 Player::Player(){
   this->pos_x = 100.f;
@@ -28,21 +29,10 @@ void Player::handleEvent(sf::Event &event){
         this->target_x = event.mouseButton.x;
         this->target_y = event.mouseButton.y;
       }
+
+      if (event.mouseButton.button == sf::Mouse::Left){
+        std::cout << "atirei" << std::endl;
+        Bullet b(this->pos_x, this->pos_y, event.mouseButton.x, event.mouseButton.y);
+      }
     }
-}
-
-void Player::moveTowardsTarget(){
-  std::cout << this->pos_x << ", " << this->pos_y << std::endl;
-
-  if (this->target_x > this->pos_x + 0.5)
-    this->pos_x++;
-
-  if (this->target_y > this->pos_y + 0.5)
-    this->pos_y++;
-
-  if (this->target_x < this->pos_x - 0.5)
-    this->pos_x--;
-
-  if (this->target_y < this->pos_y - 0.5)
-    this->pos_y--;
 }
