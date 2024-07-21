@@ -7,11 +7,8 @@ class PhysicalObject{
   public:
     int speed;
 
-    float pos_x;
-    float pos_y;
-
-    float target_x;
-    float target_y;
+    sf::Vector2f pos;
+    sf::Vector2f target;
 
     void moveTowardsTarget();
 };
