@@ -1,11 +1,12 @@
 #include <iostream>
+
 #include <player.hpp>
-#include <bullet.hpp>
 
 Player::Player(){
   this->pos.x = 100.f;
   this->pos.y = 200.f;
   this->radius = 40;
+  this->speed = 1;
 
   this->target.x = this->pos.x;
   this->target.y = this->pos.y;
@@ -31,8 +32,8 @@ void Player::handleEvent(sf::Event &event){
       }
 
       if (event.mouseButton.button == sf::Mouse::Left){
-        std::cout << "atirei" << std::endl;
-        Bullet b(this->pos.x, this->pos.y, event.mouseButton.x, event.mouseButton.y);
+        Bullet* b = new Bullet(this->pos.x, this->pos.y, event.mouseButton.x, event.mouseButton.y);
+        RenderGroup::Bullets.push_back(b);
       }
     }
 }

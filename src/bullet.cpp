@@ -4,25 +4,24 @@
 Bullet::Bullet(float initial_pos_x, float initial_pos_y, float target_pos_x, float target_pos_y){
   std::cout << "fui atirada" << std::endl;
 
-  this->pos_x = initial_pos_x;
-  this->pos_y = initial_pos_y;
+  this->pos.x = initial_pos_x;
+  this->pos.y = initial_pos_y;
   this->radius = 10.f;
+  this->speed = 1;
 
-  this->target_x = target_pos_x;
-  this->target_y = target_pos_y;
+  this->target.x = target_pos_x;
+  this->target.y = target_pos_y;
 
   this->sprite.setRadius(this->radius);
   this->sprite.setFillColor(sf::Color::Cyan);
-
-  std::cout << this->pos_x << std::endl;
 }
 
 
 void Bullet::render(sf::RenderWindow& window){
-  if (this->pos_x != this->target_x || this->pos_y != this->target_y)
+  if (this->pos.x != this->target.x || this->pos.y != this->target.y)
     this->moveTowardsTarget();
 
-  this->sprite.setPosition(this->pos_x - radius, this->pos_y - radius);
+  this->sprite.setPosition(this->pos.x - radius, this->pos.y - radius);
 
   window.draw(this->sprite);
 }

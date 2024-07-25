@@ -6,8 +6,10 @@ BUILD_DIR := ./bin
 
 default: build
 
-build: $(BUILD_DIR)/game.o $(BUILD_DIR)/main.o $(BUILD_DIR)/player.o $(BUILD_DIR)/PhysicalObject.o $(BUILD_DIR)/bullet.o
-	$(CC) $(BUILD_DIR)/main.o $(BUILD_DIR)/game.o $(BUILD_DIR)/player.o $(BUILD_DIR)/PhysicalObject.o $(BUILD_DIR)/bullet.o -o $(PROG) $(CPPFLAGS)
+build: $(BUILD_DIR)/game.o $(BUILD_DIR)/main.o $(BUILD_DIR)/player.o $(BUILD_DIR)/PhysicalObject.o $(BUILD_DIR)/bullet.o $(BUILD_DIR)/RenderGroup.o
+	$(CC) $(BUILD_DIR)/main.o $(BUILD_DIR)/game.o $(BUILD_DIR)/player.o $(BUILD_DIR)/PhysicalObject.o $(BUILD_DIR)/bullet.o -o $(PROG) $(BUILD_DIR)/RenderGroup.o $(CPPFLAGS)
+	
+
 
 run:
 	./$(PROG)
@@ -26,3 +28,6 @@ $(BUILD_DIR)/bullet.o: $(SRC_DIR)/bullet.cpp
 
 $(BUILD_DIR)/PhysicalObject.o: $(SRC_DIR)/PhysicalObject.cpp
 	$(CC) -c $(SRC_DIR)/PhysicalObject.cpp -o $(BUILD_DIR)/PhysicalObject.o $(CPPFLAGS)
+
+$(BUILD_DIR)/RenderGroup.o: $(SRC_DIR)/RenderGroup.cpp
+	$(CC) -c $(SRC_DIR)/RenderGroup.cpp -o $(BUILD_DIR)/RenderGroup.o $(CPPFLAGS)

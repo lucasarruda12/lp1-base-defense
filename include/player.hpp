@@ -2,7 +2,9 @@
 #define PLAYER_HPP
 
 #include <SFML/Graphics.hpp>
+#include <bullet.hpp>
 #include <PhysicalObject.hpp>
+#include <RenderGroup.hpp>
 
 class Player : private PhysicalObject{ 
   private:
