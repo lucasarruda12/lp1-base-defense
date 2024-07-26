@@ -1,15 +1,18 @@
 #include <PhysicalObject.hpp>
 
 void PhysicalObject::moveTowardsTarget(){
-  if (this->target.x > this->pos.x + 0.5)
-    this->pos.x = this->pos.x + this->speed;
+  sf::Vector2f dir(target.x - pos.x, target.y - pos.y);
 
-  if (this->target.y > this->pos.y + 0.5)
-    this->pos.y = this->pos.y + this->speed;
+  float distance = std::sqrt(dir.x * dir.x + dir.y * dir.y);
 
-  if (this->target.x < this->pos.x - 0.5)
-    this->pos.x = this->pos.x - this->speed;
+  dir.x = dir.x / distance;
+  dir.y = dir.y / distance;
 
-  if (this->target.y < this->pos.y - 0.5)
-    this->pos.y = this->pos.y - this->speed;
+  if (distance > speed) {
+    pos.x += dir.x * speed;
+    pos.y += dir.y * speed;
+  } else {
+    pos.x = target.x;
+    pos.y = target.y;
+  }
 }

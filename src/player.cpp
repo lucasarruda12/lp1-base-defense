@@ -6,7 +6,7 @@ Player::Player(){
   this->pos.x = 100.f;
   this->pos.y = 200.f;
   this->radius = 40;
-  this->speed = 1;
+  this->speed = 20;
 
   this->target.x = this->pos.x;
   this->target.y = this->pos.y;
