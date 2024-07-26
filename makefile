@@ -1,33 +1,28 @@
-PROG := base_defense
+PROG := base_defense.exe
 CC := g++
-CPPFLAGS := -Iinclude -lsfml-graphics -lsfml-window -lsfml-system
+
+LDFLAGS :=  -L$(SFML)/lib -lsfml-graphics -lsfml-window -lsfml-system
+CXXFLAGS := -Iinclude -I$(SFML)/include
+
 SRC_DIR := ./src
-BUILD_DIR := ./bin
+OBJ_DIR := ./bin
+
+SRCS = $(wildcard $(SRC_DIR)/*.cpp)
+OBJS = $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SRCS))
+
+SFML :=
 
 default: build
 
-build: $(BUILD_DIR)/game.o $(BUILD_DIR)/main.o $(BUILD_DIR)/player.o $(BUILD_DIR)/PhysicalObject.o $(BUILD_DIR)/bullet.o $(BUILD_DIR)/RenderGroup.o
-	$(CC) $(BUILD_DIR)/main.o $(BUILD_DIR)/game.o $(BUILD_DIR)/player.o $(BUILD_DIR)/PhysicalObject.o $(BUILD_DIR)/bullet.o -o $(PROG) $(BUILD_DIR)/RenderGroup.o $(CPPFLAGS)
-	
-
+build: $(OBJS)
+	$(CXX) $(LDFLAGS) -o $(PROG) $^
 
 run:
 	./$(PROG)
 
-$(BUILD_DIR)/game.o: $(SRC_DIR)/game.cpp
-	$(CC) -c $(SRC_DIR)/game.cpp -o $(BUILD_DIR)/game.o $(CPPFLAGS)
+clean:
+	rm -f $(OBJ_DIR)
 
-$(BUILD_DIR)/main.o: $(SRC_DIR)/game.cpp
-	$(CC) -c $(SRC_DIR)/main.cpp -o $(BUILD_DIR)/main.o $(CPPFLAGS)
-
-$(BUILD_DIR)/player.o: $(SRC_DIR)/player.cpp
-	$(CC) -c $(SRC_DIR)/player.cpp -o $(BUILD_DIR)/player.o $(CPPFLAGS)
-
-$(BUILD_DIR)/bullet.o: $(SRC_DIR)/bullet.cpp
-	$(CC) -c $(SRC_DIR)/bullet.cpp -o $(BUILD_DIR)/bullet.o $(CPPFLAGS)
-
-$(BUILD_DIR)/PhysicalObject.o: $(SRC_DIR)/PhysicalObject.cpp
-	$(CC) -c $(SRC_DIR)/PhysicalObject.cpp -o $(BUILD_DIR)/PhysicalObject.o $(CPPFLAGS)
-
-$(BUILD_DIR)/RenderGroup.o: $(SRC_DIR)/RenderGroup.cpp
-	$(CC) -c $(SRC_DIR)/RenderGroup.cpp -o $(BUILD_DIR)/RenderGroup.o $(CPPFLAGS)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	@mkdir -p $(OBJ_DIR)
+	$(CC) $(CXXFLAGS) -c $< -o $@
