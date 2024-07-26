@@ -16,5 +16,6 @@ class Player : private PhysicalObject{
     Player();
     void render(sf::RenderWindow &window);
     void handleEvent(sf::Event &event);
+    void update();
 };
 #endif

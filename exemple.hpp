@@ -9,16 +9,16 @@ class Game {
     void run();
 
   private:
-    void processEvents();
-    void update(sf::Time elapsedTime);
+    void processevents();
+    void update(sf::time elapsedtime);
     void render();
-    void handlePlayerInput(sf::Keyboard::Key key, bool isPressed);
+    void handleplayerinput(sf::keyboard::key key, bool ispressed);
 
   private:
-    static const float PlayerSpeed;
-    static const sf::Time TimePerFrame;
+    static const float playerspeed;
+    static const sf::time timeperframe;
 
-    sf::RenderWindow mWindow;
+    sf::renderwindow mwindow;
     sf::CircleShape mPlayer;
 
     bool mIsMovingUp;

@@ -11,6 +11,7 @@ class Bullet : public PhysicalObject {
 
     Bullet(float initial_pos_x, float initial_pos_y, float target_pos_x, float target_pos_y);
     void render(sf::RenderWindow& window);
+    void update();
 };
 
 #endif

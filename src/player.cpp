@@ -15,12 +15,13 @@ Player::Player(){
   this->sprite.setFillColor(sf::Color::Cyan);
 }
 
-void Player::render(sf::RenderWindow& window){
+void Player::update(){
   if (this->pos.x != this->target.x || this->pos.y != this->target.y)
     this->moveTowardsTarget();
+}
 
+void Player::render(sf::RenderWindow& window){
   this->sprite.setPosition(this->pos.x - radius, this->pos.y - radius);
-
   window.draw(this->sprite);
 }
 

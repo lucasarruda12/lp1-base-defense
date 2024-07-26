@@ -2,6 +2,7 @@
 #define PHYSICALOBJECT_HPP
 
 #include <SFML/Graphics.hpp>
+#include <cmath>
 
 class PhysicalObject{
   public:

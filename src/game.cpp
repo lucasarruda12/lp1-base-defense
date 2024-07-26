@@ -6,32 +6,59 @@
 
 using namespace std;
 
+const sf::Time Game::TimePerFrame = sf::seconds(1.f/60.f);
+
+Game::Game()
+    :window(sf::VideoMode(640, 480), "SFML Application", sf::Style::Close)
+    , player(){}
+
+
 void Game::run(){
-  sf::RenderWindow window(sf::VideoMode(640, 480), "TESTE");
-  Player p;
-  Bullet a(640.f, 480.f, 0.f, 0.f);
-  Bullet b(0.f, 0.f, 640.f, 480.f);
-  RenderGroup::Bullets.push_back(&b);
-  RenderGroup::Bullets.push_back(&a);
+  sf::Clock clock;
+  sf::Time timeSinceLastUpdate = sf::Time::Zero;
 
   while(window.isOpen()){
-    sf::Event event;
+    sf::Time elapsedTime = clock.restart();
+    timeSinceLastUpdate += elapsedTime;
 
-    while (window.pollEvent(event)){
-      if (event.type == sf::Event::Closed)
-        window.close();
-
-      p.handleEvent(event);
+    while(timeSinceLastUpdate > TimePerFrame){
+      timeSinceLastUpdate -= TimePerFrame;
+      processEvents();
+      update();
     }
 
-    window.clear();
-
-    p.render(window);
-
-    for (auto const& c : RenderGroup::Bullets) {
-      c->render(window);
-    }
-
-    window.display();
+    // Renderizar o tempo todo
+    render();
   }
 }
+
+void Game::processEvents(){
+  sf::Event event;
+  while(window.pollEvent(event)){
+    if (event.type == sf::Event::Closed){
+      window.close();
+    }
+
+    player.handleEvent(event);
+  }
+}
+
+void Game::update() {
+  player.update();
+
+  for (auto const& c : RenderGroup::Bullets) {
+    c->update();
+  }
+}
+
+void Game::render() {
+  window.clear();
+  player.render(window);
+
+  for (auto const& c : RenderGroup::Bullets) {
+    c->render(window);
+  }
+
+  window.display();
+}
+

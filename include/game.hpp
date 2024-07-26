@@ -6,7 +6,17 @@
 
 class Game {
   public:
+    Game();
     void run();
+    void processEvents();
+    void render();
+    void update();
+
+  private:
+    static const sf::Time TimePerFrame;
+    Player player;
+
+    sf::RenderWindow window;
 };
 
 #endif
