@@ -1,6 +1,7 @@
 #include <RenderGroup.hpp>
 #include <game.hpp>
 #include <bullet.hpp>
+#include <HealthBar.hpp>
 
 #include <iostream>
 
@@ -16,6 +17,8 @@ Game::Game()
 void Game::run(){
   sf::Clock clock;
   sf::Time timeSinceLastUpdate = sf::Time::Zero;
+
+  HealthBar::setHealth(10);
 
   while(window.isOpen()){
     sf::Time elapsedTime = clock.restart();
@@ -54,6 +57,8 @@ void Game::update() {
 void Game::render() {
   window.clear();
   player.render(window);
+
+  HealthBar::render(window);
 
   for (auto const& c : RenderGroup::Bullets) {
     c->render(window);
