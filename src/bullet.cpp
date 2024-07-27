@@ -6,14 +6,14 @@ Bullet::Bullet(float initial_pos_x, float initial_pos_y, float target_pos_x, flo
 
   this->pos.x = initial_pos_x;
   this->pos.y = initial_pos_y;
-  this->radius = 10.f;
+  this->radius = 3;
   this->speed = 50;
 
   this->target.x = target_pos_x;
   this->target.y = target_pos_y;
 
   this->sprite.setRadius(this->radius);
-  this->sprite.setFillColor(sf::Color::Cyan);
+  this->sprite.setFillColor(sf::Color::White);
 }
 
 void Bullet::update(){

@@ -5,14 +5,14 @@
 Player::Player(){
   this->pos.x = 100.f;
   this->pos.y = 200.f;
-  this->radius = 40;
-  this->speed = 20;
+  this->radius = 10;
+  this->speed = 10;
 
   this->target.x = this->pos.x;
   this->target.y = this->pos.y;
 
   this->sprite.setRadius(this->radius);
-  this->sprite.setFillColor(sf::Color::Cyan);
+  this->sprite.setFillColor(sf::Color::Green);
 }
 
 void Player::update(){

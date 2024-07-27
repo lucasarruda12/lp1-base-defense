@@ -18,7 +18,7 @@ void HealthBar::setHealth(int health){
       } else {
           points[i].setFillColor(sf::Color::Red);
       }
-      points[i].setPosition(400 + 20 * i, 20);
+      points[i].setPosition(430 + 20 * i, 450);
   }
 };
 
