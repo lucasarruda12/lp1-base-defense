@@ -15,7 +15,6 @@ class Game {
   private:
     static const sf::Time TimePerFrame;
     Player player;
-
     sf::RenderWindow window;
 };
 

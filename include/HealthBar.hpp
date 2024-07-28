@@ -10,7 +10,7 @@ class HealthBar{
   public:
     static void setHealth(int points);
     static void render(sf::RenderWindow &window);
-      
+
 };
 
 #endif  // INCLUDE_HEALTHBAR_HPP_

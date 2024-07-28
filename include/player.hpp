@@ -8,14 +8,12 @@
 
 class Player : private PhysicalObject{ 
   private:
-    float radius;
     sf::CircleShape sprite;
-
 
   public:
     Player();
     void render(sf::RenderWindow &window);
-    void handleEvent(sf::Event &event);
+    void handleEvent(sf::Event &event);  // TODO should be processEvents
     void update();
 };
 #endif

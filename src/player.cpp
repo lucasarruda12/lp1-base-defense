@@ -27,14 +27,14 @@ void Player::render(sf::RenderWindow& window){
 
 void Player::handleEvent(sf::Event &event){
   if (event.type == sf::Event::MouseButtonPressed){
-      if (event.mouseButton.button == sf::Mouse::Right){
-        this->target.x = event.mouseButton.x;
-        this->target.y = event.mouseButton.y;
-      }
-
-      if (event.mouseButton.button == sf::Mouse::Left){
-        Bullet* b = new Bullet(this->pos.x, this->pos.y, event.mouseButton.x, event.mouseButton.y);
-        RenderGroup::Bullets.push_back(b);
-      }
+    if (event.mouseButton.button == sf::Mouse::Right){
+      this->target.x = event.mouseButton.x;
+      this->target.y = event.mouseButton.y;
     }
+
+    if (event.mouseButton.button == sf::Mouse::Left){
+      Bullet* b = new Bullet(this->pos.x, this->pos.y, event.mouseButton.x, event.mouseButton.y);
+      RenderGroup::Bullets.push_back(b);
+    }
+  }
 }

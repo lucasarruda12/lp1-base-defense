@@ -16,3 +16,14 @@ void PhysicalObject::moveTowardsTarget(){
     pos.y = target.y;
   }
 }
+
+bool PhysicalObject::checkCollision(const PhysicalObject& other){
+  sf::Vector2f dist(this->pos.x - other.pos.x, this->pos.y - other.pos.y);
+  float sRad = this->radius + other.radius;
+
+  if (dist.x * dist.x + dist.y * dist.y <= sRad*sRad){
+    return true;
+  } else {
+    return false;
+  }
+}
