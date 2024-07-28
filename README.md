@@ -28,9 +28,9 @@ Dentro do diretório do jogo, use `make run` para iniciar uma partida
 
 ## Especificação do Trabalho
 
-- [] O herói tem vida limitada a 100
+- [ ] O herói tem vida limitada a 100
 
-- [] O herói tem uma quantidade limitada de projéteis
+- [ ] O herói tem uma quantidade limitada de projéteis
 
 - [x] O herói pode se mover em qualquer direção controlado pelo clique do mouse em um local “destino”. Quando se clicar com o botão direito do mouse em um ponto do mapa, o herói tem esse local setado como “destino” e deve caminhar nessa direção. 
 
@@ -38,18 +38,16 @@ Dentro do diretório do jogo, use `make run` para iniciar uma partida
 
 - [x] O herói pode disparar projéteis pressionando a tecla “Q”. O projétil deve ter um alcance máximo e deve ter a direção apontando para o cursor do mouse no momento do disparo.
 
-- [] Os inimigos surgem nas bordas do mapa aleatoriamente em um intervalo fixo de tempo (que pode ir diminuindo para aumentar a dificuldade do jogo)
+- [ ] Os inimigos surgem nas bordas do mapa aleatoriamente em um intervalo fixo de tempo (que pode ir diminuindo para aumentar a dificuldade do jogo)
 
-- [] O inimigo caminha em direção ao centro da base, ou ao herói (livre escolha do programador)
+- [ ] O inimigo caminha em direção ao centro da base, ou ao herói (livre escolha do programador)
 
-- [] O inimigo dispara os projéteis sempre em direção ao herói.
+- [ ] O inimigo dispara os projéteis sempre em direção ao herói.
 
-- [] Os projéteis podem colidir com o herói, outro inimigo, ou com a base.
+- [ ] Os projéteis podem colidir com o herói, outro inimigo, ou com a base.
 
-- [] A base deve resistir até um número limitado de tiros, podendo regenerar sua estrutura com o tempo
+- [ ] A base deve resistir até um número limitado de tiros, podendo regenerar sua estrutura com o tempo
 
-- [] Quando abatido, o inimigo deixa no mapa uma quantidade aleatória limitada de projéteis que pode ser coletada pelo herói se o mesmo passar sobre o item ou esse item desaparece após um determinado tempo caso o herói não o colete.
+- [ ] Quando abatido, o inimigo deixa no mapa uma quantidade aleatória limitada de projéteis que pode ser coletada pelo herói se o mesmo passar sobre o item ou esse item desaparece após um determinado tempo caso o herói não o colete.
 
-- [] O jogo deve finalizar se a base conseguir ser protegida por um determinado período de tempo ou se ela for destruída.
-
-## Diagrama de classes
+- [ ] O jogo deve finalizar se a base conseguir ser protegida por um determinado período de tempo ou se ela for destruída.
