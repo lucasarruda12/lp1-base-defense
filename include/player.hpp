@@ -9,6 +9,7 @@
 class Player : private PhysicalObject{ 
   private:
     sf::CircleShape sprite;
+    int ammo;
 
   public:
     Player();

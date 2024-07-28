@@ -7,6 +7,7 @@ Player::Player(){
   this->pos.y = 200.f;
   this->radius = 10;
   this->speed = 10;
+  this->ammo = 20;
 
   this->target.x = this->pos.x;
   this->target.y = this->pos.y;
@@ -32,10 +33,11 @@ void Player::handleEvent(sf::Event &event){
       this->target.y = event.mouseButton.y;
     }
 
-    if (event.mouseButton.button == sf::Mouse::Left){
+    if (event.mouseButton.button == sf::Mouse::Left && this->ammo > 0){
       sf::Vector2f mousePos(event.mouseButton.x, event.mouseButton.y);
-
       Bullet* b = new Bullet(this->pos, mousePos);
+
+      this->ammo--;
     }
   }
 }
