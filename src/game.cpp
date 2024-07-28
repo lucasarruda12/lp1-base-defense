@@ -1,4 +1,3 @@
-#include <RenderGroup.hpp>
 #include <game.hpp>
 #include <bullet.hpp>
 #include <HealthBar.hpp>
@@ -48,10 +47,7 @@ void Game::processEvents(){
 
 void Game::update() {
   player.update();
-
-  for (auto const& c : RenderGroup::Bullets) {
-    c->update();
-  }
+  Bullet::updateAll();
 }
 
 void Game::render() {
@@ -59,10 +55,7 @@ void Game::render() {
   player.render(window);
 
   HealthBar::render(window);
-
-  for (auto const& c : RenderGroup::Bullets) {
-    c->render(window);
-  }
+  Bullet::renderAll(window);
 
   window.display();
 }

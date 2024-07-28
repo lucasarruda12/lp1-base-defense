@@ -33,8 +33,9 @@ void Player::handleEvent(sf::Event &event){
     }
 
     if (event.mouseButton.button == sf::Mouse::Left){
-      Bullet* b = new Bullet(this->pos.x, this->pos.y, event.mouseButton.x, event.mouseButton.y);
-      RenderGroup::Bullets.push_back(b);
+      sf::Vector2f mousePos(event.mouseButton.x, event.mouseButton.y);
+
+      Bullet* b = new Bullet(this->pos, mousePos);
     }
   }
 }

@@ -3,12 +3,19 @@
 
 #include <SFML/Graphics.hpp>
 #include <PhysicalObject.hpp>
+#include <list>
+using std::list;
 
 class Bullet : public PhysicalObject { // TODO: should be private
-  public:
+  private:
     sf::CircleShape sprite;// TODO: should be private
+    int lifetime;
 
-    Bullet(float initial_pos_x, float initial_pos_y, float target_pos_x, float target_pos_y);
+  public:
+    static list<Bullet*> ObjectList; 
+    static void updateAll();
+    static void renderAll(sf::RenderWindow& window);
+    Bullet(sf::Vector2f initial, sf::Vector2f target);
     void render(sf::RenderWindow& window);
     void update();
 };
