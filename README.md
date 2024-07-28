@@ -28,9 +28,9 @@ Dentro do diretório do jogo, use `make run` para iniciar uma partida
 
 ## Especificação do Trabalho
 
-- [ ] O herói tem vida limitada a 100
+- [x] O herói tem vida limitada a 100
 
-- [ ] O herói tem uma quantidade limitada de projéteis
+- [x] O herói tem uma quantidade limitada de projéteis
 
 - [x] O herói pode se mover em qualquer direção controlado pelo clique do mouse em um local “destino”. Quando se clicar com o botão direito do mouse em um ponto do mapa, o herói tem esse local setado como “destino” e deve caminhar nessa direção. 
 
