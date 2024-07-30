@@ -1,6 +1,7 @@
 #include <game.hpp>
 #include <bullet.hpp>
 #include <HealthBar.hpp>
+#include <enemy.hpp>
 
 #include <iostream>
 
@@ -18,6 +19,7 @@ void Game::run(){
   sf::Time timeSinceLastUpdate = sf::Time::Zero;
 
   HealthBar::setHealth(10);
+  Enemy* n = new Enemy(sf::Vector2f(10,100));
 
   while(window.isOpen()){
     sf::Time elapsedTime = clock.restart();
@@ -48,6 +50,7 @@ void Game::processEvents(){
 void Game::update() {
   player.update();
   Bullet::updateAll();
+  Enemy::updateAll(this->player.getPos());
 }
 
 void Game::render() {
@@ -56,6 +59,7 @@ void Game::render() {
 
   HealthBar::render(window);
   Bullet::renderAll(window);
+  Enemy::renderAll(window);
 
   window.display();
 }

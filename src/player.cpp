@@ -41,3 +41,7 @@ void Player::handleEvent(sf::Event &event){
     }
   }
 }
+
+sf::Vector2f Player::getPos(){
+  return this->pos;
+}

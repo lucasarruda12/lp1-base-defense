@@ -14,7 +14,8 @@ class Player : private PhysicalObject{
   public:
     Player();
     void render(sf::RenderWindow &window);
-    void handleEvent(sf::Event &event);  // TODO should be processEvents
+    void handleEvent(sf::Event &event);  // TODO: should be processEvents
     void update();
+    sf::Vector2f getPos();
 };
 #endif
