@@ -26,34 +26,16 @@ Bullet::Bullet(sf::Vector2f initial, sf::Vector2f target){
   Bullet::ObjectList.push_back(this);
 }
 
-void Bullet::updateAll(){
-  auto it = Bullet::ObjectList.begin();
-
-  while(it != Bullet::ObjectList.end()){
-    Bullet* bullet = *it;
-    bullet->lifetime--;
-
-    bullet->moveTowardsTarget();
-
-    if (bullet->lifetime <= 0){
-      it = Bullet::ObjectList.erase(it);
-      delete bullet;
-    } else {
-      it++;
-    }
-
-  }
+void Bullet::update(){
+  this->lifetime--;
+  this->moveTowardsTarget();
 }
 
-void Bullet::renderAll(sf::RenderWindow& window){
-  auto it = Bullet::ObjectList.begin();
+void Bullet::render(sf::RenderWindow& window){
+  this->sprite.setPosition(this->pos.x - this->radius, this->pos.y - this->radius);
+  window.draw(this->sprite);
+}
 
-  while(it != Bullet::ObjectList.end()){
-    Bullet* bullet = *it;
-
-    bullet->sprite.setPosition(bullet->pos.x - bullet->radius, bullet->pos.y - bullet->radius);
-    window.draw(bullet->sprite);
-
-    it++;
-  }
+int Bullet::getLifetime(){
+  return this->lifetime;
 }

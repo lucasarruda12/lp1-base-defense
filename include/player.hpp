@@ -4,7 +4,6 @@
 #include <SFML/Graphics.hpp>
 #include <bullet.hpp>
 #include <PhysicalObject.hpp>
-#include <RenderGroup.hpp>
 
 class Player : private PhysicalObject{ 
   private:
@@ -14,8 +13,10 @@ class Player : private PhysicalObject{
   public:
     Player();
     void render(sf::RenderWindow &window);
-    void handleEvent(sf::Event &event);  // TODO: should be processEvents
     void update();
-    sf::Vector2f getPos();
+    void setTarget(sf::Vector2f target);
+    sf::Vector2f getPosition();
+    int getAmmo();
+    void decreaseAmmo(int ammount);
 };
 #endif

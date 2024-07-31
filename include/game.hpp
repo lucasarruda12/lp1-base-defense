@@ -3,6 +3,8 @@
 
 #include <SFML/Graphics.hpp>
 #include <player.hpp>
+#include <list>
+using std::list;
 
 class Game {
   public:
@@ -14,8 +16,10 @@ class Game {
 
   private:
     static const sf::Time TimePerFrame;
-    Player player;
     sf::RenderWindow window;
+    
+    Player player;
+    list<Bullet*> bullets;
 };
 
 #endif

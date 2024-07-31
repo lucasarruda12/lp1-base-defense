@@ -26,22 +26,22 @@ void Player::render(sf::RenderWindow& window){
   window.draw(this->sprite);
 }
 
-void Player::handleEvent(sf::Event &event){
-  if (event.type == sf::Event::MouseButtonPressed){
-    if (event.mouseButton.button == sf::Mouse::Right){
-      this->target.x = event.mouseButton.x;
-      this->target.y = event.mouseButton.y;
-    }
-
-    if (event.mouseButton.button == sf::Mouse::Left && this->ammo > 0){
-      sf::Vector2f mousePos(event.mouseButton.x, event.mouseButton.y);
-      Bullet* b = new Bullet(this->pos, mousePos);
-
-      this->ammo--;
-    }
-  }
+sf::Vector2f Player::getPosition(){
+  return this->pos;
 }
 
-sf::Vector2f Player::getPos(){
-  return this->pos;
+void Player::setTarget(sf::Vector2f target){
+  this->target = target;
+}
+
+int Player::getAmmo(){
+  return this->ammo;
+}
+
+void Player::decreaseAmmo(int ammount){
+  this->ammo -= ammount;
+
+  if (this->ammo < 0) {
+    this->ammo = 0;
+  }
 }

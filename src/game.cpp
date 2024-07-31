@@ -1,7 +1,7 @@
 #include <game.hpp>
 #include <bullet.hpp>
 #include <HealthBar.hpp>
-#include <enemy.hpp>
+// #include <enemy.hpp>
 
 #include <iostream>
 
@@ -19,7 +19,7 @@ void Game::run(){
   sf::Time timeSinceLastUpdate = sf::Time::Zero;
 
   HealthBar::setHealth(10);
-  Enemy* n = new Enemy(sf::Vector2f(10,100));
+  // Enemy* n = new Enemy(sf::Vector2f(10,100));
 
   while(window.isOpen()){
     sf::Time elapsedTime = clock.restart();
@@ -43,23 +43,50 @@ void Game::processEvents(){
       window.close();
     }
 
-    player.handleEvent(event);
+    if (event.type == sf::Event::MouseButtonPressed){
+      sf::Vector2f mousePos(event.mouseButton.x, event.mouseButton.y);
+
+      if (event.mouseButton.button == sf::Mouse::Right){
+        player.setTarget(mousePos);
+      }
+
+      if (event.mouseButton.button == sf::Mouse::Left && player.getAmmo() > 0){
+        Bullet* b = new Bullet(player.getPosition(), mousePos);
+        bullets.push_back(b);
+
+        player.decreaseAmmo(1);
+      }
+    }
   }
 }
 
 void Game::update() {
   player.update();
-  Bullet::updateAll();
-  Enemy::updateAll(this->player.getPos());
+
+  auto it = bullets.begin();
+
+  while(it != bullets.end()){
+    Bullet* bullet = *it;
+    bullet->update();
+
+    if (bullet->getLifetime() <= 0){
+      it = bullets.erase(it);
+    } else {
+      it++;
+    }
+  }
 }
 
 void Game::render() {
   window.clear();
-  player.render(window);
 
+  player.render(window);
   HealthBar::render(window);
-  Bullet::renderAll(window);
-  Enemy::renderAll(window);
+  for (const auto& b : bullets) {
+    b->render(window);
+  }
+
+  // Enemy::renderAll(window);
 
   window.display();
 }

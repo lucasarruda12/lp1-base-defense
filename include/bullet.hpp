@@ -6,18 +6,17 @@
 #include <list>
 using std::list;
 
-class Bullet : public PhysicalObject { // TODO: should be private
+class Bullet : private PhysicalObject {
   private:
-    sf::CircleShape sprite;// TODO: should be private
+    sf::CircleShape sprite;
     int lifetime;
 
   public:
-    static list<Bullet*> ObjectList; 
-    static void updateAll();
-    static void renderAll(sf::RenderWindow& window);
     Bullet(sf::Vector2f initial, sf::Vector2f target);
+    static list<Bullet*> ObjectList;
     void render(sf::RenderWindow& window);
     void update();
+    int getLifetime();
 };
 
 #endif
