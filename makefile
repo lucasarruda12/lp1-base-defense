@@ -15,7 +15,7 @@ SFML :=
 default: build
 
 build: $(OBJS)
-	$(CXX) $(LDFLAGS) -o $(PROG) $^
+	$(CXX) -o $(PROG) $^ $(LDFLAGS) 
 
 run:
 	./$(PROG)
