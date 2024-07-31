@@ -8,7 +8,8 @@ using std::list;
 
 class Enemy : private PhysicalObject {
   private:
-    sf::CircleShape sprite;// TODO: should be private
+    sf::CircleShape sprite;
+    int shootTimer;
 
   public:
     Enemy(sf::Vector2f pos);

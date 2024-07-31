@@ -11,9 +11,10 @@ list<Enemy*> Enemy::ObjectList;
 Enemy::Enemy(sf::Vector2f pos){
   this->radius = 10;
   this->speed = 3;
+  this->shootTimer = 60;
   this->pos = pos;
 
-  this->target = this->pos;
+  this->target = sf::Vector2f(640/2, 480/2);
 
   this->sprite.setRadius(this->radius);
   this->sprite.setFillColor(sf::Color::Red);
@@ -26,8 +27,6 @@ void Enemy::updateAll(sf::Vector2f playerPosition){
 
   while(it != Enemy::ObjectList.end()){
     Enemy* enemy = *it;
-
-    enemy->target = playerPosition;
 
     enemy->moveTowardsTarget();
 
