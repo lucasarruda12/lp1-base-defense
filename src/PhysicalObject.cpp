@@ -27,3 +27,7 @@ bool PhysicalObject::checkCollision(const PhysicalObject& other){
     return false;
   }
 }
+
+void PhysicalObject::setTarget(sf::Vector2f target){
+  this->target = target;
+}

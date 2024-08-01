@@ -1,7 +1,7 @@
 #include <game.hpp>
 #include <bullet.hpp>
 #include <HealthBar.hpp>
-// #include <enemy.hpp>
+#include <enemy.hpp>
 
 #include <iostream>
 
@@ -19,7 +19,8 @@ void Game::run(){
   sf::Time timeSinceLastUpdate = sf::Time::Zero;
 
   HealthBar::setHealth(10);
-  // Enemy* n = new Enemy(sf::Vector2f(10,100));
+  Enemy* n = new Enemy(sf::Vector2f(10,100), sf::Vector2f(640/2, 480/2));
+  enemies.push_back(n);
 
   while(window.isOpen()){
     sf::Time elapsedTime = clock.restart();
@@ -63,17 +64,43 @@ void Game::processEvents(){
 void Game::update() {
   player.update();
 
-  auto it = bullets.begin();
+  auto bit = bullets.begin();
 
-  while(it != bullets.end()){
-    Bullet* bullet = *it;
+  while(bit != bullets.end()){
+    Bullet* bullet = *bit;
     bullet->update();
 
-    if (bullet->getLifetime() <= 0){
-      it = bullets.erase(it);
+    if (bullet->isExpired()){
+      bit = bullets.erase(bit);
     } else {
-      it++;
+      bit++;
     }
+  }
+
+  auto eit = enemies.begin();
+
+  while(eit != enemies.end()){
+    Enemy* enemy = *eit;
+    enemy->update();
+
+    eit++;
+  }
+
+  eit = enemies.begin();
+  bit = bullets.begin();
+
+  while(eit != enemies.end()){
+    Enemy* enemy = *eit;
+    while(bit != bullets.end()){
+      Bullet* bullet = *bit;
+
+      if (enemy->checkCollision(*bullet)){
+          std::cout <<"acertou1!" << std::endl;
+      }
+
+      bit++;
+    }
+    eit++;
   }
 }
 
@@ -85,8 +112,9 @@ void Game::render() {
   for (const auto& b : bullets) {
     b->render(window);
   }
-
-  // Enemy::renderAll(window);
+  for (const auto& e : enemies) {
+    e->render(window);
+  }
 
   window.display();
 }

@@ -1,8 +1,4 @@
 #include <bullet.hpp>
-#include <list>
-using std::list;
-
-list<Bullet*> Bullet::ObjectList;
 
 Bullet::Bullet(sf::Vector2f initial, sf::Vector2f target){
   this->radius = 3;
@@ -22,8 +18,6 @@ Bullet::Bullet(sf::Vector2f initial, sf::Vector2f target){
 
   this->sprite.setRadius(this->radius);
   this->sprite.setFillColor(sf::Color::White);
-
-  Bullet::ObjectList.push_back(this);
 }
 
 void Bullet::update(){
@@ -36,6 +30,6 @@ void Bullet::render(sf::RenderWindow& window){
   window.draw(this->sprite);
 }
 
-int Bullet::getLifetime(){
-  return this->lifetime;
+int Bullet::isExpired(){
+  return this->lifetime <= 0;
 }

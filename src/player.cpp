@@ -30,10 +30,6 @@ sf::Vector2f Player::getPosition(){
   return this->pos;
 }
 
-void Player::setTarget(sf::Vector2f target){
-  this->target = target;
-}
-
 int Player::getAmmo(){
   return this->ammo;
 }

@@ -5,7 +5,7 @@
 #include <bullet.hpp>
 #include <PhysicalObject.hpp>
 
-class Player : private PhysicalObject{ 
+class Player : public PhysicalObject{ 
   private:
     sf::CircleShape sprite;
     int ammo;
@@ -14,9 +14,11 @@ class Player : private PhysicalObject{
     Player();
     void render(sf::RenderWindow &window);
     void update();
-    void setTarget(sf::Vector2f target);
+
     sf::Vector2f getPosition();
     int getAmmo();
+
     void decreaseAmmo(int ammount);
 };
+
 #endif

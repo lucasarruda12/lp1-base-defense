@@ -3,6 +3,8 @@
 
 #include <SFML/Graphics.hpp>
 #include <player.hpp>
+#include <enemy.hpp>
+#include <bullet.hpp>
 #include <list>
 using std::list;
 
@@ -20,6 +22,7 @@ class Game {
     
     Player player;
     list<Bullet*> bullets;
+    list<Enemy*> enemies;
 };
 
 #endif
