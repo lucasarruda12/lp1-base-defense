@@ -18,6 +18,7 @@ class Player : public PhysicalObject{
     int getAmmo();
     void decreaseAmmo(int ammount);
     void takeDamage();
+    int getHealth();
 };
 
 #endif

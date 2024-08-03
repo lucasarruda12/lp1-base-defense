@@ -1,6 +1,7 @@
 #include <game.hpp>
 #include <bullet.hpp>
 #include <HealthBar.hpp>
+#include <AmmoBar.hpp>
 #include <enemy.hpp>
 
 #include <iostream>
@@ -18,6 +19,8 @@ Game::Game()
 void Game::run(){
   sf::Clock clock;
   sf::Time timeSinceLastUpdate = sf::Time::Zero;
+  HealthBar::setHealth(10);
+  AmmoBar::setAmmo(20);
 
   while(window.isOpen()){
     sf::Time elapsedTime = clock.restart();
@@ -59,6 +62,8 @@ void Game::render() {
   window.clear();
 
   entities.renderAll(window);
+  HealthBar::render(window);
+  AmmoBar::render(window);
 
   window.display();
 }

@@ -5,7 +5,7 @@
 
 class HealthBar{
   private:
-    static sf::CircleShape points[10];
+    static sf::RectangleShape points[10];
 
   public:
     static void setHealth(int points);

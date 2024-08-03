@@ -1,6 +1,6 @@
 #include <HealthBar.hpp>
 
-sf::CircleShape HealthBar::points[10];
+sf::RectangleShape HealthBar::points[10];
 
 void HealthBar::setHealth(int health){
   if (health > 10) {
@@ -12,11 +12,15 @@ void HealthBar::setHealth(int health){
   }
 
   for (int i = 0; i < 10; i++) {
-      points[i].setRadius(10);
+      points[i].setSize(sf::Vector2f(15, 15));
       if (i < health) {
-          points[i].setFillColor(sf::Color::Green);
-      } else {
           points[i].setFillColor(sf::Color::Red);
+          points[i].setOutlineColor(sf::Color::Red);
+          points[i].setOutlineThickness(1.f);
+      } else {
+          points[i].setFillColor(sf::Color::Black);
+          points[i].setOutlineColor(sf::Color::Red);
+          points[i].setOutlineThickness(1.f);
       }
       points[i].setPosition(430 + 20 * i, 450);
   }

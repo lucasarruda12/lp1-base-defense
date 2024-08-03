@@ -18,19 +18,21 @@ Player::Player(){
 void Player::update(){
   if (this->pos.x != this->target.x || this->pos.y != this->target.y)
     this->moveTowardsTarget();
-
-  HealthBar::setHealth(this->health);
 }
 
 void Player::render(sf::RenderWindow& window){
   this->sprite.setPosition(this->pos.x - radius, this->pos.y - radius);
   window.draw(this->sprite);
-
-  HealthBar::render(window);
 }
 
 void Player::takeDamage(){
-  this->health -= 1;
+  if (this->health > 0){
+    this->health -= 1;
+  }
+}
+
+int Player::getHealth(){
+  return this->health;
 }
 
 int Player::getAmmo(){

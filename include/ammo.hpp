@@ -1,0 +1,6 @@
+#ifndef INCLUDE_AMMO_HPP_
+#define INCLUDE_AMMO_HPP_
+
+
+
+#endif // INCLUDE_AMMO_HPP_

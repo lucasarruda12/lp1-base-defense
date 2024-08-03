@@ -3,7 +3,7 @@
 
 Enemy::Enemy(sf::Vector2f initial){
   this->radius = 10;
-  this->speed = 2;
+  this->speed = 1;
   this->pos = initial;
   this->target = sf::Vector2f(640/2, 480/2);
   this->shootTimer = 0;
