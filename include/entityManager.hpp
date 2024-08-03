@@ -28,6 +28,7 @@ class EntityManager{
     void checkEnemyBulletCollision();
     void checkBulletLifetime();
     void makeEnemiesShoot();
+    void checkPlayerBulletCollision();
 
 };
 

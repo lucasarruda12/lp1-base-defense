@@ -128,6 +128,25 @@ void EntityManager::checkBulletLifetime(){
   }
 }
 
+void EntityManager::checkPlayerBulletCollision(){
+  for (auto it = bullets.begin(); it != bullets.end();){
+    bool hit = false;
+    Bullet* bullet = *it;
+
+    if (!bullet->isPlayerBullet() && player.checkCollision(*bullet)){
+      hit = true;
+
+      delete bullet;
+      it = bullets.erase(it);
+    } else {
+      it++;
+    }
+    if (hit) {
+      player.takeDamage();
+    }
+  }
+}
+
 void EntityManager::checkEnemyBulletCollision(){
   // Checar colisão entre inimigos e balas
   for (auto eit = enemies.begin(); eit != enemies.end();) {
