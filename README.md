@@ -38,11 +38,11 @@ Dentro do diretório do jogo, use `make run` para iniciar uma partida
 
 - [x] O herói pode disparar projéteis pressionando a tecla “Q”. O projétil deve ter um alcance máximo e deve ter a direção apontando para o cursor do mouse no momento do disparo.
 
-- [ ] Os inimigos surgem nas bordas do mapa aleatoriamente em um intervalo fixo de tempo (que pode ir diminuindo para aumentar a dificuldade do jogo)
+- [x] Os inimigos surgem nas bordas do mapa aleatoriamente em um intervalo fixo de tempo (que pode ir diminuindo para aumentar a dificuldade do jogo)
 
-- [ ] O inimigo caminha em direção ao centro da base, ou ao herói (livre escolha do programador)
+- [x] O inimigo caminha em direção ao centro da base, ou ao herói (livre escolha do programador)
 
-- [ ] O inimigo dispara os projéteis sempre em direção ao herói.
+- [x] O inimigo dispara os projéteis sempre em direção ao herói.
 
 - [ ] Os projéteis podem colidir com o herói, outro inimigo, ou com a base.
 
