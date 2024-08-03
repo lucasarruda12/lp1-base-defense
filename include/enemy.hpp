@@ -10,7 +10,7 @@ class Enemy : public PhysicalObject {
     int lifetime;
 
   public:
-    Enemy(sf::Vector2f initial, sf::Vector2f target);
+    Enemy(sf::Vector2f initial);
     void render(sf::RenderWindow& window);
     void update();
 };

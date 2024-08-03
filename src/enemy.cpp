@@ -1,11 +1,11 @@
 #include <enemy.hpp>
 #include <iostream>
 
-Enemy::Enemy(sf::Vector2f initial, sf::Vector2f target){
+Enemy::Enemy(sf::Vector2f initial){
   this->radius = 10;
   this->speed = 3;
   this->pos = initial;
-  this->target = target;
+  this->target = sf::Vector2f(640/2, 480/2);
 
   this->sprite.setRadius(this->radius);
   this->sprite.setFillColor(sf::Color::Red);
