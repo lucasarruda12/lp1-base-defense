@@ -27,6 +27,10 @@ void EntityManager::renderAll(sf::RenderWindow& window){
   for (const auto& e : enemies) {
     e->render(window);
   }
+
+  for (const auto& a : ammoBoxes) {
+    a->render(window);
+  }
 }
 
 void EntityManager::processPlayerEvents(sf::Event& event){
@@ -151,7 +155,6 @@ void EntityManager::checkPlayerBulletCollision(){
 }
 
 void EntityManager::checkEnemyBulletCollision(){
-  // Checar colisão entre inimigos e balas
   for (auto eit = enemies.begin(); eit != enemies.end();) {
     Enemy* enemy = *eit;
     bool hit = false;
@@ -170,8 +173,12 @@ void EntityManager::checkEnemyBulletCollision(){
       }
     }
 
-    // Deleta o inimigo
     if (hit){
+    // Cria uma caixinha de munição onde o inimigo morreu
+      AmmoBox* newAmmoBox = new AmmoBox(enemy->getPosition());
+      ammoBoxes.push_back(newAmmoBox);
+
+    // E deleta o inimigo
       delete enemy;
       eit = enemies.erase(eit);
     } else {

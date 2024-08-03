@@ -5,6 +5,7 @@
 #include <bullet.hpp>
 #include <player.hpp>
 #include <enemy.hpp>
+#include <AmmoBox.hpp>
 #include <list>
 using std::list;
 
@@ -13,6 +14,7 @@ class EntityManager{
     Player player;
     list<Bullet*> bullets;
     list<Enemy*> enemies;
+    list<AmmoBox*> ammoBoxes;
     int enemySpawnTimer;
     sf::Vector2f generateRandomEnemySpawn();
 
