@@ -26,6 +26,7 @@ void Game::run(){
     sf::Time elapsedTime = clock.restart();
     timeSinceLastUpdate += elapsedTime;
 
+    // Dar update no estado do jogo só a cada 1/60 segundos
     while(timeSinceLastUpdate > TimePerFrame){
       timeSinceLastUpdate -= TimePerFrame;
       processEvents();
@@ -46,11 +47,13 @@ void Game::processEvents(){
 
     if (event.type == sf::Event::MouseButtonPressed){
       sf::Vector2f mousePos(event.mouseButton.x, event.mouseButton.y);
-
+  
+      // Botão direito manda o jogador andar até aquela posição
       if (event.mouseButton.button == sf::Mouse::Right){
         player.setTarget(mousePos);
       }
 
+      // Botão esquerdo cria uma bala que sai do player naquela direção
       if (event.mouseButton.button == sf::Mouse::Left && player.getAmmo() > 0){
         Bullet* b = new Bullet(player.getPosition(), mousePos);
         bullets.push_back(b);
@@ -64,43 +67,53 @@ void Game::processEvents(){
 void Game::update() {
   player.update();
 
-  auto bit = bullets.begin();
-
-  while(bit != bullets.end()){
-    Bullet* bullet = *bit;
+  // Dar update em todas as balas
+  for(auto it = bullets.begin(); it != bullets.end();){
+    Bullet* bullet = *it;
     bullet->update();
 
-    if (bullet->isExpired()){
-      bit = bullets.erase(bit);
+   if (bullet->isExpired()){
+      delete bullet;
+      it = bullets.erase(it);
     } else {
-      bit++;
+      it++;
     }
   }
 
-  auto eit = enemies.begin();
-
-  while(eit != enemies.end()){
-    Enemy* enemy = *eit;
+  // Dar update em todos os inimigos
+  for(auto it = enemies.begin(); it != enemies.end();){
+    Enemy* enemy = *it;
     enemy->update();
 
-    eit++;
+    it++;
   }
 
-  eit = enemies.begin();
-  bit = bullets.begin();
-
-  while(eit != enemies.end()){
+  // Checar colisão entre inimigos e balas
+  for (auto eit = enemies.begin(); eit != enemies.end();) {
     Enemy* enemy = *eit;
-    while(bit != bullets.end()){
+    bool hit = false;
+
+    // Checa colisão com alguma bala e deleta a bala em si
+    for (auto bit = bullets.begin(); bit != bullets.end();){
       Bullet* bullet = *bit;
 
       if (enemy->checkCollision(*bullet)){
-          std::cout <<"acertou1!" << std::endl;
-      }
+        hit = true;
 
-      bit++;
+        delete bullet;
+        bit = bullets.erase(bit);
+      } else {
+        bit++;
+      }
     }
-    eit++;
+
+    // Deleta o inimigo
+    if (hit){
+      delete enemy;
+      eit = enemies.erase(eit);
+    } else {
+      eit++;
+    }
   }
 }
 
