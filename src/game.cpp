@@ -47,8 +47,10 @@ void Game::processEvents(){
 }
 
 void Game::update() {
-  entities.spawnNewEnemies();
   entities.updateAll();
+  entities.spawnNewEnemies();
+  entities.checkEnemyBulletCollision();
+  entities.checkBulletLifetime();
 }
 
 void Game::render() {

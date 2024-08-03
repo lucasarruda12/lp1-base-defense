@@ -104,27 +104,30 @@ sf::Vector2f EntityManager::generateRandomEnemySpawn(){
 void EntityManager::updateAll(){
   player.update();
 
-  // Dar update em todas as balas
-  for(auto it = bullets.begin(); it != bullets.end();){
+  for (const auto& b : bullets) {
+    b->update();
+  }
+
+  for (const auto& e : enemies) {
+    e->update();
+  }
+
+}
+
+void EntityManager::checkBulletLifetime(){
+  for (auto it = bullets.begin(); it != bullets.end();){
     Bullet* bullet = *it;
-    bullet->update();
 
-   if (bullet->isExpired()){
-      delete bullet;
-      it = bullets.erase(it);
-    } else {
-      it++;
-    }
+    if (bullet->isExpired()){
+       delete bullet;
+       it = bullets.erase(it);
+     } else {
+       it++;
+     }
   }
+}
 
-  // Dar update em todos os inimigos
-  for(auto it = enemies.begin(); it != enemies.end();){
-    Enemy* enemy = *it;
-    enemy->update();
-
-    it++;
-  }
-
+void EntityManager::checkEnemyBulletCollision(){
   // Checar colisão entre inimigos e balas
   for (auto eit = enemies.begin(); eit != enemies.end();) {
     Enemy* enemy = *eit;

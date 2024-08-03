@@ -14,6 +14,7 @@ class EntityManager{
     list<Bullet*> bullets;
     list<Enemy*> enemies;
     int enemySpawnTimer;
+    sf::Vector2f generateRandomEnemySpawn();
 
   public:
     EntityManager();
@@ -24,7 +25,9 @@ class EntityManager{
     void renderAll(sf::RenderWindow& window);
     void processPlayerEvents(sf::Event& event);
     void spawnNewEnemies();
-    sf::Vector2f generateRandomEnemySpawn();
+    void checkEnemyBulletCollision();
+    void checkBulletLifetime();
+
 };
 
 #endif // INCLUDE_ENTITYMANAGER_HPP
