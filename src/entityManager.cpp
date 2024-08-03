@@ -39,7 +39,8 @@ void EntityManager::processPlayerEvents(sf::Event& event){
 
     // Botão esquerdo cria uma bala que sai do player naquela direção
     if (event.mouseButton.button == sf::Mouse::Left && player.getAmmo() > 0){
-      Bullet* b = new Bullet(player.getPosition(), mousePos);
+      bool isPlayerBullet = true;
+      Bullet* b = new Bullet(player.getPosition(), mousePos, isPlayerBullet);
       bullets.push_back(b);
 
       player.decreaseAmmo(1);
@@ -137,7 +138,7 @@ void EntityManager::checkEnemyBulletCollision(){
     for (auto bit = bullets.begin(); bit != bullets.end();){
       Bullet* bullet = *bit;
 
-      if (enemy->checkCollision(*bullet)){
+      if (bullet->isPlayerBullet() && enemy->checkCollision(*bullet)){
         hit = true;
 
         delete bullet;
@@ -154,5 +155,20 @@ void EntityManager::checkEnemyBulletCollision(){
     } else {
       eit++;
     }
+  }
+}
+
+void EntityManager::makeEnemiesShoot(){
+  for (auto it = enemies.begin(); it != enemies.end();){
+    Enemy* enemy = *it;
+    if (enemy->isAbleToShoot()){
+      enemy->resetShootTimer();
+
+      bool isPlayerBullet = false;
+      Bullet* b = new Bullet(enemy->getPosition(), player.getPosition(), isPlayerBullet);
+      bullets.push_back(b);
+    }
+
+    it++;
   }
 }

@@ -28,6 +28,10 @@ bool PhysicalObject::checkCollision(const PhysicalObject& other){
   }
 }
 
+sf::Vector2f PhysicalObject::getPosition(){
+  return this->pos;
+}
+
 void PhysicalObject::setTarget(sf::Vector2f target){
   this->target = target;
 }

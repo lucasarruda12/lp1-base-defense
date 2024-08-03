@@ -7,12 +7,14 @@
 class Enemy : public PhysicalObject {
     private:
     sf::CircleShape sprite;
-    int lifetime;
+    int shootTimer;
 
   public:
     Enemy(sf::Vector2f initial);
     void render(sf::RenderWindow& window);
     void update();
+    bool isAbleToShoot();
+    void resetShootTimer();
 };
 
 #endif  // INCLUDE_ENEMY_HPP

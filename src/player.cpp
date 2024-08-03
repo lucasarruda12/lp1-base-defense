@@ -26,10 +26,6 @@ void Player::render(sf::RenderWindow& window){
   window.draw(this->sprite);
 }
 
-sf::Vector2f Player::getPosition(){
-  return this->pos;
-}
-
 int Player::getAmmo(){
   return this->ammo;
 }

@@ -1,6 +1,6 @@
 #include <bullet.hpp>
 
-Bullet::Bullet(sf::Vector2f initial, sf::Vector2f target){
+Bullet::Bullet(sf::Vector2f initial, sf::Vector2f target, bool isPlayerBullet){
   this->radius = 3;
   this->speed = 15;
   this->pos = initial;
@@ -13,7 +13,7 @@ Bullet::Bullet(sf::Vector2f initial, sf::Vector2f target){
   newTarget.y = (newTarget.y/magnitude)*1000 + target.y;
 
   this->target = newTarget;
-
+  this->playerBullet = isPlayerBullet;
   this->lifetime = 0.5*60;
 
   this->sprite.setRadius(this->radius);
@@ -32,4 +32,8 @@ void Bullet::render(sf::RenderWindow& window){
 
 int Bullet::isExpired(){
   return this->lifetime <= 0;
+}
+
+bool Bullet::isPlayerBullet(){
+  return this->playerBullet;
 }

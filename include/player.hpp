@@ -15,7 +15,6 @@ class Player : public PhysicalObject{
     void render(sf::RenderWindow &window);
     void update();
 
-    sf::Vector2f getPosition();
     int getAmmo();
 
     void decreaseAmmo(int ammount);

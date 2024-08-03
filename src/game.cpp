@@ -51,6 +51,7 @@ void Game::update() {
   entities.spawnNewEnemies();
   entities.checkEnemyBulletCollision();
   entities.checkBulletLifetime();
+  entities.makeEnemiesShoot();
 }
 
 void Game::render() {
