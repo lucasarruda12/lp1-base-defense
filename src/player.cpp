@@ -46,3 +46,11 @@ void Player::decreaseAmmo(int ammount){
     this->ammo = 0;
   }
 }
+
+void Player::reload(int ammount){
+  this->ammo += ammount;
+
+  if (this->ammo > 20){
+    this->ammo = 20;
+  }
+}

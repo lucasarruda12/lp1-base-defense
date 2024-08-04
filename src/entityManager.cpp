@@ -154,6 +154,25 @@ void EntityManager::checkPlayerBulletCollision(){
   }
 }
 
+void EntityManager::checkPlayerAmmoBoxCollision(){
+  for (auto it = ammoBoxes.begin(); it != ammoBoxes.end();){
+    bool hit = false;
+    AmmoBox* ammoBox = *it;
+
+    if (player.checkCollision(*ammoBox)){
+      hit = true;
+
+      delete ammoBox;
+      it = ammoBoxes.erase(it);
+    } else {
+      it++;
+    }
+    if (hit) {
+      player.reload(5);
+    }
+  }
+}
+
 void EntityManager::checkEnemyBulletCollision(){
   for (auto eit = enemies.begin(); eit != enemies.end();) {
     Enemy* enemy = *eit;
