@@ -6,12 +6,15 @@
 #include <player.hpp>
 #include <enemy.hpp>
 #include <AmmoBox.hpp>
+#include <base.hpp>
+
 #include <list>
 using std::list;
 
 class EntityManager{
   private:
     Player player;
+    Base base;
     list<Bullet*> bullets;
     list<Enemy*> enemies;
     list<AmmoBox*> ammoBoxes;

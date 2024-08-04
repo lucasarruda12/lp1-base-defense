@@ -5,6 +5,7 @@
 
 EntityManager::EntityManager()
 : player()
+, base()
 , enemies()
 , bullets()
 , enemySpawnTimer(ENEMY_SPAWN_TIMER)
@@ -19,6 +20,8 @@ void EntityManager::add(Bullet* bullet){
 }
 
 void EntityManager::renderAll(sf::RenderWindow& window){
+  base.render(window);
+
   player.render(window);
 
   for (const auto& b : bullets) {
