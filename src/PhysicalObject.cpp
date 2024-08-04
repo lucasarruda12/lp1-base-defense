@@ -36,8 +36,8 @@ bool PhysicalObject::checkCollisionWithBase(){
   float base_x = WINDOW_WIDTH/2 - BASE_WIDTH/2;
   float base_y = WINDOW_HEIGHT/2 - BASE_HEIGHT/2;
 
-  bool isInsideBase_x = base_x - this->radius < this->pos.x & this->pos.x < base_x + BASE_WIDTH - this->radius;
-  bool isInsideBase_y = base_y - this->radius < this->pos.y & this->pos.y < base_y + BASE_HEIGHT - this->radius;
+  bool isInsideBase_x = base_x < this->pos.x & this->pos.x < base_x + BASE_WIDTH;
+  bool isInsideBase_y = base_y < this->pos.y & this->pos.y < base_y + BASE_HEIGHT;
 
   return isInsideBase_x & isInsideBase_y;
 }

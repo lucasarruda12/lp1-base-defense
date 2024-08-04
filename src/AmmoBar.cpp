@@ -23,7 +23,7 @@ void AmmoBar::setAmmo(int ammo){
           points[i].setOutlineColor(sf::Color::White);
           points[i].setOutlineThickness(1.f);
       }
-      points[i].setPosition(430 + 10 * i, 425);
+      points[i].setPosition(20 + 10 * i, 45);
   }
 };
 
