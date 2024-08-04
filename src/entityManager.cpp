@@ -1,3 +1,4 @@
+#include <constants.hpp>
 #include <entityManager.hpp>
 #include <random>
 #include <AmmoBar.hpp>
@@ -6,7 +7,7 @@ EntityManager::EntityManager()
 : player()
 , enemies()
 , bullets()
-, enemySpawnTimer(0)
+, enemySpawnTimer(ENEMY_SPAWN_TIMER)
 {}
 
 void EntityManager::add(Enemy* enemy){
@@ -54,8 +55,8 @@ void EntityManager::processPlayerEvents(sf::Event& event){
 }
 
 void EntityManager::spawnNewEnemies(){
-  if (enemySpawnTimer <= 120) {
-    enemySpawnTimer += 1;
+  if (enemySpawnTimer >= 0) {
+    enemySpawnTimer -= 1;
     return;
   }
   
@@ -64,42 +65,42 @@ void EntityManager::spawnNewEnemies(){
   Enemy* newEnemy = new Enemy(spawnLocation);
   EntityManager::add(newEnemy);
 
-  enemySpawnTimer = 0;
+  enemySpawnTimer = ENEMY_SPAWN_TIMER;
 }
 
 sf::Vector2f EntityManager::generateRandomEnemySpawn(){
   std::random_device rd;
   std::mt19937 mt(rd());
-  std::uniform_real_distribution<double> dist(0, 2239);
+  std::uniform_real_distribution<double> dist(0, WINDOW_HEIGHT*2 + WINDOW_WIDTH*2);
 
   int randInt = dist(mt);
   sf::Vector2f spawnLocation(0.f,0.f);
 
-  if (randInt <= 480){
+  if (randInt <= WINDOW_HEIGHT){
     spawnLocation.y = randInt;
     return spawnLocation;
   } else {
-    spawnLocation.y = 480;
-    randInt -= 480;
+    spawnLocation.y = WINDOW_HEIGHT;
+    randInt -= WINDOW_HEIGHT;
   }
 
-  if (randInt <= 640){
+  if (randInt <= WINDOW_WIDTH){
     spawnLocation.x = randInt;
     return spawnLocation;
   } else {
-    spawnLocation.x = 640;
-    randInt -= 640;
+    spawnLocation.x = WINDOW_WIDTH;
+    randInt -= WINDOW_WIDTH;
   }
 
-  if (randInt <= 480){
+  if (randInt <= WINDOW_HEIGHT){
     spawnLocation.y -= randInt;
     return spawnLocation;
   } else {
     spawnLocation.y = 0;
-    randInt -= 480;
+    randInt -= WINDOW_HEIGHT;
   }
 
-  if (randInt <= 640){
+  if (randInt <= WINDOW_WIDTH){
     spawnLocation.x -= randInt;
     return spawnLocation;
   }
@@ -168,7 +169,7 @@ void EntityManager::checkPlayerAmmoBoxCollision(){
       it++;
     }
     if (hit) {
-      player.reload(5);
+      player.reload(AMMOBOX_RELOAD_AMMOUNT);
     }
   }
 }

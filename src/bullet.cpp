@@ -1,8 +1,9 @@
+#include <constants.hpp>
 #include <bullet.hpp>
 
 Bullet::Bullet(sf::Vector2f initial, sf::Vector2f target, bool isPlayerBullet){
-  this->radius = 3;
-  this->speed = 15;
+  this->radius = BULLET_HITBOX_RADIUS;
+  this->speed = BULLET_SPEED;
   this->pos = initial;
   
   sf::Vector2f newTarget(target.x - initial.x, target.y - initial.y);
@@ -14,7 +15,7 @@ Bullet::Bullet(sf::Vector2f initial, sf::Vector2f target, bool isPlayerBullet){
 
   this->target = newTarget;
   this->playerBullet = isPlayerBullet;
-  this->lifetime = 0.5*60;
+  this->lifetime = BULLET_LIFETIME;
 
   this->sprite.setRadius(this->radius);
   this->sprite.setFillColor(sf::Color::White);

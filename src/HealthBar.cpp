@@ -1,17 +1,18 @@
+#include <constants.hpp>
 #include <HealthBar.hpp>
 
-sf::RectangleShape HealthBar::points[10];
+sf::RectangleShape HealthBar::points[PLAYER_MAX_HEALTH];
 
 void HealthBar::setHealth(int health){
-  if (health > 10) {
-    health = 10;
+  if (health > PLAYER_MAX_HEALTH) {
+    health = PLAYER_MAX_HEALTH;
   }
 
-  if (health < 0) {
-    health = 0;
+  if (health < PLAYER_MIN_HEALTH) {
+    health = PLAYER_MIN_HEALTH;
   }
 
-  for (int i = 0; i < 10; i++) {
+  for (int i = 0; i < PLAYER_MAX_HEALTH; i++) {
       points[i].setSize(sf::Vector2f(15, 15));
       if (i < health) {
           points[i].setFillColor(sf::Color::Red);
@@ -27,7 +28,7 @@ void HealthBar::setHealth(int health){
 };
 
 void HealthBar::render(sf::RenderWindow &window){
-  for (int i = 0; i < 10; i++){
+  for (int i = 0; i < PLAYER_MAX_HEALTH; i++){
     window.draw(points[i]);
   }
 };

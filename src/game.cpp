@@ -1,3 +1,5 @@
+#include <constants.hpp>
+
 #include <game.hpp>
 #include <bullet.hpp>
 #include <HealthBar.hpp>
@@ -11,7 +13,7 @@ using namespace std;
 const sf::Time Game::TimePerFrame = sf::seconds(1.f/60.f);
 
 Game::Game()
-: window(sf::VideoMode(640, 480), "SFML Application", sf::Style::Close)
+: window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "SFML Application", sf::Style::Close)
 , entities()
 {}
 
@@ -19,8 +21,8 @@ Game::Game()
 void Game::run(){
   sf::Clock clock;
   sf::Time timeSinceLastUpdate = sf::Time::Zero;
-  HealthBar::setHealth(10);
-  AmmoBar::setAmmo(20);
+  HealthBar::setHealth(PLAYER_MAX_HEALTH);
+  AmmoBar::setAmmo(PLAYER_MAX_AMMO);
 
   while(window.isOpen()){
     sf::Time elapsedTime = clock.restart();
@@ -53,10 +55,10 @@ void Game::update() {
   entities.updateAll();
   entities.spawnNewEnemies();
   entities.checkEnemyBulletCollision();
-  entities.checkBulletLifetime();
-  entities.makeEnemiesShoot();
   entities.checkPlayerBulletCollision();
   entities.checkPlayerAmmoBoxCollision();
+  entities.checkBulletLifetime();
+  entities.makeEnemiesShoot();
 }
 
 void Game::render() {

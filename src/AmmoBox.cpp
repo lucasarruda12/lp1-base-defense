@@ -1,7 +1,8 @@
+#include <constants.hpp>
 #include <AmmoBox.hpp>
 
 AmmoBox::AmmoBox(sf::Vector2f position){
-  this->radius = 3;
+  this->radius = AMMOBOX_HITBOX_RADIUS;
   this->speed = 0;
   this->pos = position;
   this->target = this->pos;

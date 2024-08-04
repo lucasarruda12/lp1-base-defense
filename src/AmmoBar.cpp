@@ -1,17 +1,18 @@
+#include <constants.hpp>
 #include <AmmoBar.hpp>
 
-sf::RectangleShape AmmoBar::points[20];
+sf::RectangleShape AmmoBar::points[PLAYER_MAX_AMMO];
 
 void AmmoBar::setAmmo(int ammo){
-  if (ammo > 20) {
-    ammo = 20;
+  if (ammo > PLAYER_MAX_AMMO) {
+    ammo = PLAYER_MAX_AMMO;
   }
 
-  if (ammo < 0) {
-    ammo = 0;
+  if (ammo < PLAYER_MIN_AMMO) {
+    ammo = PLAYER_MIN_AMMO;
   }
 
-  for (int i = 0; i < 20; i++) {
+  for (int i = 0; i < PLAYER_MAX_AMMO; i++) {
       points[i].setSize(sf::Vector2f(5, 15));
       if (i < ammo) {
           points[i].setFillColor(sf::Color::White);
@@ -27,7 +28,7 @@ void AmmoBar::setAmmo(int ammo){
 };
 
 void AmmoBar::render(sf::RenderWindow &window){
-  for (int i = 0; i < 20; i++){
+  for (int i = 0; i < PLAYER_MAX_AMMO; i++){
     window.draw(points[i]);
   }
 };
