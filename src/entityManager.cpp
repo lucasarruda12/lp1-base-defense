@@ -220,7 +220,7 @@ void EntityManager::checkEnemyBaseCollision(){
   for (auto it = enemies.begin(); it != enemies.end();){
     Enemy* enemy = *it;
 
-    if (enemy->checkCollisionWithBase()) {
+    if (enemy->checkCollision(base)) {
       delete enemy;
       it = enemies.erase(it);
     } else {

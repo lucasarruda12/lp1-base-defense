@@ -29,5 +29,4 @@
 
 // Base-related constants
 #define BASE_MAX_HEALTH 100
-#define BASE_HEIGHT 100
-#define BASE_WIDTH 150
+#define BASE_RADIUS 50

@@ -2,10 +2,11 @@
 #define INCLUDE_BASE_HPP
 
 #include <SFML/Graphics.hpp>
+#include <PhysicalObject.hpp>
 
-class Base {
+class Base : public PhysicalObject {
   private:
-    sf::RectangleShape sprite;
+    sf::CircleShape sprite;
     int health;
 
   public:
