@@ -18,7 +18,12 @@ Bullet::Bullet(sf::Vector2f initial, sf::Vector2f target, bool isPlayerBullet){
   this->lifetime = BULLET_LIFETIME;
 
   this->sprite.setRadius(this->radius);
-  this->sprite.setFillColor(sf::Color::White);
+
+  if (isPlayerBullet){
+    this->sprite.setFillColor(sf::Color::White);
+  } else {
+    this->sprite.setFillColor(sf::Color::Yellow);
+  }
 }
 
 void Bullet::update(){

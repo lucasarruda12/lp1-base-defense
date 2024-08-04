@@ -8,7 +8,7 @@ AmmoBox::AmmoBox(sf::Vector2f position){
   this->target = this->pos;
 
   this->sprite.setRadius(this->radius);
-  this->sprite.setFillColor(sf::Color::Yellow);
+  this->sprite.setFillColor(sf::Color(150,75,0,255));
 }
 
 void AmmoBox::render(sf::RenderWindow& window){
