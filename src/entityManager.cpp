@@ -68,7 +68,13 @@ void EntityManager::spawnNewEnemies(){
   Enemy* newEnemy = new Enemy(spawnLocation);
   EntityManager::add(newEnemy);
 
-  enemySpawnTimer = ENEMY_SPAWN_TIMER;
+  std::random_device rd;
+  std::mt19937 mt(rd());
+  std::uniform_real_distribution<double> dist(-30, 30);
+
+  int randInt = dist(mt);
+
+  enemySpawnTimer = ENEMY_SPAWN_TIMER + randInt;
 }
 
 sf::Vector2f EntityManager::generateRandomEnemySpawn(){

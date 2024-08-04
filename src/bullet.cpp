@@ -21,6 +21,8 @@ Bullet::Bullet(sf::Vector2f initial, sf::Vector2f target, bool isPlayerBullet){
 
   if (isPlayerBullet){
     this->sprite.setFillColor(sf::Color::White);
+    this->speed += 5;
+    this->lifetime -= 20;
   } else {
     this->sprite.setFillColor(sf::Color::Yellow);
   }
