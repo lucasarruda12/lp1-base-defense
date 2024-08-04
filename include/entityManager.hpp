@@ -35,6 +35,7 @@ class EntityManager{
     void makeEnemiesShoot();
     void checkPlayerBulletCollision();
     void checkPlayerAmmoBoxCollision();
+    void checkEnemyBaseCollision();
 
 };
 

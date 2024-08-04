@@ -1,3 +1,4 @@
+#include <constants.hpp>
 #include <PhysicalObject.hpp>
 
 void PhysicalObject::moveTowardsTarget(){
@@ -26,6 +27,19 @@ bool PhysicalObject::checkCollision(const PhysicalObject& other){
   } else {
     return false;
   }
+}
+
+bool PhysicalObject::checkCollisionWithBase(){
+  // Se o x do inimigo está entre base.x - raio do inimigo e base.x + tamanho da base - raio do inimigo
+  // E se o y do inimigo está entre base.y - raio do inimigo e base.y + tamanho da base - raio do inimigo
+  
+  float base_x = WINDOW_WIDTH/2 - BASE_WIDTH/2;
+  float base_y = WINDOW_HEIGHT/2 - BASE_HEIGHT/2;
+
+  bool isInsideBase_x = base_x - this->radius < this->pos.x & this->pos.x < base_x + BASE_WIDTH - this->radius;
+  bool isInsideBase_y = base_y - this->radius < this->pos.y & this->pos.y < base_y + BASE_HEIGHT - this->radius;
+
+  return isInsideBase_x & isInsideBase_y;
 }
 
 sf::Vector2f PhysicalObject::getPosition(){

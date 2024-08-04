@@ -16,6 +16,7 @@ class PhysicalObject{
     void setTarget(sf::Vector2f target);
     void moveTowardsTarget();
     bool checkCollision(const PhysicalObject& other);
+    bool checkCollisionWithBase();
     sf::Vector2f getPosition();
 };
 

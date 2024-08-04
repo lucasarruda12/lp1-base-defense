@@ -210,6 +210,19 @@ void EntityManager::checkEnemyBulletCollision(){
   }
 }
 
+void EntityManager::checkEnemyBaseCollision(){
+  for (auto it = enemies.begin(); it != enemies.end();){
+    Enemy* enemy = *it;
+
+    if (enemy->checkCollisionWithBase()) {
+      delete enemy;
+      it = enemies.erase(it);
+    } else {
+      it++;
+    }
+  }
+}
+
 void EntityManager::makeEnemiesShoot(){
   for (auto it = enemies.begin(); it != enemies.end();){
     Enemy* enemy = *it;
