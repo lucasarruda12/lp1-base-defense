@@ -9,6 +9,7 @@ EntityManager::EntityManager()
 , enemies()
 , bullets()
 , enemySpawnTimer(ENEMY_SPAWN_TIMER)
+, maxEnemyCount(MAX_ENEMY_COUNT)
 {}
 
 void EntityManager::add(Enemy* enemy){
@@ -60,6 +61,10 @@ void EntityManager::processPlayerEvents(sf::Event& event){
 void EntityManager::spawnNewEnemies(){
   if (enemySpawnTimer >= 0) {
     enemySpawnTimer -= 1;
+    return;
+  }
+
+  if (enemies.size() >= maxEnemyCount){
     return;
   }
   

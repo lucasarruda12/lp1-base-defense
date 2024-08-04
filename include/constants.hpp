@@ -26,6 +26,7 @@
 #define ENEMY_SPEED 1
 #define ENEMY_SHOOTTIMER 60
 #define ENEMY_SPAWN_TIMER 120
+#define MAX_ENEMY_COUNT 6
 
 // Base-related constants
 #define BASE_MAX_HEALTH 100

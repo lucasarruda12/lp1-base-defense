@@ -19,6 +19,7 @@ class EntityManager{
     list<Enemy*> enemies;
     list<AmmoBox*> ammoBoxes;
     int enemySpawnTimer;
+    int maxEnemyCount;
     sf::Vector2f generateRandomEnemySpawn();
 
   public:
