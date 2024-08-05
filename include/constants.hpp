@@ -30,7 +30,7 @@
 #define MAX_ENEMY_COUNT 6
 
 // Base-related constants
-#define BASE_MAX_HEALTH 30
+#define BASE_MAX_HEALTH 10
 #define BASE_RADIUS 50
 
 // UserInterface-related constants
