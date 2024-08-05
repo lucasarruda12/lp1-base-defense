@@ -223,6 +223,8 @@ void EntityManager::checkEnemyBaseCollision(){
     Enemy* enemy = *it;
 
     if (enemy->checkCollision(base)) {
+      base.takeDamage(1);
+
       delete enemy;
       it = enemies.erase(it);
     } else {

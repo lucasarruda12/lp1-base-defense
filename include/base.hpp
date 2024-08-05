@@ -15,6 +15,7 @@ class Base : public PhysicalObject {
     void render(sf::RenderWindow& window);
 
     int getHealth();
+    void takeDamage(int amount);
 };
 
 #endif

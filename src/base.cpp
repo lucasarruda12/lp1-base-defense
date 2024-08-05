@@ -22,6 +22,14 @@ void Base::render(sf::RenderWindow& window){
   window.draw(this->sprite);
 }
 
+void Base::takeDamage(int amount){
+  this->health -= amount;
+
+  if (this->health < 0){
+    this->health = 0;
+  }
+}
+
 int Base::getHealth(){
   return this->health;
 }
