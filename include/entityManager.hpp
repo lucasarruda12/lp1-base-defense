@@ -38,6 +38,9 @@ class EntityManager{
     void checkPlayerAmmoBoxCollision();
     void checkEnemyBaseCollision();
 
+    int getPlayerHealth();
+    int getPlayerAmmo();
+    int getBaseHealth();
 };
 
 #endif // INCLUDE_ENTITYMANAGER_HPP

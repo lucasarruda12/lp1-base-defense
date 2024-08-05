@@ -13,6 +13,8 @@ class Base : public PhysicalObject {
     Base();
     void update();
     void render(sf::RenderWindow& window);
+
+    int getHealth();
 };
 
 #endif

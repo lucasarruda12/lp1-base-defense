@@ -3,6 +3,8 @@
 
 #include <SFML/Graphics.hpp>
 #include <entityManager.hpp>
+#include <UserInterfaceManager.hpp>
+
 #include <list>
 using std::list;
 
@@ -17,6 +19,7 @@ class Game {
   private:
     static const sf::Time TimePerFrame;
     sf::RenderWindow window;
+    UserInterfaceManager ui;
     EntityManager entities;
 };
 

@@ -1,7 +1,6 @@
 #include <constants.hpp>
 #include <entityManager.hpp>
 #include <random>
-#include <AmmoBar.hpp>
 
 EntityManager::EntityManager()
 : player()
@@ -124,8 +123,6 @@ sf::Vector2f EntityManager::generateRandomEnemySpawn(){
 
 void EntityManager::updateAll(){
   player.update();
-  AmmoBar::setAmmo(player.getAmmo());
-  HealthBar::setHealth(player.getHealth());
 
   for (const auto& b : bullets) {
     b->update();
@@ -247,4 +244,17 @@ void EntityManager::makeEnemiesShoot(){
 
     it++;
   }
+}
+
+
+int EntityManager::getPlayerHealth(){
+  return player.getHealth();
+}
+
+int EntityManager::getPlayerAmmo(){
+  return player.getAmmo();
+}
+
+int EntityManager::getBaseHealth(){
+  return base.getHealth();
 }

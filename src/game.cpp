@@ -2,8 +2,6 @@
 
 #include <game.hpp>
 #include <bullet.hpp>
-#include <HealthBar.hpp>
-#include <AmmoBar.hpp>
 #include <enemy.hpp>
 
 #include <iostream>
@@ -15,14 +13,13 @@ const sf::Time Game::TimePerFrame = sf::seconds(1.f/60.f);
 Game::Game()
 : window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "SFML Application", sf::Style::Close)
 , entities()
+, ui()
 {}
 
 
 void Game::run(){
   sf::Clock clock;
   sf::Time timeSinceLastUpdate = sf::Time::Zero;
-  HealthBar::setHealth(PLAYER_MAX_HEALTH);
-  AmmoBar::setAmmo(PLAYER_MAX_AMMO);
 
   while(window.isOpen()){
     sf::Time elapsedTime = clock.restart();
@@ -60,14 +57,19 @@ void Game::update() {
   entities.checkEnemyBaseCollision();
   entities.checkBulletLifetime();
   entities.makeEnemiesShoot();
+
+  int playerHealth = entities.getPlayerHealth();
+  int playerAmmo = entities.getPlayerAmmo();
+  int baseHealth = entities.getBaseHealth();
+
+  ui.update(playerHealth, playerAmmo, baseHealth);
 }
 
 void Game::render() {
   window.clear();
 
   entities.renderAll(window);
-  HealthBar::render(window);
-  AmmoBar::render(window);
+  ui.render(window);
 
   window.display();
 }

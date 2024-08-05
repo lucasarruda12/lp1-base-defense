@@ -3,7 +3,6 @@
 
 #include <SFML/Graphics.hpp>
 #include <PhysicalObject.hpp>
-#include <HealthBar.hpp>
 
 class Player : public PhysicalObject{ 
   private:

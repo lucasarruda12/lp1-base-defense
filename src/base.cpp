@@ -21,3 +21,7 @@ Base::Base(){
 void Base::render(sf::RenderWindow& window){
   window.draw(this->sprite);
 }
+
+int Base::getHealth(){
+  return this->health;
+}
