@@ -44,10 +44,10 @@ Dentro do diretório do jogo, use `make run` para iniciar uma partida
 
 - [x] O inimigo dispara os projéteis sempre em direção ao herói.
 
-- [ ] Os projéteis podem colidir com o herói, outro inimigo, ou com a base.
+- [x] Os projéteis podem colidir com o herói, outro inimigo, ou com a base.
 
 - [x] A base deve resistir até um número limitado de tiros, podendo regenerar sua estrutura com o tempo
 
-- [ ] Quando abatido, o inimigo deixa no mapa uma quantidade aleatória limitada de projéteis que pode ser coletada pelo herói se o mesmo passar sobre o item ou esse item desaparece após um determinado tempo caso o herói não o colete.
+- [x] Quando abatido, o inimigo deixa no mapa uma quantidade aleatória limitada de projéteis que pode ser coletada pelo herói se o mesmo passar sobre o item ou esse item desaparece após um determinado tempo caso o herói não o colete.
 
 - [ ] O jogo deve finalizar se a base conseguir ser protegida por um determinado período de tempo ou se ela for destruída.
