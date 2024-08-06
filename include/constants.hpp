@@ -16,6 +16,7 @@
 // AmmoBox-related constants
 #define AMMOBOX_HITBOX_RADIUS 3
 #define AMMOBOX_RELOAD_AMMOUNT 5
+#define AMMOBOX_LIFETIME 300
 
 // Bullet-related constants
 #define BULLET_HITBOX_RADIUS 3

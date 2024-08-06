@@ -16,7 +16,7 @@ class Bullet : public PhysicalObject {
     Bullet(sf::Vector2f initial, sf::Vector2f target, bool isPlayerBullet);
     void render(sf::RenderWindow& window);
     void update();
-    int isExpired();
+    bool isExpired();
     bool isPlayerBullet();
 };
 

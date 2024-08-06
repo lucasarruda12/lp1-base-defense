@@ -38,7 +38,7 @@ void Bullet::render(sf::RenderWindow& window){
   window.draw(this->sprite);
 }
 
-int Bullet::isExpired(){
+bool Bullet::isExpired(){
   return this->lifetime <= 0;
 }
 

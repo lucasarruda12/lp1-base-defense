@@ -133,6 +133,9 @@ void EntityManager::updateAll(){
     e->update();
   }
 
+  for (const auto& box : ammoBoxes) {
+    box->update();
+  }
 }
 
 void EntityManager::checkBulletLifetime(){
@@ -142,6 +145,19 @@ void EntityManager::checkBulletLifetime(){
     if (bullet->isExpired()){
        delete bullet;
        it = bullets.erase(it);
+     } else {
+       it++;
+     }
+  }
+}
+
+void EntityManager::checkAmmoBoxLifetime(){
+  for (auto it = ammoBoxes.begin(); it != ammoBoxes.end();){
+    AmmoBox* box = *it;
+
+    if (box->isExpired()){
+       delete box;
+       it = ammoBoxes.erase(it);
      } else {
        it++;
      }

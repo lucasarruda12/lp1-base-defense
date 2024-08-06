@@ -6,9 +6,18 @@ AmmoBox::AmmoBox(sf::Vector2f position){
   this->speed = 0;
   this->pos = position;
   this->target = this->pos;
+  this->lifetime = AMMOBOX_LIFETIME;
 
   this->sprite.setRadius(this->radius);
   this->sprite.setFillColor(sf::Color(150,75,0,255));
+}
+
+void AmmoBox::update(){
+  this->lifetime--;
+}
+
+bool AmmoBox::isExpired(){
+  return this->lifetime <= 0;
 }
 
 void AmmoBox::render(sf::RenderWindow& window){

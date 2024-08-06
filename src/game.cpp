@@ -50,6 +50,7 @@ void Game::processEvents(){
 
 void Game::update() {
   entities.updateAll();
+
   entities.spawnNewEnemies();
   entities.checkEnemyBulletCollision();
   entities.checkPlayerBulletCollision();
@@ -57,6 +58,7 @@ void Game::update() {
   entities.checkPlayerAmmoBoxCollision();
   entities.checkEnemyBaseCollision();
   entities.checkBulletLifetime();
+  entities.checkAmmoBoxLifetime();
   entities.makeEnemiesShoot();
 
   int playerHealth = entities.getPlayerHealth();

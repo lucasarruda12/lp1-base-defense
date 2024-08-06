@@ -33,6 +33,7 @@ class EntityManager{
     void spawnNewEnemies();
     void checkEnemyBulletCollision();
     void checkBulletLifetime();
+    void checkAmmoBoxLifetime();
     void makeEnemiesShoot();
     void checkPlayerBulletCollision();
     void checkPlayerAmmoBoxCollision();
