@@ -46,7 +46,7 @@ Dentro do diretório do jogo, use `make run` para iniciar uma partida
 
 - [ ] Os projéteis podem colidir com o herói, outro inimigo, ou com a base.
 
-- [ ] A base deve resistir até um número limitado de tiros, podendo regenerar sua estrutura com o tempo
+- [x] A base deve resistir até um número limitado de tiros, podendo regenerar sua estrutura com o tempo
 
 - [ ] Quando abatido, o inimigo deixa no mapa uma quantidade aleatória limitada de projéteis que pode ser coletada pelo herói se o mesmo passar sobre o item ou esse item desaparece após um determinado tempo caso o herói não o colete.
 
