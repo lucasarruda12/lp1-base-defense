@@ -37,6 +37,7 @@ class EntityManager{
     void checkPlayerBulletCollision();
     void checkPlayerAmmoBoxCollision();
     void checkEnemyBaseCollision();
+    void checkBaseBulletCollision();
 
     int getPlayerHealth();
     int getPlayerAmmo();

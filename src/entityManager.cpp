@@ -167,6 +167,21 @@ void EntityManager::checkPlayerBulletCollision(){
   }
 }
 
+void EntityManager::checkBaseBulletCollision(){
+  for (auto it = bullets.begin(); it != bullets.end();){
+    Bullet* bullet = *it;
+
+    if (!bullet->isPlayerBullet() && base.checkCollision(*bullet)){
+      base.takeDamage(1);
+
+      delete bullet;
+      it = bullets.erase(it);
+    } else {
+      it++;
+    }
+  }
+}
+
 void EntityManager::checkPlayerAmmoBoxCollision(){
   for (auto it = ammoBoxes.begin(); it != ammoBoxes.end();){
     bool hit = false;
