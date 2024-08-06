@@ -30,8 +30,10 @@
 #define MAX_ENEMY_COUNT 6
 
 // Base-related constants
-#define BASE_MAX_HEALTH 10
+#define BASE_MAX_HEALTH 100
 #define BASE_RADIUS 50
+#define BASE_HEALTH_REGEN_TIMER 60
+#define BASE_HEALTH_REGEN_COOLDOWN_TIMER 300
 
 // UserInterface-related constants
 #define UI_WIDTH 200

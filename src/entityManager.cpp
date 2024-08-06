@@ -123,6 +123,7 @@ sf::Vector2f EntityManager::generateRandomEnemySpawn(){
 
 void EntityManager::updateAll(){
   player.update();
+  base.update();
 
   for (const auto& b : bullets) {
     b->update();
@@ -223,7 +224,7 @@ void EntityManager::checkEnemyBaseCollision(){
     Enemy* enemy = *it;
 
     if (enemy->checkCollision(base)) {
-      base.takeDamage(1);
+      base.takeDamage(10);
 
       delete enemy;
       it = enemies.erase(it);

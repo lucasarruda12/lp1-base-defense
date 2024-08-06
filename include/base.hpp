@@ -8,6 +8,8 @@ class Base : public PhysicalObject {
   private:
     sf::CircleShape sprite;
     int health;
+    int healthRegenTimer;
+    int healthRegenCooldownTimer;
 
   public:
     Base();
@@ -16,6 +18,7 @@ class Base : public PhysicalObject {
 
     int getHealth();
     void takeDamage(int amount);
+    void heal(int amount);
 };
 
 #endif
