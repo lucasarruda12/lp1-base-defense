@@ -14,6 +14,7 @@ Game::Game()
 : window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "SFML Application", sf::Style::Close)
 , entities()
 , ui()
+, gameTimer(120*60)
 {}
 
 
@@ -24,16 +25,22 @@ void Game::run(){
   while(window.isOpen()){
     sf::Time elapsedTime = clock.restart();
     timeSinceLastUpdate += elapsedTime;
-
-    // Dar update no estado do jogo só a cada 1/60 segundos
+    
+    // updates no estado do jogo e renderização acontecem a cada 1/60 segundos
     while(timeSinceLastUpdate > TimePerFrame){
       timeSinceLastUpdate -= TimePerFrame;
       processEvents();
       update();
-    }
+      render();
 
-    // Renderizar o tempo todo
-    render();
+      if (entities.checkGameOver()){
+        window.close();
+      }
+
+      if (gameTimer == 0){
+        window.close();
+      }
+    }
   }
 }
 
@@ -49,6 +56,8 @@ void Game::processEvents(){
 }
 
 void Game::update() {
+  gameTimer--;
+
   entities.updateAll();
 
   entities.spawnNewEnemies();

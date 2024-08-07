@@ -37,6 +37,10 @@ void EntityManager::renderAll(sf::RenderWindow& window){
   }
 }
 
+bool EntityManager::checkGameOver(){
+  return (player.getHealth() <= 0) | (base.getHealth() <= 0);
+}
+
 void EntityManager::processPlayerEvents(sf::Event& event){
   if (event.type == sf::Event::MouseButtonPressed){
     sf::Vector2f mousePos(event.mouseButton.x, event.mouseButton.y);

@@ -12,15 +12,18 @@ class Game {
   public:
     Game();
     void run();
-    void processEvents();
-    void render();
-    void update();
 
   private:
     static const sf::Time TimePerFrame;
     sf::RenderWindow window;
     UserInterfaceManager ui;
     EntityManager entities;
+    int gameTimer;
+
+    void processEvents();
+    void render();
+    void update();
+    void handleGameOver();
 };
 
 #endif
