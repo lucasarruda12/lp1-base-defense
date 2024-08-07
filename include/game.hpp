@@ -8,7 +8,8 @@
 #include <list>
 using std::list;
 
-class Game {
+class Game
+{
   public:
     Game();
     void run();

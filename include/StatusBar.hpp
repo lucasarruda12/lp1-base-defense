@@ -4,7 +4,8 @@
 #include <SFML/Graphics.hpp>
 #include <constants.hpp>
 
-class StatusBar {
+class StatusBar
+{
   private:
     sf::RectangleShape container;
     sf::RectangleShape bar;

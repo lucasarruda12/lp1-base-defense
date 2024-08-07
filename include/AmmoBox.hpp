@@ -4,7 +4,8 @@
 #include <SFML/Graphics.hpp>
 #include <PhysicalObject.hpp>
 
-class AmmoBox : public PhysicalObject {
+class AmmoBox : public PhysicalObject
+{
   private:
     sf::CircleShape sprite;
     int lifetime;

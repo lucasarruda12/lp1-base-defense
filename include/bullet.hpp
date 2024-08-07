@@ -6,7 +6,8 @@
 #include <list>
 using std::list;
 
-class Bullet : public PhysicalObject {
+class Bullet : public PhysicalObject
+{
   private:
     sf::CircleShape sprite;
     int lifetime;

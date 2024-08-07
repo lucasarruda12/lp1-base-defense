@@ -33,6 +33,7 @@ void Game::run(){
       update();
       render();
 
+      // Fecha a janela se o jogo acabou
       if (entities.checkGameOver()){
         window.close();
       }
@@ -85,4 +86,3 @@ void Game::render() {
 
   window.display();
 }
-

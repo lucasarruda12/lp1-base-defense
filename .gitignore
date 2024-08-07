@@ -31,7 +31,9 @@
 *.out
 *.app
 
-# SFML Install folders
+# IDE
+.vscode
 
+# SFML Install folders
 SFML-2.6.1
 SFML-2.5.1

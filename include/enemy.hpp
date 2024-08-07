@@ -4,7 +4,8 @@
 #include <SFML/Graphics.hpp>
 #include <PhysicalObject.hpp>
 
-class Enemy : public PhysicalObject {
+class Enemy : public PhysicalObject
+{
     private:
     sf::CircleShape sprite;
     int shootTimer;

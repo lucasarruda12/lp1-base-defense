@@ -30,13 +30,15 @@ UserInterfaceManager::UserInterfaceManager()
 )
 {}
 
-void UserInterfaceManager::update(int playerHealth, int playerAmmo, int baseHealth){
+void UserInterfaceManager::update(int playerHealth, int playerAmmo, int baseHealth)
+{
   playerHealthBar.setValue(playerHealth);
   playerAmmoBar.setValue(playerAmmo);
   baseHealthBar.setValue(baseHealth);
 }
 
-void UserInterfaceManager::render(sf::RenderWindow& window){
+void UserInterfaceManager::render(sf::RenderWindow& window)
+{
   playerHealthBar.render(window);
   playerAmmoBar.render(window);
   baseHealthBar.render(window);

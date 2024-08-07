@@ -3,59 +3,85 @@
 
 #include <iostream>
 
-Base::Base(){
-  this->health = BASE_MAX_HEALTH;
-  this->radius = 50;
-
-  this->sprite.setRadius(this->radius);
-  this->sprite.setOutlineThickness(5.f);
-  this->sprite.setOutlineColor(sf::Color::White);
-  this->sprite.setFillColor(sf::Color::Black);
-  this->pos = sf::Vector2f(WINDOW_WIDTH/2, WINDOW_HEIGHT/2);
-  this->target = this->pos;
-  this->speed = 0;
-  this->healthRegenTimer = BASE_HEALTH_REGEN_TIMER;
-  this->healthRegenCooldownTimer = 0;
-
-  this->sprite.setPosition(this->pos - sf::Vector2f(this->radius, this->radius));
+Base::Base()
+:PhysicalObject
+(
+  BASE_RADIUS,
+  50,
+  sf::Vector2f(WINDOW_WIDTH/2, WINDOW_HEIGHT/2),
+  sf::Vector2f(WINDOW_WIDTH/2, WINDOW_HEIGHT/2)
+)
+,health(BASE_MAX_HEALTH)
+,healthRegenCooldownTimer(0)
+,healthRegenTimer(BASE_HEALTH_REGEN_TIMER)
+,sprite()
+{
+  sprite.setRadius(BASE_RADIUS);
+  sprite.setFillColor(sf::Color::Blue);
+  sprite.setOutlineColor(sf::Color::White);
+  sprite.setOutlineThickness(5.f);
+  sprite.setPosition(pos - sf::Vector2f(radius, radius));
 }
 
-void Base::update(){
-  if (this->healthRegenCooldownTimer >= 0){
-    this->healthRegenCooldownTimer--;
+void Base::update()
+{
+  // A base recupera vida desde que não tenha tomado dano
+  // por um período de tempo.
+
+  // Escolhemos implementar isso com dois inteiros. Um que
+  // guarda o número de ticks desde que a última vez que a base tomou dano
+  // e outro que guarda o número de ticks até a próxima cura.
+
+  // Se ambos são zero, a base recupera vida.
+
+  // Se a base toma dano, o cooldown timer volta pro máximo.
+
+  // Se ela se cura, o regen timer volta pro máximo.
+
+  if (healthRegenCooldownTimer >= 0)
+  {
+    healthRegenCooldownTimer--;
     return;
   }
 
-  if (this->healthRegenTimer >= 0) {
-    this->healthRegenTimer--;
+  if (healthRegenTimer >= 0)
+  {
+    healthRegenTimer--;
     return;
   } 
 
-  this->heal(1);
-  this->healthRegenTimer = BASE_HEALTH_REGEN_TIMER;
+  heal(1);
+  healthRegenTimer = BASE_HEALTH_REGEN_TIMER;
 }
 
-void Base::render(sf::RenderWindow& window){
-  window.draw(this->sprite);
+void Base::render(sf::RenderWindow& window)
+{
+  // Ver EntityManager.renderAll() para detalhes
+  window.draw(sprite);
 }
 
-void Base::takeDamage(int amount){
-  this->health -= amount;
-  this->healthRegenCooldownTimer = BASE_HEALTH_REGEN_COOLDOWN_TIMER;
+void Base::takeDamage(int amount)
+{
+  health -= amount;
+  healthRegenCooldownTimer = BASE_HEALTH_REGEN_COOLDOWN_TIMER;
 
-  if (this->health < 0){
-    this->health = 0;
+  if (health < 0)
+  {
+    health = 0;
   }
 }
 
-void Base::heal(int amount) {
-  this->health += amount;
+void Base::heal(int amount)
+{
+  health += amount;
 
-  if (this->health > BASE_MAX_HEALTH) {
-    this->health = BASE_MAX_HEALTH;
+  if (health > BASE_MAX_HEALTH)
+  {
+    health = BASE_MAX_HEALTH;
   }
 }
 
-int Base::getHealth(){
-  return this->health;
+int Base::getHealth()
+{
+  return health;
 }

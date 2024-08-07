@@ -11,7 +11,8 @@
 #include <list>
 using std::list;
 
-class EntityManager{
+class EntityManager
+{
   private:
     Player player;
     Base base;
@@ -45,6 +46,8 @@ class EntityManager{
     int getPlayerHealth();
     int getPlayerAmmo();
     int getBaseHealth();
+
+    int generateRandomInt(int from, int to);
 };
 
 #endif // INCLUDE_ENTITYMANAGER_HPP

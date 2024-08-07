@@ -1,57 +1,57 @@
 #include <player.hpp>
 #include <constants.hpp>
 
-Player::Player(){
-  this->pos.x = PLAYER_SPAWN_X;
-  this->pos.y = PLAYER_SPAWN_Y;
-  this->radius = PLAYER_HITBOX_RADIUS;
-  this->speed = PLAYER_SPEED;
-  this->ammo = PLAYER_MAX_AMMO;
-
-  this->target.x = this->pos.x;
-  this->target.y = this->pos.y;
-
-  this->sprite.setRadius(this->radius);
-  this->sprite.setFillColor(sf::Color::Green);
-  this->health = PLAYER_MAX_HEALTH;
+Player::Player()
+:PhysicalObject(
+  PLAYER_SPEED,
+  PLAYER_HITBOX_RADIUS,
+  sf::Vector2f(PLAYER_SPAWN_X, PLAYER_SPAWN_Y),
+  sf::Vector2f(PLAYER_SPAWN_X, PLAYER_SPAWN_Y)
+)
+,ammo(PLAYER_MAX_AMMO)
+,health(PLAYER_MAX_HEALTH)
+,sprite()
+{
+  sprite.setRadius(PLAYER_HITBOX_RADIUS);
+  sprite.setFillColor(sf::Color::Green);
 }
 
-void Player::update(){
-  if (this->pos.x != this->target.x || this->pos.y != this->target.y)
-    this->moveTowardsTarget();
+void Player::update() { moveTowardsTarget(); }
+
+void Player::render(sf::RenderWindow& window)
+{
+  sprite.setPosition(pos - sf::Vector2f(radius, radius));
+  window.draw(sprite);
 }
 
-void Player::render(sf::RenderWindow& window){
-  this->sprite.setPosition(this->pos.x - radius, this->pos.y - radius);
-  window.draw(this->sprite);
-}
+int Player::getHealth(){ return health; }
 
-int Player::getHealth(){
-  return this->health;
-}
-
-void Player::takeDamage(){
-  if (this->health > PLAYER_MIN_HEALTH){
+void Player::takeDamage()
+{
+  if (this->health > PLAYER_MIN_HEALTH)
+  {
     this->health -= 1;
   }
 }
 
-int Player::getAmmo(){
-  return this->ammo;
-}
+int Player::getAmmo(){ return ammo; }
 
-void Player::decreaseAmmo(int ammount){
-  this->ammo -= ammount;
+void Player::decreaseAmmo(int amount)
+{
+  this->ammo -= amount;
 
-  if (this->ammo < 0) {
+  if (this->ammo < 0)
+  {
     this->ammo = 0;
   }
 }
 
-void Player::reload(int ammount){
-  this->ammo += ammount;
+void Player::reload(int amount)
+{
+  this->ammo += amount;
 
-  if (this->ammo > PLAYER_MAX_AMMO){
+  if (this->ammo > PLAYER_MAX_AMMO)
+  {
     this->ammo = PLAYER_MAX_AMMO;
   }
 }

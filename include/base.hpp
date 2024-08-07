@@ -4,7 +4,8 @@
 #include <SFML/Graphics.hpp>
 #include <PhysicalObject.hpp>
 
-class Base : public PhysicalObject {
+class Base : public PhysicalObject
+{
   private:
     sf::CircleShape sprite;
     int health;

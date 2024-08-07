@@ -4,7 +4,8 @@
 #include <SFML/Graphics.hpp>
 #include <StatusBar.hpp>
 
-class UserInterfaceManager {
+class UserInterfaceManager
+{
   private:
     StatusBar playerHealthBar;
     StatusBar playerAmmoBar;
