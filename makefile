@@ -23,6 +23,6 @@ run:
 clean:
 	rm -f $(OBJ_DIR)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp include/constants.hpp
 	@mkdir -p $(OBJ_DIR)
 	$(CC) $(CXXFLAGS) -c $< -o $@
