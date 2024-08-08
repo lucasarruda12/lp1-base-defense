@@ -13,6 +13,5 @@ class PausedState : public State
     void processEvent(const sf::Event& event);
 
   private:
-    sf::Font font;
-    sf::Text pausedText;
+    bool drawn;
 };

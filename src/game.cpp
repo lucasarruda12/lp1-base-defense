@@ -74,7 +74,7 @@ void Game::changeState(State::States newState)
     break;
   }
 
-  currentState->setStageChanger([this](State::States newState) {
-      changeState(newState);
-  });
+  currentState->setStageChanger(
+    [this](State::States newState){changeState(newState);}
+  );
 }
