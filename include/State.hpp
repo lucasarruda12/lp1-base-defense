@@ -7,7 +7,8 @@ class State {
   public:
     enum States
     {
-      GameState = 1,
+      Previous = 1,
+      GameState,
       PausedState,
       GameOverState,
     };

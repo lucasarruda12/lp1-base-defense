@@ -1,4 +1,5 @@
 #include <PausedState.hpp>
+#include <iostream>
 
 PausedState::PausedState()
 :pausedText()
@@ -15,8 +16,10 @@ void PausedState::render(sf::RenderWindow& window){
 }
 
 void PausedState::processEvent(const sf::Event& event){
-  if (event.type == sf::Event::MouseButtonPressed)
-  {
-    stateChanger(State::States::GameState);
+  if (event.type == sf::Event::KeyPressed) {
+    if (event.key.code == sf::Keyboard::Escape){
+      std::cout << "ESC!!" << std::endl;
+      stateChanger(State::States::Previous);
+    }
   }
 }

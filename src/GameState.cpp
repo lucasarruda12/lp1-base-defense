@@ -15,6 +15,11 @@ GameState::GameState()
 {}
 
 void GameState::processEvent(const sf::Event& event){
+  if (event.type == sf::Event::KeyPressed) {
+    if (event.key.code == sf::Keyboard::Escape){
+      stateChanger(State::States::PausedState);
+    }
+  }
   entities.processPlayerEvents(event);
 }
 

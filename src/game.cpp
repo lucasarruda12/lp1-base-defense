@@ -14,17 +14,17 @@ Game::Game()
 ,currentState(new PausedState())
 ,previousState(nullptr)
 {
-  currentState->setStageChanger([this](State::States newState) {
-      changeState(newState);
-  });
+  changeState(State::States::GameState);
 }
 
-Game::~Game(){
+Game::~Game()
+{
   delete currentState;
   delete previousState;
 }
 
-void Game::run(){
+void Game::run()
+{
   sf::Clock clock;
   sf::Time timeSinceLastUpdate = sf::Time::Zero;
 
@@ -50,13 +50,22 @@ void Game::run(){
   }
 }
 
-void Game::changeState(State::States newState){
-  delete previousState;
-  previousState = currentState;
+void Game::changeState(State::States newState)
+{
+  if (newState == State::States::Previous)
+  {
+    State* buffer = currentState;
+    currentState = previousState;
+    previousState = buffer;
+    return;
+  }
 
   switch (newState)
   {
   case State::States::PausedState:
+    delete previousState;
+    previousState = currentState;
+
     currentState = new PausedState();
     break;
   
@@ -64,4 +73,8 @@ void Game::changeState(State::States newState){
     currentState = new GameState();
     break;
   }
+
+  currentState->setStageChanger([this](State::States newState) {
+      changeState(newState);
+  });
 }
