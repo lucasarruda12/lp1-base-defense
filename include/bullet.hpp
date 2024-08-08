@@ -1,5 +1,4 @@
-#ifndef BULLET_HPP
-#define BULLET_HPP
+#pragma once
 
 #include <SFML/Graphics.hpp>
 #include <PhysicalObject.hpp>
@@ -20,5 +19,3 @@ class Bullet : public PhysicalObject
     bool isExpired();
     bool isPlayerBullet();
 };
-
-#endif

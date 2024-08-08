@@ -1,5 +1,4 @@
-#ifndef INCLUDE_ENTITYMANAGER_HPP_
-#define INCLUDE_ENTITYMANAGER_HPP_
+#pragma once
 
 #include <SFML/Graphics.hpp>
 #include <bullet.hpp>
@@ -49,5 +48,3 @@ class EntityManager
 
     int generateRandomInt(int from, int to);
 };
-
-#endif // INCLUDE_ENTITYMANAGER_HPP

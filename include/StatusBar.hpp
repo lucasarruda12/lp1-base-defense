@@ -1,5 +1,4 @@
-#ifndef INCLUDE_HEALTHBAR_HPP_
-#define INCLUDE_HEALTHBAR_HPP_
+#pragma once
 
 #include <SFML/Graphics.hpp>
 #include <constants.hpp>
@@ -27,5 +26,3 @@ class StatusBar
     void setValue(int value);
     void render(sf::RenderWindow &window);
 };
-
-#endif  // INCLUDE_HEALTHBAR_HPP_

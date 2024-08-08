@@ -1,5 +1,4 @@
-#ifndef PHYSICALOBJECT_HPP
-#define PHYSICALOBJECT_HPP
+#pragma once
 
 #include <SFML/Graphics.hpp>
 #include <cmath>
@@ -31,5 +30,3 @@ class PhysicalObject
     sf::Vector2f CalculateUnitVector(sf::Vector2f v);
     sf::Vector2f CalculateUnitVector(sf::Vector2f v, float mag);
 };
-
-#endif

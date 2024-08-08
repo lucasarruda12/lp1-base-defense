@@ -1,5 +1,4 @@
-#ifndef PLAYER_HPP
-#define PLAYER_HPP
+#pragma once
 
 #include <SFML/Graphics.hpp>
 #include <PhysicalObject.hpp>
@@ -21,5 +20,3 @@ class Player : public PhysicalObject
     void takeDamage();
     int getHealth();
 };
-
-#endif

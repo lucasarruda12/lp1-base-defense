@@ -1,5 +1,4 @@
-#ifndef INCLUDE_ENEMY_HPP_
-#define INCLUDE_ENEMY_HPP_
+#pragma once
 
 #include <SFML/Graphics.hpp>
 #include <PhysicalObject.hpp>
@@ -17,5 +16,3 @@ class Enemy : public PhysicalObject
     bool isAbleToShoot();
     void resetShootTimer();
 };
-
-#endif  // INCLUDE_ENEMY_HPP

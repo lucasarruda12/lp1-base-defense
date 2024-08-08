@@ -1,5 +1,4 @@
-#ifndef INCLUDE_BASE_HPP
-#define INCLUDE_BASE_HPP
+#pragma once
 
 #include <SFML/Graphics.hpp>
 #include <PhysicalObject.hpp>
@@ -21,5 +20,3 @@ class Base : public PhysicalObject
     void takeDamage(int amount);
     void heal(int amount);
 };
-
-#endif

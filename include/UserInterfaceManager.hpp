@@ -1,5 +1,4 @@
-#ifndef INCLUDE_USER_INTERFACE_MANAGER_HPP
-#define INCLUDE_USER_INTERFACE_MANAGER_HPP
+#pragma once
 
 #include <SFML/Graphics.hpp>
 #include <StatusBar.hpp>
@@ -16,5 +15,3 @@ class UserInterfaceManager
     void update(int playerHealth, int playerAmmo, int baseHealth);
     void render(sf::RenderWindow& window);
 };
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef INCLUDE_AMMO_HPP_
-#define INCLUDE_AMMO_HPP_
+#pragma once
 
 #include <SFML/Graphics.hpp>
 #include <PhysicalObject.hpp>
@@ -17,5 +16,3 @@ class AmmoBox : public PhysicalObject
 
     bool isExpired();
 };
-
-#endif // INCLUDE_AMMO_HPP_

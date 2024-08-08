@@ -1,5 +1,4 @@
-#ifndef GAME_HPP
-#define GAME_HPP
+#pragma once
 
 #include <SFML/Graphics.hpp>
 #include <entityManager.hpp>
@@ -26,5 +25,3 @@ class Game
     void update();
     void handleGameOver();
 };
-
-#endif
