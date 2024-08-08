@@ -66,7 +66,7 @@ void Game::changeState(State::States newState)
 
   switch (newState)
   {
-  case State::States::PausedState:
+  case State::States::Paused:
     delete previousState;
     previousState = currentState;
 

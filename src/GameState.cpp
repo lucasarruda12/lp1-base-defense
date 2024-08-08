@@ -15,11 +15,24 @@ GameState::GameState()
 {}
 
 void GameState::processEvent(const sf::Event& event){
-  if (event.type == sf::Event::KeyPressed) {
-    if (event.key.code == sf::Keyboard::Escape){
-      stateChanger(State::States::PausedState);
+  if(event.type == sf::Event::KeyPressed)
+  {
+    if(event.key.code == sf::Keyboard::Escape)
+    {
+      stateChanger(State::States::Paused);
     }
   }
+
+  if(entities.checkGameOver())
+  {
+    stateChanger(State::States::GameOver);
+  }
+
+  if(gameTimer == 0)
+  {
+    stateChanger(State::States::Win);
+  }
+
   entities.processPlayerEvents(event);
 }
 

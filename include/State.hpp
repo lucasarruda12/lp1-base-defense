@@ -9,8 +9,9 @@ class State {
     {
       Previous = 1,
       GameState,
-      PausedState,
-      GameOverState,
+      Paused,
+      GameOver,
+      Win
     };
 
   public:
