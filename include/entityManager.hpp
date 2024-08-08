@@ -24,6 +24,7 @@ class EntityManager
 
   public:
     EntityManager();
+    ~EntityManager();
     void add(Enemy* enemy);
     void add(Bullet* bullet);
 

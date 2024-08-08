@@ -11,6 +11,12 @@ EntityManager::EntityManager()
 , maxEnemyCount(MAX_ENEMY_COUNT)
 {}
 
+EntityManager::~EntityManager(){
+  for (const auto& b : bullets) { delete b; }
+  for (const auto& e : enemies) {delete e; }
+  for (const auto& a : ammoBoxes) { delete a; }
+}
+
 void EntityManager::add(Enemy* enemy)
 {
   enemies.push_back(enemy);

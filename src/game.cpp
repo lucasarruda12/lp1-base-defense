@@ -28,17 +28,21 @@ void Game::run()
   sf::Clock clock;
   sf::Time timeSinceLastUpdate = sf::Time::Zero;
 
-  while(window.isOpen()){
+  while(window.isOpen())
+  {
     sf::Time elapsedTime = clock.restart();
     timeSinceLastUpdate += elapsedTime;
 
-    while(timeSinceLastUpdate > TimePerFrame){
+    while(timeSinceLastUpdate > TimePerFrame)
+    {
       timeSinceLastUpdate -= TimePerFrame;
 
       sf::Event event;
       
-      while(window.pollEvent(event)){
-        if (event.type == sf::Event::Closed){
+      while(window.pollEvent(event))
+      {
+        if (event.type == sf::Event::Closed)
+        {
             window.close();
         }
         currentState->processEvent(event);
