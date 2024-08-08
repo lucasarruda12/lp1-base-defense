@@ -1,5 +1,6 @@
 #include <PausedState.hpp>
 #include <constants.hpp>
+#include <AssetManager.hpp>
 
 #include <iostream>
 
@@ -13,10 +14,24 @@ void PausedState::render(sf::RenderWindow& window)
 
   sf::RectangleShape rectangle;
 
+  // Para causar o efeito de escurecer a tela
   rectangle.setSize(sf::Vector2f(WINDOW_WIDTH, WINDOW_HEIGHT));
   rectangle.setFillColor(sf::Color(0,0,0, 100));
   rectangle.setPosition(0, 0);
   window.draw(rectangle);
+
+  sf::Text pausedText("O jogo foi pausado", AssetManager::gameFont);
+  pausedText.setCharacterSize(24);
+  pausedText.setFillColor(sf::Color::Red);
+  pausedText.setPosition(20, WINDOW_HEIGHT - 66);
+  window.draw(pausedText);
+
+  pausedText.setString("Aperte ESC para continuar");
+  pausedText.setCharacterSize(16);
+  pausedText.setFillColor(sf::Color::White);
+  pausedText.setPosition(20, WINDOW_HEIGHT - 36);
+  window.draw(pausedText);
+
   window.display();
 
   drawn = true;

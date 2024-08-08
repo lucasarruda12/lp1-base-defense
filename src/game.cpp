@@ -2,29 +2,22 @@
 #include <game.hpp>
 #include <GameState.hpp>
 #include <PausedState.hpp>
-
-#include <iostream>
-
-using namespace std;
+#include <AssetManager.hpp>
 
 const sf::Time Game::TimePerFrame = sf::seconds(1.f/60.f);
 
 Game::Game()
 : window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "SFML Application", sf::Style::Close)
-,currentState(new PausedState())
+,currentState(nullptr)
 ,previousState(nullptr)
 {
   changeState(State::States::GameState);
 }
 
-Game::~Game()
-{
-  delete currentState;
-  delete previousState;
-}
-
 void Game::run()
 {
+  AssetManager::loadAssets();
+
   sf::Clock clock;
   sf::Time timeSinceLastUpdate = sf::Time::Zero;
 
@@ -38,7 +31,7 @@ void Game::run()
       timeSinceLastUpdate -= TimePerFrame;
 
       sf::Event event;
-      
+
       while(window.pollEvent(event))
       {
         if (event.type == sf::Event::Closed)
@@ -49,10 +42,18 @@ void Game::run()
       }
 
       currentState->update();
-      currentState->render(window);
     }
+
+    currentState->render(window);
   }
 }
+
+Game::~Game()
+{
+  delete currentState;
+  delete previousState;
+}
+
 
 void Game::changeState(State::States newState)
 {
