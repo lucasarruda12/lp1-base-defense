@@ -7,6 +7,8 @@ class Game
 {
   public:
     Game();
+    ~Game();
+    void changeState(State::States newState);
     void run();
 
   private:

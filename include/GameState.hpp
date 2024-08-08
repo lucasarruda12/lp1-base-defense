@@ -10,14 +10,13 @@ class GameState : public State
 {
   public:
     GameState();
-    void run();
+    State::States tipo = State::States::GameState;
+    void render(sf::RenderWindow& window);
+    void update();
+    void processEvent(const sf::Event& event);
 
   private:
     UserInterfaceManager ui;
     EntityManager entities;
     int gameTimer;
-
-    void render(sf::RenderWindow& window);
-    void update();
-    void processEvent(const sf::Event& event);
 };

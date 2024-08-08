@@ -1,6 +1,7 @@
 #include <constants.hpp>
 #include <game.hpp>
 #include <GameState.hpp>
+#include <PausedState.hpp>
 
 #include <iostream>
 
@@ -10,10 +11,18 @@ const sf::Time Game::TimePerFrame = sf::seconds(1.f/60.f);
 
 Game::Game()
 : window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "SFML Application", sf::Style::Close)
-,currentState(new GameState())
+,currentState(new PausedState())
 ,previousState(nullptr)
-{}
+{
+  currentState->setStageChanger([this](State::States newState) {
+      changeState(newState);
+  });
+}
 
+Game::~Game(){
+  delete currentState;
+  delete previousState;
+}
 
 void Game::run(){
   sf::Clock clock;
@@ -25,6 +34,7 @@ void Game::run(){
 
     while(timeSinceLastUpdate > TimePerFrame){
       timeSinceLastUpdate -= TimePerFrame;
+
       sf::Event event;
       
       while(window.pollEvent(event)){
@@ -37,5 +47,21 @@ void Game::run(){
       currentState->update();
       currentState->render(window);
     }
+  }
+}
+
+void Game::changeState(State::States newState){
+  delete previousState;
+  previousState = currentState;
+
+  switch (newState)
+  {
+  case State::States::PausedState:
+    currentState = new PausedState();
+    break;
+  
+  case State::States::GameState:
+    currentState = new GameState();
+    break;
   }
 }

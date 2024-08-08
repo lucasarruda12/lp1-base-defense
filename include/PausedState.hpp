@@ -5,16 +5,14 @@
 
 class PausedState : public State
 {
-    public:
-    GameState();
-    void run();
+  public:
+    PausedState();
+    State::States tipo = State::States::PausedState;
+    void render(sf::RenderWindow& window);
+    void update(){ return; };
+    void processEvent(const sf::Event& event);
 
   private:
-    UserInterfaceManager ui;
-    EntityManager entities;
-    int gameTimer;
-
-    void render(sf::RenderWindow& window);
-    void update();
-    void processEvent(const sf::Event& event);
+    sf::Font font;
+    sf::Text pausedText;
 };
