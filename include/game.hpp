@@ -1,11 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include <entityManager.hpp>
-#include <UserInterfaceManager.hpp>
-
-#include <list>
-using std::list;
+#include <State.hpp>
 
 class Game
 {
@@ -16,12 +12,7 @@ class Game
   private:
     static const sf::Time TimePerFrame;
     sf::RenderWindow window;
-    UserInterfaceManager ui;
-    EntityManager entities;
-    int gameTimer;
 
-    void processEvents();
-    void render();
-    void update();
-    void handleGameOver();
+    State* currentState;
+    State* previousState;
 };

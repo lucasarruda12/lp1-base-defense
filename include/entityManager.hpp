@@ -29,7 +29,7 @@ class EntityManager
 
     void updateAll();
     void renderAll(sf::RenderWindow& window);
-    void processPlayerEvents(sf::Event& event);
+    void processPlayerEvents(const sf::Event& event);
     void spawnNewEnemies();
     void checkEnemyBulletCollision();
     void checkBulletLifetime();
