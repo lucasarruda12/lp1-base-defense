@@ -18,17 +18,8 @@ void GameState::processEvent(const sf::Event& event){
     if(event.key.code == sf::Keyboard::Escape)
     {
       stateChanger(State::States::Paused);
+      return;
     }
-  }
-
-  if(entities.checkGameOver())
-  {
-    stateChanger(State::States::GameOver);
-  }
-
-  if(gameTimer == 0)
-  {
-    stateChanger(State::States::Win);
   }
 
   entities.processPlayerEvents(event);
@@ -36,6 +27,18 @@ void GameState::processEvent(const sf::Event& event){
 
 void GameState::update() {
   gameTimer--;
+
+  if(entities.checkGameOver())
+  {
+    stateChanger(State::States::GameOver);
+    return;
+  }
+
+  if(gameTimer == 0)
+  {
+    stateChanger(State::States::GameOver);
+    return;
+  }
 
   entities.updateAll();
 
