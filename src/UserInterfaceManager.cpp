@@ -1,6 +1,9 @@
 #include <UserInterfaceManager.hpp>
 #include <Constants.hpp>
 
+// Montamos a interface do jogo com barrinhas.
+// Os indicadores de vida, bala, vida da base são todos
+// retângulos que são redimencionados ao longo do jogo.
 UserInterfaceManager::UserInterfaceManager()
 : playerHealthBar(
   PLAYER_MAX_HEALTH,

@@ -1,6 +1,10 @@
 #include <UIElements/StatusBar.hpp>
 #include <Constants.hpp>
 
+// As barrinhas são dividias em outline e indicador real.
+// O outline é um retângulo de tamanho fixo que vai mostrar
+// quanto de vida o cara perdeu e o indicador é redimencionado
+// pra mostrar quanto ele ainda tem.
 StatusBar::StatusBar
 (
   int n_maxValue,
