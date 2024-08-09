@@ -6,13 +6,13 @@
 // retângulos que são redimencionados ao longo do jogo.
 UserInterfaceManager::UserInterfaceManager()
 : playerHealthBar(
-  PLAYER_MAX_HEALTH,
-  sf::Color::Red,
-  sf::Color::White,
-  UI_WIDTH,
-  UI_HEIGHT,
-  UI_TOP_MARGIN,
-  UI_LEFT_MARGIN
+  PLAYER_MAX_HEALTH,      // Valor máximo da barra
+  sf::Color::Red,         // Cor do indicador
+  sf::Color::White,       // Cor do Outline
+  UI_WIDTH,               // Largura da barrinha
+  UI_HEIGHT,              // Tamanho da barrinha
+  UI_TOP_MARGIN,          // Margem do topo
+  UI_LEFT_MARGIN          // Margem da esquerda
 )
 ,playerAmmoBar(
   PLAYER_MAX_AMMO,
