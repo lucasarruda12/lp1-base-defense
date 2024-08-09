@@ -1,5 +1,5 @@
-#include <constants.hpp>
-#include <entityManager.hpp>
+#include <Constants.hpp>
+#include <EntityManager.hpp>
 #include <random>
 
 EntityManager::EntityManager()

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include <StatusBar.hpp>
+#include <UIElements/StatusBar.hpp>
 
 class UserInterfaceManager
 {

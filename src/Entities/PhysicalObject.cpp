@@ -1,5 +1,5 @@
-#include <constants.hpp>
-#include <PhysicalObject.hpp>
+#include <Constants.hpp>
+#include <Entities/PhysicalObject.hpp>
 
 PhysicalObject::PhysicalObject(
   float n_speed,

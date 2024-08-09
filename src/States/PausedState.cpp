@@ -1,8 +1,6 @@
-#include <PausedState.hpp>
-#include <constants.hpp>
+#include <States/PausedState.hpp>
+#include <Constants.hpp>
 #include <AssetManager.hpp>
-
-#include <iostream>
 
 PausedState::PausedState()
 :drawn(false)

@@ -1,8 +1,8 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include <PhysicalObject.hpp>
-#include <Expirable.hpp>
+#include <Entities/PhysicalObject.hpp>
+#include <Entities/Expirable.hpp>
 
 class AmmoBox
 : public PhysicalObject

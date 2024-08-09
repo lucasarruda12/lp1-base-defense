@@ -1,5 +1,5 @@
-#include <StatusBar.hpp>
-#include <constants.hpp>
+#include <UIElements/StatusBar.hpp>
+#include <Constants.hpp>
 
 StatusBar::StatusBar
 (

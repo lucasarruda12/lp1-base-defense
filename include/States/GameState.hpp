@@ -1,9 +1,9 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include <State.hpp>
+#include <States/State.hpp>
 
-#include <entityManager.hpp>
+#include <EntityManager.hpp>
 #include <UserInterfaceManager.hpp>
 
 class GameState : public State

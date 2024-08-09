@@ -1,5 +1,5 @@
-#include <constants.hpp>
-#include <bullet.hpp>
+#include <Constants.hpp>
+#include <Entities/Bullet.hpp>
 
 Bullet::Bullet(sf::Vector2f initial, sf::Vector2f target, bool isPlayerBullet)
 :PhysicalObject(

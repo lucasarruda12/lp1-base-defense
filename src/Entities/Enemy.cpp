@@ -1,6 +1,5 @@
-#include <constants.hpp>
-#include <enemy.hpp>
-#include <iostream>
+#include <Constants.hpp>
+#include <Entities/Enemy.hpp>
 
 Enemy::Enemy(sf::Vector2f initial)
 :PhysicalObject

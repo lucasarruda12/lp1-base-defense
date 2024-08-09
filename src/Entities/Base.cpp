@@ -1,7 +1,5 @@
-#include <constants.hpp>
-#include <base.hpp>
-
-#include <iostream>
+#include <Constants.hpp>
+#include <Entities/Base.hpp>
 
 Base::Base()
 :PhysicalObject

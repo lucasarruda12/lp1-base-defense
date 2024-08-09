@@ -1,10 +1,8 @@
-#include <constants.hpp>
+#include <Constants.hpp>
 
-#include <GameState.hpp>
-#include <bullet.hpp>
-#include <enemy.hpp>
-
-#include <iostream>
+#include <States/GameState.hpp>
+#include <Entities/Bullet.hpp>
+#include <Entities/Enemy.hpp>
 
 using namespace std;
 

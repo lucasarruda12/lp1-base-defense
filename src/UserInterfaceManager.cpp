@@ -1,4 +1,5 @@
 #include <UserInterfaceManager.hpp>
+#include <Constants.hpp>
 
 UserInterfaceManager::UserInterfaceManager()
 : playerHealthBar(

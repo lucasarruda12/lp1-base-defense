@@ -1,7 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include <State.hpp>
+#include <States/State.hpp>
 
 class Game
 {

@@ -1,5 +1,5 @@
-#include <player.hpp>
-#include <constants.hpp>
+#include <Entities/Player.hpp>
+#include <Constants.hpp>
 
 Player::Player()
 :PhysicalObject(

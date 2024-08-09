@@ -1,11 +1,11 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include <bullet.hpp>
-#include <player.hpp>
-#include <enemy.hpp>
-#include <AmmoBox.hpp>
-#include <base.hpp>
+#include <Entities/Bullet.hpp>
+#include <Entities/Player.hpp>
+#include <Entities/Enemy.hpp>
+#include <Entities/AmmoBox.hpp>
+#include <Entities/Base.hpp>
 
 #include <list>
 using std::list;

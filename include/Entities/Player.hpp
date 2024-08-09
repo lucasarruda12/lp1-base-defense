@@ -1,7 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include <PhysicalObject.hpp>
+#include <Entities/PhysicalObject.hpp>
 
 class Player : public PhysicalObject
 { 

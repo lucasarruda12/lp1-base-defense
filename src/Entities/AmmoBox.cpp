@@ -1,5 +1,5 @@
-#include <constants.hpp>
-#include <AmmoBox.hpp>
+#include <Constants.hpp>
+#include <Entities/AmmoBox.hpp>
 
 AmmoBox::AmmoBox(sf::Vector2f position)
 :PhysicalObject

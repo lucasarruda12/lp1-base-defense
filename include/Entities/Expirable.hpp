@@ -1,8 +1,5 @@
 #pragma once
 
-#include <iostream>
-using namespace std;
-
 class Expirable{
   protected:
     int lifespan;
