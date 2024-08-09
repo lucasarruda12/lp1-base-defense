@@ -9,7 +9,9 @@ AmmoBox::AmmoBox(sf::Vector2f position)
   position,
   position
 )
-,lifetime(AMMOBOX_LIFETIME)
+,Expirable(
+  AMMOBOX_LIFETIME
+)
 ,sprite()
 {
   sprite.setRadius(this->radius);
@@ -18,12 +20,7 @@ AmmoBox::AmmoBox(sf::Vector2f position)
 
 void AmmoBox::update()
 {
-  this->lifetime--;
-}
-
-bool AmmoBox::isExpired()
-{
-  return this->lifetime <= 0;
+  age();
 }
 
 void AmmoBox::render(sf::RenderWindow& window)

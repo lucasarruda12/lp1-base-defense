@@ -8,8 +8,10 @@ Bullet::Bullet(sf::Vector2f initial, sf::Vector2f target, bool isPlayerBullet)
   initial,
   target
 )
+,Expirable(
+  BULLET_LIFETIME
+)
 ,playerBullet(isPlayerBullet)
-,lifetime(BULLET_LIFETIME)
 ,sprite()
 {
   sprite.setRadius(BULLET_HITBOX_RADIUS);
@@ -18,7 +20,6 @@ Bullet::Bullet(sf::Vector2f initial, sf::Vector2f target, bool isPlayerBullet)
   {
     sprite.setFillColor(sf::Color::White);
     speed += 5;
-    lifetime -= 20;
   } 
   else
   {
@@ -31,19 +32,14 @@ Bullet::Bullet(sf::Vector2f initial, sf::Vector2f target, bool isPlayerBullet)
 
 void Bullet::update()
 {
-  this->lifetime--;
-  this->moveTowardsTarget();
+  age();
+  moveTowardsTarget();
 }
 
 void Bullet::render(sf::RenderWindow& window)
 {
   this->sprite.setPosition(pos - sf::Vector2f(radius, radius));
   window.draw(this->sprite);
-}
-
-bool Bullet::isExpired()
-{
-  return this->lifetime <= 0;
 }
 
 bool Bullet::isPlayerBullet()
