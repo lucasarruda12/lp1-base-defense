@@ -27,6 +27,10 @@ void EntityManager::add(Bullet* bullet)
   bullets.push_back(bullet);
 }
 
+void EntityManager::add(AmmoBox* ammoBox){
+  ammoBoxes.push_back(ammoBox);
+}
+
 void EntityManager::renderAll(sf::RenderWindow& window)
 {
   base.render(window);
@@ -38,7 +42,7 @@ void EntityManager::renderAll(sf::RenderWindow& window)
 
 bool EntityManager::checkGameOver()
 {
-  return (player.getHealth() <= 0) | (base.getHealth() <= 0);
+  return (player.getHealth() <= 0) || (base.getHealth() <= 0);
 }
 
 void EntityManager::processPlayerEvents(const sf::Event& event)
@@ -65,25 +69,6 @@ void EntityManager::processPlayerEvents(const sf::Event& event)
   }
 }
 
-void EntityManager::spawnNewEnemies()
-{
-  if (enemySpawnTimer >= 0) {
-    enemySpawnTimer -= 1;
-    return;
-  }
-
-  if (enemies.size() >= maxEnemyCount) { return; }  
-
-  sf::Vector2f spawnLocation = generateRandomEnemySpawn();
-
-  Enemy* newEnemy = new Enemy(spawnLocation);
-  EntityManager::add(newEnemy);
-
-  int randInt = generateRandomInt(-30, 30);
-
-  enemySpawnTimer = ENEMY_SPAWN_TIMER + randInt;
-}
-
 void EntityManager::updateAll(){
   player.update();
   base.update();
@@ -92,6 +77,33 @@ void EntityManager::updateAll(){
   for (const auto& box : ammoBoxes) { box->update(); }
 }
 
+void EntityManager::spawnNewEnemies()
+{
+  if (enemySpawnTimer >= 0) {
+    enemySpawnTimer--;
+    return;
+  }
+
+  // Existe um limite de inimigos na tela
+  if (enemies.size() >= maxEnemyCount) { return; }
+
+  // Decidimos a localização de spawn do inimigo
+  // gerando um ponto aleatório no perímetro do retângulo
+  // que forma a janela
+  sf::Vector2f spawnLocation = generateRandomEnemySpawn();
+
+  Enemy* newEnemy = new Enemy(spawnLocation);
+  EntityManager::add(newEnemy);
+
+  // Optamos por adicionar aleatoriedade ao tempo de 
+  // spawn dos inimigos
+  int randInt = generateRandomInt(-30, 30);
+  enemySpawnTimer = ENEMY_SPAWN_TIMER + randInt;
+}
+
+// Checa cada bala, uma por uma, pra ver se ela já
+// passou do tempo de vida.
+// Se passou, deleta.
 void EntityManager::checkBulletLifetime()
 {
   for (auto it = bullets.begin(); it != bullets.end();)
@@ -107,6 +119,7 @@ void EntityManager::checkBulletLifetime()
   }
 }
 
+// Mesma coisa pras caixinhas de munição
 void EntityManager::checkAmmoBoxLifetime()
 {
   for (auto it = ammoBoxes.begin(); it != ammoBoxes.end();)
@@ -130,6 +143,7 @@ void EntityManager::checkPlayerBulletCollision()
 
     if (!bullet->isPlayerBullet() && player.checkCollision(*bullet))
     {
+      // O player toma sempre 1 de dano
       player.takeDamage(); 
       delete bullet;
       it = bullets.erase(it);
@@ -146,8 +160,8 @@ void EntityManager::checkBaseBulletCollision()
 
     if (!bullet->isPlayerBullet() && base.checkCollision(*bullet))
     {
+      // A base toma dano variado
       base.takeDamage(1);
-
       delete bullet;
       it = bullets.erase(it);
     }
@@ -159,7 +173,6 @@ void EntityManager::checkPlayerAmmoBoxCollision()
 {
   for (auto it = ammoBoxes.begin(); it != ammoBoxes.end();)
   {
-    bool hit = false;
     AmmoBox* ammoBox = *it;
 
     if (player.checkCollision(*ammoBox))
@@ -177,6 +190,9 @@ void EntityManager::checkEnemyBulletCollision()
   for (auto eit = enemies.begin(); eit != enemies.end();)
   {
     Enemy* enemy = *eit;
+    // Guardo o hit numa variável separada para deletar o inimigo depois.
+    // Como forma de evitar o cenário em que duas balas chegam no inimigo
+    // no mesmo update e só uma é deletada.
     bool hit = false;
 
     // Checa colisão com alguma bala e deleta a bala em si
@@ -216,8 +232,8 @@ void EntityManager::checkEnemyBaseCollision()
 
     if (enemy->checkCollision(base))
     {
+      // A base toma dano variado
       base.takeDamage(10);
-
       delete enemy;
       it = enemies.erase(it);
     }
@@ -243,12 +259,6 @@ void EntityManager::makeEnemiesShoot()
   }
 }
 
-int EntityManager::getPlayerHealth(){ return player.getHealth(); }
-
-int EntityManager::getPlayerAmmo(){ return player.getAmmo(); }
-
-int EntityManager::getBaseHealth(){ return base.getHealth(); }
-
 int EntityManager::generateRandomInt(int from, int to)
 {
   std::random_device rd;
@@ -258,6 +268,11 @@ int EntityManager::generateRandomInt(int from, int to)
   return dist(mt);
 }
 
+// A ideia é gerar um inteiro aleatório entre 0 e o perímetro da
+// janela, e ir subtraindo o valor de cada "aresta" até saber
+// em qual ele parou. Sabendo em qual ele parou,
+// é só pegar o que sobrou dessas subtrações e usar como posição
+// dentro daquela aresta.
 sf::Vector2f EntityManager::generateRandomEnemySpawn()
 {
   int randInt = generateRandomInt(0, WINDOW_HEIGHT*2 + WINDOW_WIDTH*2);

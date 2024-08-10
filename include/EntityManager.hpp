@@ -18,34 +18,37 @@ class EntityManager
     list<Bullet*> bullets;
     list<Enemy*> enemies;
     list<AmmoBox*> ammoBoxes;
+
     int enemySpawnTimer;
     int maxEnemyCount;
+
     sf::Vector2f generateRandomEnemySpawn();
+    int generateRandomInt(int from, int to);
 
   public:
     EntityManager();
     ~EntityManager();
+
     void add(Enemy* enemy);
     void add(Bullet* bullet);
+    void add(AmmoBox* ammoBox);
 
     void updateAll();
     void renderAll(sf::RenderWindow& window);
     void processPlayerEvents(const sf::Event& event);
     void spawnNewEnemies();
+    void makeEnemiesShoot();
+
     void checkEnemyBulletCollision();
     void checkBulletLifetime();
     void checkAmmoBoxLifetime();
-    void makeEnemiesShoot();
     void checkPlayerBulletCollision();
     void checkPlayerAmmoBoxCollision();
     void checkEnemyBaseCollision();
     void checkBaseBulletCollision();
-    
     bool checkGameOver();
 
-    int getPlayerHealth();
-    int getPlayerAmmo();
-    int getBaseHealth();
-
-    int generateRandomInt(int from, int to);
+    int getPlayerHealth() { return player.getHealth(); }
+    int getPlayerAmmo() { return player.getAmmo(); }
+    int getBaseHealth() { return base.getHealth(); }
 };

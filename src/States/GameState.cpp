@@ -4,8 +4,6 @@
 #include <Entities/Bullet.hpp>
 #include <Entities/Enemy.hpp>
 
-using namespace std;
-
 GameState::GameState()
 : entities()
 , ui()
