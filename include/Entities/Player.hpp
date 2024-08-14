@@ -21,5 +21,6 @@ class Player : public PhysicalObject
     void decreaseAmmo(int amount);
     void reload(int amount);
     void takeDamage();
+    void heal(int ammount);
     int getHealth();
 };

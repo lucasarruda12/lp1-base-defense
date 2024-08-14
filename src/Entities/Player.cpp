@@ -41,6 +41,16 @@ void Player::takeDamage()
   }
 }
 
+void Player::heal(int amount)
+{
+  this->health += amount;
+  
+  if (this->health > PLAYER_MAX_HEALTH)
+  {
+    this->health = PLAYER_MAX_HEALTH;
+  }
+}
+
 int Player::getAmmo(){ return ammo; }
 
 void Player::decreaseAmmo(int amount)

@@ -14,7 +14,7 @@ EntityManager::EntityManager()
 EntityManager::~EntityManager(){
   for (const auto& b : bullets) { delete b; }
   for (const auto& e : enemies) {delete e; }
-  for (const auto& a : ammoBoxes) { delete a; }
+  for (const auto& a : EnemyDrops) { delete a; }
 }
 
 void EntityManager::add(Enemy* enemy)
@@ -27,8 +27,8 @@ void EntityManager::add(Bullet* bullet)
   bullets.push_back(bullet);
 }
 
-void EntityManager::add(AmmoBox* ammoBox){
-  ammoBoxes.push_back(ammoBox);
+void EntityManager::add(EnemyDrop* enemyDrop){
+  EnemyDrops.push_back(enemyDrop);
 }
 
 void EntityManager::renderAll(sf::RenderWindow& window)
@@ -37,7 +37,7 @@ void EntityManager::renderAll(sf::RenderWindow& window)
   player.render(window);
   for (const auto& b : bullets) { b->render(window); }
   for (const auto& e : enemies) { e->render(window); }
-  for (const auto& a : ammoBoxes) { a->render(window); }
+  for (const auto& a : EnemyDrops) { a->render(window); }
 }
 
 bool EntityManager::checkGameOver()
@@ -71,7 +71,7 @@ void EntityManager::updateAll(){
   base.update();
   for (const auto& b : bullets) {b->update(); }
   for (const auto& e : enemies) { e->update(); }
-  for (const auto& box : ammoBoxes) { box->update(); }
+  for (const auto& box : EnemyDrops) { box->update(); }
 }
 
 void EntityManager::spawnNewEnemies()
@@ -117,16 +117,16 @@ void EntityManager::checkBulletLifetime()
 }
 
 // Mesma coisa pras caixinhas de munição
-void EntityManager::checkAmmoBoxLifetime()
+void EntityManager::checkEnemyDropLifetime()
 {
-  for (auto it = ammoBoxes.begin(); it != ammoBoxes.end();)
+  for (auto it = EnemyDrops.begin(); it != EnemyDrops.end();)
   {
-    AmmoBox* box = *it;
+    EnemyDrop* box = *it;
 
     if (box->isExpired())
     {
        delete box;
-       it = ammoBoxes.erase(it);
+       it = EnemyDrops.erase(it);
     }
     else { it++; }
   }
@@ -166,17 +166,26 @@ void EntityManager::checkBaseBulletCollision()
   }
 }
 
-void EntityManager::checkPlayerAmmoBoxCollision()
+void EntityManager::checkPlayerEnemyDropCollision()
 {
-  for (auto it = ammoBoxes.begin(); it != ammoBoxes.end();)
+  for (auto it = EnemyDrops.begin(); it != EnemyDrops.end();)
   {
-    AmmoBox* ammoBox = *it;
+    EnemyDrop* enemyDrop = *it;
 
-    if (player.checkCollision(*ammoBox))
+    if (player.checkCollision(*enemyDrop))
     {
-      player.reload(AMMOBOX_RELOAD_AMMOUNT);
-      delete ammoBox;
-      it = ammoBoxes.erase(it);
+      if (enemyDrop->getType() == EnemyDrop::Type::AmmoBox)
+      {
+        player.reload(AMMOBOX_RELOAD_AMMOUNT);
+      }
+
+      if (enemyDrop->getType() == EnemyDrop::Type::HealthPack)
+      {
+        player.heal(HEALTHPACK_HEAL_AMMOUNT);
+      }
+
+      delete enemyDrop;
+      it = EnemyDrops.erase(it);
     }
     else { it++; }
   }
@@ -209,9 +218,29 @@ void EntityManager::checkEnemyBulletCollision()
 
     if (hit)
     {
-      // Cria uma caixinha de munição onde o inimigo morreu
-      AmmoBox* newAmmoBox = new AmmoBox(enemy->getPosition());
-      ammoBoxes.push_back(newAmmoBox);
+      // Cria uma caixinha de munição alguns pixels separado
+      // de onde o inimigo morreu
+      sf::Vector2f spawnPosition = generateOffsetPosition(
+        enemy->getPosition(),
+        -5,
+        5
+      )
+      EnemyDrop* newEnemyDrop = new EnemyDrop(enemy->getPosition(), EnemyDrop::Type::AmmoBox);
+      EnemyDrops.push_back(newEnemyDrop);
+
+      // Tem uma chance de 1 em 5 de criar um healthPack
+      int randInt = generateRandomInt(1, 5);
+      if (randInt == 2) 
+      {
+        // Gera uma nova posição um pouquinho fora de centro
+        spawnPosition = generateOffsetPosition(
+          enemy->getPosition(),
+          -5,
+          5
+        )
+        EnemyDrop* newEnemyDrop = new EnemyDrop(enemy->getPosition(), EnemyDrop::Type::HealthPack);
+        EnemyDrops.push_back(newEnemyDrop);
+      }
 
       // E deleta o inimigo
       delete enemy;

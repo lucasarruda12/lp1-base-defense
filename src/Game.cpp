@@ -20,7 +20,7 @@ Game::Game()
 ,previousState(nullptr)
 {
   // Começa o jogo no GameState
-  changeState(State::States::GameOver);
+  changeState(State::States::GameState);
 }
 
 void Game::run()
@@ -88,7 +88,7 @@ void Game::changeState(State::States newState)
   }
 
   // Independente de qual estado eu vou,
-  // o previousState é sempre deletado
+  // se não é o anterior, o previousState é deletado
   delete previousState;
   previousState = currentState;
 
@@ -112,7 +112,7 @@ void Game::changeState(State::States newState)
   // de callback.
   currentState->setStageChanger(
     // A classe State tem uma função de mudar o estado,
-    // mas não sabe como ela funciona. So sabe que se ela quiser
+    // mas não sabe como ela funciona. Só sabe que se ela quiser
     // mudar, ela chama isso.
     [this](State::States newState){changeState(newState);}
   );

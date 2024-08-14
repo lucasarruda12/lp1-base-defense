@@ -4,7 +4,7 @@
 #include <Entities/Bullet.hpp>
 #include <Entities/Player.hpp>
 #include <Entities/Enemy.hpp>
-#include <Entities/AmmoBox.hpp>
+#include <Entities/EnemyDrop.hpp>
 #include <Entities/Base.hpp>
 
 #include <list>
@@ -17,7 +17,7 @@ class EntityManager
     Base base;
     list<Bullet*> bullets;
     list<Enemy*> enemies;
-    list<AmmoBox*> ammoBoxes;
+    list<EnemyDrop*> EnemyDrops;
 
     int enemySpawnTimer;
     int maxEnemyCount;
@@ -31,7 +31,7 @@ class EntityManager
 
     void add(Enemy* enemy);
     void add(Bullet* bullet);
-    void add(AmmoBox* ammoBox);
+    void add(EnemyDrop* EnemyDrop);
 
     void updateAll();
     void renderAll(sf::RenderWindow& window);
@@ -41,9 +41,9 @@ class EntityManager
 
     void checkEnemyBulletCollision();
     void checkBulletLifetime();
-    void checkAmmoBoxLifetime();
+    void checkEnemyDropLifetime();
     void checkPlayerBulletCollision();
-    void checkPlayerAmmoBoxCollision();
+    void checkPlayerEnemyDropCollision();
     void checkEnemyBaseCollision();
     void checkBaseBulletCollision();
     bool checkGameOver();

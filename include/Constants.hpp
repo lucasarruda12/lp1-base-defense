@@ -13,10 +13,11 @@
 #define PLAYER_MAX_HEALTH 20
 #define PLAYER_MIN_HEALTH 0
 
-// AmmoBox-related constants
-#define AMMOBOX_HITBOX_RADIUS 3
+// EnemyDropd-related constants
+#define ENEMYDROP_HITBOX_RADIUS 3
+#define ENEMYDROP_LIFETIME 300
 #define AMMOBOX_RELOAD_AMMOUNT 5
-#define AMMOBOX_LIFETIME 300
+#define HEALTHPACK_HEAL_AMMOUNT 2
 
 // Bullet-related constants
 #define BULLET_HITBOX_RADIUS 3

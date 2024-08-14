@@ -44,10 +44,10 @@ void GameState::update() {
   entities.checkEnemyBulletCollision();
   entities.checkPlayerBulletCollision();
   entities.checkBaseBulletCollision();
-  entities.checkPlayerAmmoBoxCollision();
+  entities.checkPlayerEnemyDropCollision();
   entities.checkEnemyBaseCollision();
   entities.checkBulletLifetime();
-  entities.checkAmmoBoxLifetime();
+  entities.checkEnemyDropLifetime();
   entities.makeEnemiesShoot();
 
   int playerHealth = entities.getPlayerHealth();
