@@ -21,6 +21,13 @@ bool Enemy::isAbleToShoot()
   return shootTimer <= 0;
 }
 
+Bullet* Enemy::shoot(sf::Vector2f target)
+{
+  Bullet* b = new Bullet(pos, target, false);
+  resetShootTimer();
+  return b;
+}
+
 void Enemy::resetShootTimer()
 {
   shootTimer = ENEMY_SHOOTTIMER;

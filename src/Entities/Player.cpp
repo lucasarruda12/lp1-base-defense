@@ -24,6 +24,13 @@ void Player::render(sf::RenderWindow& window)
   window.draw(sprite);
 }
 
+Bullet* Player::shoot(sf::Vector2f target)
+{
+  Bullet* b = new Bullet(pos, target, true);
+  decreaseAmmo(1);
+  return b;
+}
+
 int Player::getHealth(){ return health; }
 
 void Player::takeDamage()
