@@ -17,7 +17,7 @@ EnemyDrop::EnemyDrop(sf::Vector2f position, EnemyDrop::Type new_type)
 {
   if (new_type == EnemyDrop::Type::AmmoBox)
   {
-    sprite.setFillColor(sf::Color(150,75,0,255));
+    sprite.setFillColor(sf::Color::White);
   }
 
   if (new_type == EnemyDrop::Type::HealthPack)

@@ -27,7 +27,7 @@
 // Enemy-related constants
 #define ENEMY_HITBOX_RADIUS 10
 #define ENEMY_SPEED 1
-#define ENEMY_SHOOTTIMER 60
+#define ENEMY_SHOOTTIMER 45
 #define ENEMY_SPAWN_TIMER 120
 #define MAX_ENEMY_COUNT 6
 

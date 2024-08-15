@@ -24,6 +24,11 @@ class EntityManager
 
     sf::Vector2f generateRandomEnemySpawn();
     int generateRandomInt(int from, int to);
+    sf::Vector2f generateOffsetPosition(
+      sf::Vector2f initial_position,
+      int min_offset,
+      int max_offset
+    );
 
   public:
     EntityManager();
@@ -51,4 +56,6 @@ class EntityManager
     int getPlayerHealth() { return player.getHealth(); }
     int getPlayerAmmo() { return player.getAmmo(); }
     int getBaseHealth() { return base.getHealth(); }
+
+    void setEnemySpawnTimer(int amount) { this->enemySpawnTimer = amount; }
 };

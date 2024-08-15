@@ -3,6 +3,7 @@
 #include <States/GameState.hpp>
 #include <Entities/Bullet.hpp>
 #include <Entities/Enemy.hpp>
+#include <AssetManager.hpp>
 
 GameState::GameState()
 : entities()
@@ -25,6 +26,18 @@ void GameState::processEvent(const sf::Event& event){
 
 void GameState::update() {
   gameTimer--;
+
+  if (gameTimer == 90) {
+    entities.setEnemySpawnTimer(ENEMY_SPAWN_TIMER - 15);
+  }
+
+  if (gameTimer == 60) {
+    entities.setEnemySpawnTimer(ENEMY_SPAWN_TIMER - 30);
+  }
+
+  if (gameTimer == 30) {
+    entities.setEnemySpawnTimer(ENEMY_SPAWN_TIMER - 60);
+  }
 
   if(entities.checkGameOver())
   {

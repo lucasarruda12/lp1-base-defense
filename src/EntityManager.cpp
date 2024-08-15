@@ -220,12 +220,8 @@ void EntityManager::checkEnemyBulletCollision()
     {
       // Cria uma caixinha de munição alguns pixels separado
       // de onde o inimigo morreu
-      sf::Vector2f spawnPosition = generateOffsetPosition(
-        enemy->getPosition(),
-        -5,
-        5
-      )
-      EnemyDrop* newEnemyDrop = new EnemyDrop(enemy->getPosition(), EnemyDrop::Type::AmmoBox);
+      sf::Vector2f spawnPosition = generateOffsetPosition(enemy->getPosition(),-5,5);
+      EnemyDrop* newEnemyDrop = new EnemyDrop(spawnPosition, EnemyDrop::Type::AmmoBox);
       EnemyDrops.push_back(newEnemyDrop);
 
       // Tem uma chance de 1 em 5 de criar um healthPack
@@ -233,11 +229,7 @@ void EntityManager::checkEnemyBulletCollision()
       if (randInt == 2) 
       {
         // Gera uma nova posição um pouquinho fora de centro
-        spawnPosition = generateOffsetPosition(
-          enemy->getPosition(),
-          -5,
-          5
-        )
+        spawnPosition = generateOffsetPosition(enemy->getPosition(), -5, 5);
         EnemyDrop* newEnemyDrop = new EnemyDrop(enemy->getPosition(), EnemyDrop::Type::HealthPack);
         EnemyDrops.push_back(newEnemyDrop);
       }
@@ -289,6 +281,22 @@ int EntityManager::generateRandomInt(int from, int to)
   std::uniform_real_distribution<double> dist(from, to);
 
   return dist(mt);
+}
+
+sf::Vector2f EntityManager::generateOffsetPosition(
+  sf::Vector2f initial_position,
+  int min_offset,
+  int max_offset
+)
+{
+  int offset_y = generateRandomInt(min_offset, max_offset);
+  int offset_x = generateRandomInt(min_offset, max_offset);
+
+  sf::Vector2f new_position;
+  new_position.x = initial_position.x + offset_x;
+  new_position.y = initial_position.y + offset_y;
+
+  return new_position;
 }
 
 // A ideia é gerar um inteiro aleatório entre 0 e o perímetro da
