@@ -1,5 +1,7 @@
 #include <Entities/Player.hpp>
 #include <Constants.hpp>
+#include <AssetManager.hpp>
+#include <Entities/PhysicalObject.hpp>
 
 Player::Player()
 :PhysicalObject(
@@ -11,16 +13,24 @@ Player::Player()
 ,ammo(PLAYER_MAX_AMMO)
 ,health(PLAYER_MAX_HEALTH)
 ,sprite()
+,hitbox()
 {
-  sprite.setRadius(PLAYER_HITBOX_RADIUS);
-  sprite.setFillColor(sf::Color::Green);
+  hitbox.setRadius(PLAYER_HITBOX_RADIUS);
+  hitbox.setFillColor(sf::Color::Green);
+
+  sprite.setTexture(AssetManager::player);
+  sprite.setScale(0.05, 0.05);
+  sprite.setPosition(pos - sf::Vector2f(radius + 14, radius + 15));
 }
 
 void Player::update() { moveTowardsTarget(); }
 
 void Player::render(sf::RenderWindow& window)
 {
-  sprite.setPosition(pos - sf::Vector2f(radius, radius));
+  hitbox.setPosition(pos - sf::Vector2f(radius, radius));
+  window.draw(hitbox);
+
+  sprite.setPosition(pos - sf::Vector2f(radius + 14, radius + 15));
   window.draw(sprite);
 }
 

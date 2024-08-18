@@ -1,5 +1,6 @@
 #include <Constants.hpp>
 #include <Entities/Enemy.hpp>
+#include <AssetManager.hpp>
 
 Enemy::Enemy(sf::Vector2f initial)
 :PhysicalObject
@@ -10,10 +11,14 @@ Enemy::Enemy(sf::Vector2f initial)
   sf::Vector2f(WINDOW_WIDTH/2, WINDOW_HEIGHT/2)
 )
 ,shootTimer(ENEMY_SHOOTTIMER)
+,hitbox()
 ,sprite()
 {
-  sprite.setRadius(ENEMY_HITBOX_RADIUS);
-  sprite.setFillColor(sf::Color::Red);
+  hitbox.setRadius(ENEMY_HITBOX_RADIUS);
+  hitbox.setFillColor(sf::Color::Red);
+
+  sprite.setTexture(AssetManager::enemy);
+  sprite.setScale(0.05, 0.05);
 }
 
 bool Enemy::isAbleToShoot()
@@ -41,6 +46,9 @@ void Enemy::update()
 
 void Enemy::render(sf::RenderWindow& window)
 {
+  hitbox.setPosition(pos - sf::Vector2f(radius, radius));
+  window.draw(hitbox);
+
   sprite.setPosition(pos - sf::Vector2f(radius, radius));
   window.draw(sprite);
 }

@@ -9,6 +9,7 @@ class UserInterfaceManager
     StatusBar playerHealthBar;
     StatusBar playerAmmoBar;
     StatusBar baseHealthBar;
+    sf::Sprite background;
 
   public:
     UserInterfaceManager();

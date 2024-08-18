@@ -7,7 +7,9 @@
 class Player : public PhysicalObject
 { 
   private:
-    sf::CircleShape sprite;
+    sf::CircleShape hitbox;
+    sf::Sprite sprite;
+
     int ammo;
     int health;
 

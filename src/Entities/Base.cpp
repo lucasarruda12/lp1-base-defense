@@ -1,5 +1,6 @@
 #include <Constants.hpp>
 #include <Entities/Base.hpp>
+#include <AssetManager.hpp>
 
 Base::Base()
 :PhysicalObject
@@ -14,11 +15,9 @@ Base::Base()
 ,healthRegenTimer(BASE_HEALTH_REGEN_TIMER)
 ,sprite()
 {
-  sprite.setRadius(BASE_RADIUS);
-  sprite.setFillColor(sf::Color::Blue);
-  sprite.setOutlineColor(sf::Color::White);
-  sprite.setOutlineThickness(5.f);
-  sprite.setPosition(pos - sf::Vector2f(radius, radius));
+  sprite.setTexture(AssetManager::base);
+  sprite.scale(sf::Vector2f(0.134, 0.134));
+  sprite.setPosition(pos - sf::Vector2f(radius + 22.512, radius));
 }
 
 void Base::update()

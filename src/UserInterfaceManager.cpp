@@ -1,5 +1,6 @@
 #include <UserInterfaceManager.hpp>
 #include <Constants.hpp>
+#include <AssetManager.hpp>
 
 // Montamos a interface do jogo com barrinhas.
 // Os indicadores de vida, bala, vida da base são todos
@@ -32,7 +33,10 @@ UserInterfaceManager::UserInterfaceManager()
   WINDOW_HEIGHT/2 + BASE_RADIUS + UI_BASE_HEALTH_VERTICAL_OFFSET,
   WINDOW_WIDTH/2 - UI_WIDTH/4
 )
-{}
+,background()
+{
+  background.setTexture(AssetManager::background);
+}
 
 void UserInterfaceManager::update(int playerHealth, int playerAmmo, int baseHealth)
 {
@@ -43,6 +47,7 @@ void UserInterfaceManager::update(int playerHealth, int playerAmmo, int baseHeal
 
 void UserInterfaceManager::render(sf::RenderWindow& window)
 {
+  window.draw(background);
   playerHealthBar.render(window);
   playerAmmoBar.render(window);
   baseHealthBar.render(window);

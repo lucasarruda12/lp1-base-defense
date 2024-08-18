@@ -19,8 +19,12 @@ Game::Game()
 ,currentState(nullptr)
 ,previousState(nullptr)
 {
-  // Começa o jogo no GameState
-  changeState(State::States::GameState);
+  AssetManager::loadAssets();
+
+  sf::Image image;
+  image.loadFromFile("assets/player2.png");
+
+  window.setIcon(1080, 1080, image.getPixelsPtr());
 }
 
 void Game::run()
@@ -33,7 +37,9 @@ void Game::run()
   // criar um inimigo novo, e montar uma classe super complicada
   // para ir alocando e desalocando da memória as texturas que vão
   // ser utilizadas.
-  AssetManager::loadAssets();
+
+  // Começa o jogo no GameState
+  changeState(State::States::GameState);
 
   sf::Clock clock;
   sf::Time timeSinceLastUpdate = sf::Time::Zero;

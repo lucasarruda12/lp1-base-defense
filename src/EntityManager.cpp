@@ -9,6 +9,7 @@ EntityManager::EntityManager()
 , bullets()
 , enemySpawnTimer(ENEMY_SPAWN_TIMER)
 , maxEnemyCount(MAX_ENEMY_COUNT)
+, enemiesKilled(0)
 {}
 
 EntityManager::~EntityManager(){
@@ -218,6 +219,9 @@ void EntityManager::checkEnemyBulletCollision()
 
     if (hit)
     {
+      // aumenta o contador de inimigos mortos
+      enemiesKilled++;
+
       // Cria uma caixinha de munição alguns pixels separado
       // de onde o inimigo morreu
       sf::Vector2f spawnPosition = generateOffsetPosition(enemy->getPosition(),-5,5);

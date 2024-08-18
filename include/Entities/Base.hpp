@@ -6,7 +6,7 @@
 class Base : public PhysicalObject
 {
   private:
-    sf::CircleShape sprite;
+    sf::Sprite sprite;
     int health;
     int healthRegenTimer;
     int healthRegenCooldownTimer;

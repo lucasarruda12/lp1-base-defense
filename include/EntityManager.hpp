@@ -22,6 +22,8 @@ class EntityManager
     int enemySpawnTimer;
     int maxEnemyCount;
 
+    int enemiesKilled;
+
     sf::Vector2f generateRandomEnemySpawn();
     int generateRandomInt(int from, int to);
     sf::Vector2f generateOffsetPosition(
@@ -56,6 +58,7 @@ class EntityManager
     int getPlayerHealth() { return player.getHealth(); }
     int getPlayerAmmo() { return player.getAmmo(); }
     int getBaseHealth() { return base.getHealth(); }
+    int getEnemiesKilled() { return enemiesKilled; }
 
     void setEnemySpawnTimer(int amount) { this->enemySpawnTimer = amount; }
 };

@@ -5,7 +5,10 @@
 class AssetManager {
   public:
     static void loadAssets();
-    static void freeAssets();
 
     static sf::Font gameFont;
+    static sf::Texture background;
+    static sf::Texture base;
+    static sf::Texture player;
+    static sf::Texture enemy;
 };

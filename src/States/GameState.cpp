@@ -5,6 +5,8 @@
 #include <Entities/Enemy.hpp>
 #include <AssetManager.hpp>
 
+#include <iostream>
+
 GameState::GameState()
 : entities()
 , ui()
@@ -25,17 +27,18 @@ void GameState::processEvent(const sf::Event& event){
 }
 
 void GameState::update() {
+  std::cout << entities.getEnemiesKilled() << std::endl;
   gameTimer--;
 
-  if (gameTimer == 90) {
+  if (gameTimer == 90*60) {
     entities.setEnemySpawnTimer(ENEMY_SPAWN_TIMER - 15);
   }
 
-  if (gameTimer == 60) {
+  if (gameTimer == 60*60) {
     entities.setEnemySpawnTimer(ENEMY_SPAWN_TIMER - 30);
   }
 
-  if (gameTimer == 30) {
+  if (gameTimer == 30*60) {
     entities.setEnemySpawnTimer(ENEMY_SPAWN_TIMER - 60);
   }
 
@@ -73,8 +76,8 @@ void GameState::update() {
 void GameState::render(sf::RenderWindow& window) {
   window.clear();
 
-  entities.renderAll(window);
   ui.render(window);
+  entities.renderAll(window);
 
   window.display();
 }
