@@ -3,6 +3,8 @@
 #include <AssetManager.hpp>
 #include <Entities/PhysicalObject.hpp>
 
+#include <iostream>
+
 Player::Player()
 :PhysicalObject(
   PLAYER_SPEED,
@@ -19,18 +21,14 @@ Player::Player()
   hitbox.setFillColor(sf::Color::Green);
 
   sprite.setTexture(AssetManager::player);
-  sprite.setScale(0.05, 0.05);
-  sprite.setPosition(pos - sf::Vector2f(radius + 14, radius + 15));
+  sprite.setPosition(pos - sf::Vector2f(radius, radius));
 }
 
 void Player::update() { moveTowardsTarget(); }
 
 void Player::render(sf::RenderWindow& window)
 {
-  hitbox.setPosition(pos - sf::Vector2f(radius, radius));
-  window.draw(hitbox);
-
-  sprite.setPosition(pos - sf::Vector2f(radius + 14, radius + 15));
+  sprite.setPosition(pos - sf::Vector2f(radius + 4, radius + 4));
   window.draw(sprite);
 }
 

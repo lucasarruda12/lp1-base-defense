@@ -16,8 +16,7 @@ Base::Base()
 ,sprite()
 {
   sprite.setTexture(AssetManager::base);
-  sprite.scale(sf::Vector2f(0.134, 0.134));
-  sprite.setPosition(pos - sf::Vector2f(radius + 22.512, radius));
+  sprite.setPosition(pos - sf::Vector2f(radius, radius));
 }
 
 void Base::update()

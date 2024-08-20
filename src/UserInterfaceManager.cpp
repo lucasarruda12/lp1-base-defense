@@ -28,7 +28,7 @@ UserInterfaceManager::UserInterfaceManager()
   BASE_MAX_HEALTH,
   sf::Color::Red,
   sf::Color::Red,
-  UI_WIDTH/2,
+  BASE_RADIUS*2,
   UI_HEIGHT/4,
   WINDOW_HEIGHT/2 + BASE_RADIUS + UI_BASE_HEALTH_VERTICAL_OFFSET,
   WINDOW_WIDTH/2 - UI_WIDTH/4

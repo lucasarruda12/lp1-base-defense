@@ -5,9 +5,9 @@
 
 // Player-related constants
 #define PLAYER_SPEED 5
-#define PLAYER_SPAWN_X 100.f
-#define PLAYER_SPAWN_Y 100.f
-#define PLAYER_HITBOX_RADIUS 10
+#define PLAYER_SPAWN_X WINDOW_WIDTH/2
+#define PLAYER_SPAWN_Y WINDOW_HEIGHT/2
+#define PLAYER_HITBOX_RADIUS 12
 #define PLAYER_MAX_AMMO 20
 #define PLAYER_MIN_AMMO 0
 #define PLAYER_MAX_HEALTH 20
@@ -33,7 +33,7 @@
 
 // Base-related constants
 #define BASE_MAX_HEALTH 100
-#define BASE_RADIUS 50
+#define BASE_RADIUS 64
 #define BASE_HEALTH_REGEN_TIMER 60
 #define BASE_HEALTH_REGEN_COOLDOWN_TIMER 300
 

@@ -18,7 +18,6 @@ Enemy::Enemy(sf::Vector2f initial)
   hitbox.setFillColor(sf::Color::Red);
 
   sprite.setTexture(AssetManager::enemy);
-  sprite.setScale(0.05, 0.05);
 }
 
 bool Enemy::isAbleToShoot()
