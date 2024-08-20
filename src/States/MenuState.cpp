@@ -4,7 +4,7 @@
 
 MenuState::MenuState()
 :drawn(false)
-,screen("LP1 BASE DEFENSE", "press [SPACE] to start", "press [ESC] to quit")
+,screen("LP1 BASE DEFENSE", "press [SPACE] to start")
 {}
 
 void MenuState::render(sf::RenderWindow& window)
@@ -29,7 +29,7 @@ void MenuState::processEvent(const sf::Event& event)
 {
   if (event.type == sf::Event::KeyPressed)
   {
-    if (event.key.code == sf::Keyboard::Escape)
+    if (event.key.code == sf::Keyboard::Space)
     {
       stateChanger(State::States::GameState);
     }

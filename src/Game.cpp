@@ -21,6 +21,7 @@ Game::Game()
 ,previousState(nullptr)
 {
   AssetManager::loadAssets();
+  window.setMouseCursorVisible(false);
 
   sf::Image image;
   image.loadFromFile("assets/player2.png");

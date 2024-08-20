@@ -34,8 +34,10 @@ UserInterfaceManager::UserInterfaceManager()
   WINDOW_WIDTH/2 - UI_WIDTH/4
 )
 ,background()
+,cursor()
 {
   background.setTexture(AssetManager::background);
+  cursor.setTexture(AssetManager::cursor);
 }
 
 void UserInterfaceManager::update(int playerHealth, int playerAmmo, int baseHealth)
@@ -45,10 +47,21 @@ void UserInterfaceManager::update(int playerHealth, int playerAmmo, int baseHeal
   baseHealthBar.setValue(baseHealth);
 }
 
-void UserInterfaceManager::render(sf::RenderWindow& window)
+void UserInterfaceManager::renderBehind(sf::RenderWindow& window)
 {
   window.draw(background);
+}
+
+void UserInterfaceManager::renderFront(sf::RenderWindow& window)
+{
   playerHealthBar.render(window);
   playerAmmoBar.render(window);
   baseHealthBar.render(window);
+  
+  sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+  float mouse_x = mousePos.x - 16;
+  float mouse_y = mousePos.y - 16;
+  cursor.setPosition(mouse_x, mouse_y);
+
+  window.draw(cursor);
 }

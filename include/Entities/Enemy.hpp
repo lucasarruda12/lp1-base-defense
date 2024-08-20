@@ -7,7 +7,6 @@
 class Enemy : public PhysicalObject
 {
   private:
-    sf::CircleShape hitbox;
     sf::Sprite sprite;
     int shootTimer;
 

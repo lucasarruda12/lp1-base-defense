@@ -11,4 +11,5 @@ class AssetManager {
     static sf::Texture base;
     static sf::Texture player;
     static sf::Texture enemy;
+    static sf::Texture cursor;
 };

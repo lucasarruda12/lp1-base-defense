@@ -10,9 +10,11 @@ class UserInterfaceManager
     StatusBar playerAmmoBar;
     StatusBar baseHealthBar;
     sf::Sprite background;
+    sf::Sprite cursor;
 
   public:
     UserInterfaceManager();
     void update(int playerHealth, int playerAmmo, int baseHealth);
-    void render(sf::RenderWindow& window);
+    void renderBehind(sf::RenderWindow& window);
+    void renderFront(sf::RenderWindow& window);
 };

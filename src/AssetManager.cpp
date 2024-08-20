@@ -8,6 +8,7 @@ sf::Texture AssetManager::background;
 sf::Texture AssetManager::base;
 sf::Texture AssetManager::player;
 sf::Texture AssetManager::enemy;
+sf::Texture AssetManager::cursor;
 
 void AssetManager::loadAssets(){
   gameFont.loadFromFile("assets/Minecraftia-Regular.ttf");
@@ -15,5 +16,6 @@ void AssetManager::loadAssets(){
   base.loadFromFile("assets/base.png");
   player.loadFromFile("assets/player.png");
   enemy.loadFromFile("assets/enemy.png");
+  cursor.loadFromFile("assets/cursor.png");
 }
 

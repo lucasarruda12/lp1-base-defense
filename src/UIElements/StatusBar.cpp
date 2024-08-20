@@ -19,7 +19,7 @@ StatusBar::StatusBar
 ,width(n_width)
 ,height(n_height)
 {
-  container.setSize(sf::Vector2f(n_width, n_height));
+  container.setSize(sf::Vector2f(width, height));
   container.setOutlineThickness(UI_OUTLINE_THICKNESS);
   container.setOutlineColor(n_outlineColor);
   container.setFillColor(WINDOW_BACKGROUND_COLOR);

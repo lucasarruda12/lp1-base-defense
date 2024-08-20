@@ -79,8 +79,9 @@ void GameState::update() {
 void GameState::render(sf::RenderWindow& window) {
   window.clear();
 
-  ui.render(window);
+  ui.renderBehind(window);
   entities.renderAll(window);
+  ui.renderFront(window);
 
   window.display();
 }
