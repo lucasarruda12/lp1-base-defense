@@ -39,7 +39,7 @@ void Game::run()
   // ser utilizadas.
 
   // Começa o jogo no GameState
-  changeState(State::States::GameState);
+  changeState(State::States::GameOver);
 
   sf::Clock clock;
   sf::Time timeSinceLastUpdate = sf::Time::Zero;

@@ -10,7 +10,7 @@ sf::Texture AssetManager::player;
 sf::Texture AssetManager::enemy;
 
 void AssetManager::loadAssets(){
-  gameFont.loadFromFile("assets/Starborn.ttf");
+  gameFont.loadFromFile("assets/Minecraftia-Regular.ttf");
   background.loadFromFile("assets/background.jpg");
   base.loadFromFile("assets/base.png");
   player.loadFromFile("assets/player.png");

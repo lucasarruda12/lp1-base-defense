@@ -21,21 +21,29 @@ void GameOverState::render(sf::RenderWindow& window)
   // As posições dos textos foram 100% no olhómetro.
   // Não pode mudar o texto de jeito nenhum!!
   sf::Text pausedText("Fim de Jogo!", AssetManager::gameFont);
-  pausedText.setCharacterSize(80);
+  sf::FloatRect textBounds = pausedText.getLocalBounds();
+  pausedText.setOrigin(textBounds.width/2.f, textBounds.height/2.f);
+  pausedText.setPosition(sf::Vector2f(WINDOW_WIDTH/2, WINDOW_HEIGHT/2));
   pausedText.setFillColor(sf::Color::Red);
-  pausedText.setPosition(20, WINDOW_HEIGHT - 80);
   window.draw(pausedText);
 
-  pausedText.setString("Voce matou X inimigos");
+  pausedText.setString("voce matou X inimigos");
   pausedText.setCharacterSize(16);
+
+  textBounds = pausedText.getLocalBounds();
+  pausedText.setOrigin(textBounds.width/2.f, textBounds.height/2.f);
+
   pausedText.setFillColor(sf::Color::White);
-  pausedText.setPosition(20, WINDOW_HEIGHT - 72);
+  pausedText.setPosition(sf::Vector2f(WINDOW_WIDTH/2, WINDOW_HEIGHT/2 + 40));
+
   window.draw(pausedText);
 
-  pausedText.setString("E sobreviveu X segundos");
+  pausedText.setString("e sobreviveu X segundos");
   pausedText.setCharacterSize(16);
+  textBounds = pausedText.getLocalBounds();
+  pausedText.setOrigin(textBounds.width/2.f, textBounds.height/2.f);
   pausedText.setFillColor(sf::Color::White);
-  pausedText.setPosition(20, WINDOW_HEIGHT - 36);
+  pausedText.setPosition(sf::Vector2f(WINDOW_WIDTH/2, WINDOW_HEIGHT/2 + 80));
   window.draw(pausedText);
   window.display();
 
