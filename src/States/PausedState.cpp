@@ -4,34 +4,23 @@
 
 PausedState::PausedState()
 :drawn(false)
+,screen("O jogo foi pausado", "Aperte ESC para continuar")
 {}
 
 void PausedState::render(sf::RenderWindow& window)
 {
+  // Essas telas só precisam ser desenhadas uma vez.
   if (drawn) { return; }
 
-  sf::RectangleShape rectangle;
-
   // Para causar o efeito de escurecer a tela
+  sf::RectangleShape rectangle;
   rectangle.setSize(sf::Vector2f(WINDOW_WIDTH, WINDOW_HEIGHT));
   rectangle.setFillColor(sf::Color(0,0,0, 100));
   rectangle.setPosition(0, 0);
   window.draw(rectangle);
 
-  sf::Text pausedText("O jogo foi pausado", AssetManager::gameFont);
-  pausedText.setCharacterSize(24);
-  pausedText.setFillColor(sf::Color::Red);
-  pausedText.setPosition(20, WINDOW_HEIGHT - 66);
-  window.draw(pausedText);
-
-  pausedText.setString("Aperte ESC para continuar");
-  pausedText.setCharacterSize(16);
-  pausedText.setFillColor(sf::Color::White);
-  pausedText.setPosition(20, WINDOW_HEIGHT - 36);
-  window.draw(pausedText);
-
+  screen.render(window);
   window.display();
-
   drawn = true;
 }
 

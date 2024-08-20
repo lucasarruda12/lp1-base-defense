@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <States/State.hpp>
+#include <UIElements/Screen.hpp>
 
 class GameOverState: public State
 {
@@ -13,4 +14,5 @@ class GameOverState: public State
 
   private:
     bool drawn;
+    Screen screen;
 };
