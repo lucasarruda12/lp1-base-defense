@@ -4,7 +4,7 @@
 
 PausedState::PausedState()
 :drawn(false)
-,screen("O jogo foi pausado", "Aperte ESC para continuar")
+,screen("PAUSED", "Press [SPACE] to continue")
 {}
 
 void PausedState::render(sf::RenderWindow& window)
@@ -28,7 +28,7 @@ void PausedState::processEvent(const sf::Event& event)
 {
   if (event.type == sf::Event::KeyPressed)
   {
-    if (event.key.code == sf::Keyboard::Escape)
+    if (event.key.code == sf::Keyboard::Space)
     {
       stateChanger(State::States::Previous);
     }

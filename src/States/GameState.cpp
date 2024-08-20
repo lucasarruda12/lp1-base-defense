@@ -16,7 +16,7 @@ GameState::GameState()
 void GameState::processEvent(const sf::Event& event){
   if(event.type == sf::Event::KeyPressed)
   {
-    if(event.key.code == sf::Keyboard::Escape)
+    if(event.key.code == sf::Keyboard::Space)
     {
       stateChanger(State::States::Paused);
       return;

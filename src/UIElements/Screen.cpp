@@ -41,7 +41,7 @@ Screen::Screen(const string& n_title, const string& n_subtitle1, const string& n
   subtitle2.setCharacterSize(16);
   textBounds = subtitle2.getLocalBounds();
   subtitle2.setOrigin(textBounds.width/2.f, textBounds.height/2.f);
-  subtitle2.setPosition(sf::Vector2f(WINDOW_WIDTH/2, WINDOW_HEIGHT/2 + 60));
+  subtitle2.setPosition(sf::Vector2f(WINDOW_WIDTH/2, WINDOW_HEIGHT/2 + 65));
   subtitle2.setFillColor(sf::Color::White);
 }
 

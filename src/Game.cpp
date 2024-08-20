@@ -3,6 +3,7 @@
 #include <States/GameState.hpp>
 #include <States/PausedState.hpp>
 #include <States/GameOverState.hpp>
+#include <States/MenuState.hpp>
 #include <AssetManager.hpp>
 
 const sf::Time Game::TimePerFrame = sf::seconds(1.f/60.f);
@@ -39,7 +40,7 @@ void Game::run()
   // ser utilizadas.
 
   // Começa o jogo no GameState
-  changeState(State::States::GameOver);
+  changeState(State::States::Menu);
 
   sf::Clock clock;
   sf::Time timeSinceLastUpdate = sf::Time::Zero;
@@ -110,6 +111,10 @@ void Game::changeState(State::States newState)
 
   case State::States::GameOver:
     currentState = new GameOverState();
+    break;
+
+  case State::States::Menu:
+    currentState = new MenuState();
     break;
   }
 

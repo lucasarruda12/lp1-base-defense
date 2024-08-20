@@ -10,7 +10,8 @@ class State {
       Previous = 1,
       GameState,
       Paused,
-      GameOver
+      GameOver,
+      Menu
     };
 
   public:

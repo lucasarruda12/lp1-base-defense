@@ -1,17 +1,17 @@
-#include <States/GameOverState.hpp>
+#include <States/MenuState.hpp>
 #include <Constants.hpp>
 #include <AssetManager.hpp>
 
-
-GameOverState::GameOverState()
+MenuState::MenuState()
 :drawn(false)
-,screen("Game Over", "You killed X enemies", "and survived X seconds")
+,screen("LP1 BASE DEFENSE", "press [SPACE] to start", "press [ESC] to quit")
 {}
 
-void GameOverState::render(sf::RenderWindow& window)
+void MenuState::render(sf::RenderWindow& window)
 {
   // Essas telas só precisam ser desenhadas uma vez.
   if (drawn) { return; }
+  window.clear();
 
   // Para causar o efeito de escurecer a tela
   sf::RectangleShape rectangle;
@@ -25,7 +25,7 @@ void GameOverState::render(sf::RenderWindow& window)
   drawn = true;
 }
 
-void GameOverState::processEvent(const sf::Event& event)
+void MenuState::processEvent(const sf::Event& event)
 {
   if (event.type == sf::Event::KeyPressed)
   {
