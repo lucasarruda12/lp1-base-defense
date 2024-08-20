@@ -53,7 +53,6 @@ void Base::update()
 
 void Base::render(sf::RenderWindow& window)
 {
-  // Ver EntityManager.renderAll() para detalhes
   window.draw(sprite);
 }
 

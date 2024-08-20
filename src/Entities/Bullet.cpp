@@ -9,7 +9,11 @@ Bullet::Bullet(sf::Vector2f initial, sf::Vector2f target, bool isPlayerBullet)
   target
 )
 ,Expirable(
-  BULLET_LIFETIME
+  BULLET_LIFETIME 
+  // Balas e Drops expiram. Existe um inteiro que conta os ticks
+  // passados desde a criação dessas entidades. Quando o inteiro chega a um certo valor,
+  // a entidade passa a ser expirada. A entitymanager checa todas as entidades expiráveis
+  // a cada tick e remove as que já expiraram.
 )
 ,playerBullet(isPlayerBullet)
 ,sprite()

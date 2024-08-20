@@ -34,7 +34,7 @@ void Game::run()
   //
   // Foi um meio termo que encontramos entre ter que dar um
   // load from file na textura do inimigo toda vez que for
-  // criar um inimigo novo, e montar uma classe super complicada
+  // criar um inimigo novo e montar uma classe super complicada
   // para ir alocando e desalocando da memória as texturas que vão
   // ser utilizadas.
 
@@ -114,8 +114,7 @@ void Game::changeState(State::States newState)
   }
 
   // Para evitar que a classe State saiba da existência
-  // da classe Game. A gente usou um sistema de função
-  // de callback.
+  // da classe Game. A gente uso função de callback.
   currentState->setStageChanger(
     // A classe State tem uma função de mudar o estado,
     // mas não sabe como ela funciona. Só sabe que se ela quiser

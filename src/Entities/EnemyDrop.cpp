@@ -11,6 +11,10 @@ EnemyDrop::EnemyDrop(sf::Vector2f position, EnemyDrop::Type new_type)
 )
 ,Expirable(
   ENEMYDROP_LIFETIME
+  // Balas e Drops expiram. Existe um inteiro que conta os ticks
+  // passados desde a criação dessas entidades. Quando o inteiro chega a um certo valor,
+  // a entidade passa a ser expirada. A entitymanager checa todas as entidades expiráveis
+  // a cada tick e remove as que já expiraram.
 )
 ,sprite()
 ,type(new_type)

@@ -30,6 +30,9 @@ void GameState::update() {
   std::cout << entities.getEnemiesKilled() << std::endl;
   gameTimer--;
 
+  // O aumento da dificuldade do jogo com o tempo é feito
+  // de acordo com o número de ticks que se passaram desde o início.
+
   if (gameTimer == 90*60) {
     entities.setEnemySpawnTimer(ENEMY_SPAWN_TIMER - 15);
   }

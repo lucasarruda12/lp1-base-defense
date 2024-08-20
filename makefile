@@ -1,7 +1,7 @@
 PROG := base_defense.exe
 CC := g++
 
-SFML := # Set this to your SFML installation path, e.g., /path/to/SFML
+SFML :=
 
 LDFLAGS := -L$(SFML)/lib -lsfml-graphics -lsfml-window -lsfml-system
 CXXFLAGS := -Iinclude -I$(SFML)/include

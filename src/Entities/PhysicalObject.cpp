@@ -15,11 +15,18 @@ PhysicalObject::PhysicalObject(
 
 void PhysicalObject::moveTowardsTarget()
 {
+  // Todas as entidades se movem da mesma forma.
+  // A gente calcula a distância entre o destino e a posição atual 
+  // e vai incrementando em passos de acordo com a velocidade daquele
+  // objeto.
+
   sf::Vector2f dir(target.x - pos.x, target.y - pos.y);
 
   float magnitude = CalculateVectorMagnitude(dir);
   dir = CalculateUnitVector(dir, magnitude);
 
+  // Se a distância é menor que a velocidade, a gente joga aquele
+  // objeto direto pro target.
   if (magnitude > speed)
   {
     pos.x += dir.x * speed;
