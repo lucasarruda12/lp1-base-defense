@@ -21,7 +21,6 @@ class EntityManager
 
     int enemySpawnTimer;
     int maxEnemyCount;
-
     int enemiesKilled;
 
     sf::Vector2f generateRandomEnemySpawn();
@@ -61,4 +60,5 @@ class EntityManager
     int getEnemiesKilled() { return enemiesKilled; }
 
     void setEnemySpawnTimer(int amount) { this->enemySpawnTimer = amount; }
+    void setMaxEnemyCount(int amount) { this->maxEnemyCount = amount; }
 };

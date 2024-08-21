@@ -35,14 +35,17 @@ void GameState::update() {
 
   if (gameTimer == 90*60) {
     entities.setEnemySpawnTimer(ENEMY_SPAWN_TIMER - 15);
+    entities.setMaxEnemyCount(MAX_ENEMY_COUNT +1);
   }
 
   if (gameTimer == 60*60) {
     entities.setEnemySpawnTimer(ENEMY_SPAWN_TIMER - 30);
+    entities.setMaxEnemyCount(MAX_ENEMY_COUNT +2);
   }
 
   if (gameTimer == 30*60) {
     entities.setEnemySpawnTimer(ENEMY_SPAWN_TIMER - 60);
+    entities.setMaxEnemyCount(MAX_ENEMY_COUNT +3);
   }
 
   if(entities.checkGameOver())
