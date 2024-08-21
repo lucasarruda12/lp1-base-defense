@@ -10,10 +10,10 @@ class GameState : public State
 {
   public:
     GameState();
-    State::States tipo = State::States::GameState;
     void render(sf::RenderWindow& window);
     void update();
     void processEvent(const sf::Event& event);
+    int getDeathCounter(){ return entities.getEnemiesKilled(); }
 
   private:
     UserInterfaceManager ui;

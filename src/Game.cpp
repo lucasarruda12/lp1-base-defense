@@ -100,6 +100,9 @@ void Game::changeState(State::States newState)
   delete previousState;
   previousState = currentState;
 
+  int deathCounter = 0;
+  GameState* gameState = dynamic_cast<GameState*>(currentState);
+
   switch (newState)
   {
   case State::States::Paused:
@@ -111,7 +114,12 @@ void Game::changeState(State::States newState)
     break;
 
   case State::States::GameOver:
-    currentState = new GameOverState();
+    if (gameState)
+    {
+      deathCounter = gameState->getDeathCounter();
+    }
+    currentState = new GameOverState(deathCounter);
+
     break;
 
   case State::States::Menu:

@@ -7,7 +7,7 @@
 class GameOverState: public State
 {
   public:
-    GameOverState();
+    GameOverState(int deathCounter);
     void render(sf::RenderWindow& window);
     void update(){ return; };
     void processEvent(const sf::Event& event);

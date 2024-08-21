@@ -1,11 +1,11 @@
 #include <States/GameOverState.hpp>
 #include <Constants.hpp>
 #include <AssetManager.hpp>
+#include <string>
 
-
-GameOverState::GameOverState()
+GameOverState::GameOverState(int deathCounter)
 :drawn(false)
-,screen("Game Over", "You killed X enemies", "and survived X seconds")
+,screen("Game Over", "You killed " + std::to_string(deathCounter) + " enemies")
 {}
 
 void GameOverState::render(sf::RenderWindow& window)
