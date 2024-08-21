@@ -33,6 +33,15 @@ UserInterfaceManager::UserInterfaceManager()
   WINDOW_HEIGHT/2 + BASE_RADIUS + UI_BASE_HEALTH_VERTICAL_OFFSET,
   WINDOW_WIDTH/2 - UI_WIDTH/4
 )
+,baseShieldBar(
+  5,
+  sf::Color::Blue,
+  sf::Color::Blue,
+  BASE_RADIUS*2,
+  UI_HEIGHT/4,
+  WINDOW_HEIGHT/2 + BASE_RADIUS + UI_BASE_HEALTH_VERTICAL_OFFSET + 20,
+  WINDOW_WIDTH/2 - UI_WIDTH/4
+)
 ,background()
 ,cursor()
 {
@@ -40,11 +49,12 @@ UserInterfaceManager::UserInterfaceManager()
   cursor.setTexture(AssetManager::cursor);
 }
 
-void UserInterfaceManager::update(int playerHealth, int playerAmmo, int baseHealth)
+void UserInterfaceManager::update(int playerHealth, int playerAmmo, int baseHealth, int baseShield)
 {
   playerHealthBar.setValue(playerHealth);
   playerAmmoBar.setValue(playerAmmo);
   baseHealthBar.setValue(baseHealth);
+  baseShieldBar.setValue(baseShield);
 }
 
 void UserInterfaceManager::renderBehind(sf::RenderWindow& window)
@@ -57,7 +67,8 @@ void UserInterfaceManager::renderFront(sf::RenderWindow& window)
   playerHealthBar.render(window);
   playerAmmoBar.render(window);
   baseHealthBar.render(window);
-  
+  baseShieldBar.render(window);
+
   sf::Vector2i mousePos = sf::Mouse::getPosition(window);
   float mouse_x = mousePos.x - 16;
   float mouse_y = mousePos.y - 16;

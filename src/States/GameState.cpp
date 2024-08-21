@@ -75,8 +75,9 @@ void GameState::update() {
   int playerHealth = entities.getPlayerHealth();
   int playerAmmo = entities.getPlayerAmmo();
   int baseHealth = entities.getBaseHealth();
+  int baseShield = entities.getBaseShield();
 
-  ui.update(playerHealth, playerAmmo, baseHealth);
+  ui.update(playerHealth, playerAmmo, baseHealth, baseShield);
 }
 
 void GameState::render(sf::RenderWindow& window) {

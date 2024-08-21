@@ -8,8 +8,9 @@ class Base : public PhysicalObject
   private:
     sf::Sprite sprite;
     int health;
-    int healthRegenTimer;
-    int healthRegenCooldownTimer;
+    int shield;
+    int shieldRegenTimer;
+    int shieldRegenCooldownTimer;
 
   public:
     Base();
@@ -17,6 +18,7 @@ class Base : public PhysicalObject
     void render(sf::RenderWindow& window);
 
     int getHealth();
+    int getShield() { return this->shield; }
     void takeDamage(int amount);
     void heal(int amount);
 };

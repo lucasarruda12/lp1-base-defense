@@ -58,6 +58,7 @@ class EntityManager
     int getPlayerAmmo() { return player.getAmmo(); }
     int getBaseHealth() { return base.getHealth(); }
     int getEnemiesKilled() { return enemiesKilled; }
+    int getBaseShield() { return base.getShield(); }
 
     void setEnemySpawnTimer(int amount) { this->enemySpawnTimer = amount; }
     void setMaxEnemyCount(int amount) { this->maxEnemyCount = amount; }

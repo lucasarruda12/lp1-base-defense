@@ -11,8 +11,9 @@ Base::Base()
   sf::Vector2f(WINDOW_WIDTH/2, WINDOW_HEIGHT/2)
 )
 ,health(BASE_MAX_HEALTH)
-,healthRegenCooldownTimer(0)
-,healthRegenTimer(BASE_HEALTH_REGEN_TIMER)
+,shield(5)
+,shieldRegenCooldownTimer(0)
+,shieldRegenTimer(BASE_HEALTH_REGEN_TIMER)
 ,sprite()
 {
   sprite.setTexture(AssetManager::base);
@@ -34,20 +35,20 @@ void Base::update()
 
   // Se ela se cura, o regen timer volta pro máximo.
 
-  if (healthRegenCooldownTimer >= 0)
+  if (shieldRegenCooldownTimer >= 0)
   {
-    healthRegenCooldownTimer--;
+    shieldRegenCooldownTimer--;
     return;
   }
 
-  if (healthRegenTimer >= 0)
+  if (shieldRegenTimer >= 0)
   {
-    healthRegenTimer--;
+    shieldRegenTimer--;
     return;
   } 
 
   heal(1);
-  healthRegenTimer = BASE_HEALTH_REGEN_TIMER;
+  shieldRegenTimer = BASE_HEALTH_REGEN_TIMER;
 }
 
 void Base::render(sf::RenderWindow& window)
@@ -57,8 +58,15 @@ void Base::render(sf::RenderWindow& window)
 
 void Base::takeDamage(int amount)
 {
-  health -= amount;
-  healthRegenCooldownTimer = BASE_HEALTH_REGEN_COOLDOWN_TIMER;
+  if (shield > 0)
+  {
+    shield--;
+  }
+  else {
+    health -= amount;
+  }
+
+  shieldRegenCooldownTimer = BASE_HEALTH_REGEN_COOLDOWN_TIMER;
 
   if (health < 0)
   {
@@ -68,11 +76,11 @@ void Base::takeDamage(int amount)
 
 void Base::heal(int amount)
 {
-  health += amount;
+  shield += amount;
 
-  if (health > BASE_MAX_HEALTH)
+  if (shield > 5)
   {
-    health = BASE_MAX_HEALTH;
+    shield = 5;
   }
 }
 
