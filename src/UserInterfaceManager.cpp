@@ -44,17 +44,27 @@ UserInterfaceManager::UserInterfaceManager()
 )
 ,background()
 ,cursor()
+,killCounter("0", AssetManager::gameFont)
 {
   background.setTexture(AssetManager::background);
   cursor.setTexture(AssetManager::cursor);
+  
+  sf::FloatRect textBounds = killCounter.getLocalBounds();
+  killCounter.setOrigin(textBounds.width/2.f, textBounds.height/2.f);
+  killCounter.setPosition(sf::Vector2f(WINDOW_WIDTH - UI_LEFT_MARGIN, WINDOW_HEIGHT - UI_TOP_MARGIN));
+  killCounter.setFillColor(sf::Color::White);
 }
 
-void UserInterfaceManager::update(int playerHealth, int playerAmmo, int baseHealth, int baseShield)
+void UserInterfaceManager::update(int playerHealth, int playerAmmo, int baseHealth, int baseShield, int killCount)
 {
   playerHealthBar.setValue(playerHealth);
   playerAmmoBar.setValue(playerAmmo);
   baseHealthBar.setValue(baseHealth);
   baseShieldBar.setValue(baseShield);
+
+  killCounter.setString(std::to_string(killCount));
+  sf::FloatRect textBounds = killCounter.getLocalBounds();
+  killCounter.setOrigin(textBounds.width/2.f, textBounds.height/2.f);
 }
 
 void UserInterfaceManager::renderBehind(sf::RenderWindow& window)
@@ -68,6 +78,7 @@ void UserInterfaceManager::renderFront(sf::RenderWindow& window)
   playerAmmoBar.render(window);
   baseHealthBar.render(window);
   baseShieldBar.render(window);
+  window.draw(killCounter);
 
   sf::Vector2i mousePos = sf::Mouse::getPosition(window);
   float mouse_x = mousePos.x - 16;
