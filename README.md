@@ -3,7 +3,7 @@
 Um [Shoot'em-up](https://pt.wikipedia.org/wiki/Shoot_%27em_up) escrito em C++ usando SFML Graphics. Desenvolvido como projeto final da disciplina de Linguagem de Programação 1.
 
 ## Dependências
-- SFML v.2.6.1
+- SFML v.2.5.1 (A versão que roda nos computadores do IMD)
 - GCC
 - GNU Make
 - Git
