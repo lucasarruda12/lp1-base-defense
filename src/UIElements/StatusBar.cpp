@@ -7,7 +7,7 @@
 // pra mostrar quanto ele ainda tem.
 StatusBar::StatusBar
 (
-  int n_maxValue,
+  float n_maxValue,
   sf::Color n_fillColor,
   sf::Color n_outlineColor,
   int n_width,
@@ -30,10 +30,12 @@ StatusBar::StatusBar
   bar.setPosition(n_left_margin, n_top_margin);
 }
 
-void StatusBar::setValue(int value)
+void StatusBar::setValue(float value)
 {
   this->value = value;
-  bar.setSize(sf::Vector2f((width/maxValue) * value, height));
+  float prop = value/maxValue;
+
+  bar.setSize(sf::Vector2f(prop * width, height));
 }
 
 void StatusBar::render(sf::RenderWindow& window)

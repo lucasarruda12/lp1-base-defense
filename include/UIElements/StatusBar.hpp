@@ -7,14 +7,14 @@ class StatusBar
   private:
     sf::RectangleShape container;
     sf::RectangleShape bar;
-    int value;
+    float value;
     int maxValue;
     int width;
     int height;
 
   public:
     StatusBar(
-      int maxValue,
+      float maxValue,
       sf::Color fillColor,
       sf::Color outlineColor,
       int top_margin,
@@ -22,6 +22,6 @@ class StatusBar
       int width,
       int height
     );
-    void setValue(int value);
+    void setValue(float value);
     void render(sf::RenderWindow &window);
 };

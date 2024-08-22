@@ -32,7 +32,7 @@
 #define MAX_ENEMY_COUNT 6
 
 // Base-related constants
-#define BASE_MAX_HEALTH 100
+#define BASE_MAX_HEALTH 20
 #define BASE_RADIUS 64
 #define BASE_HEALTH_REGEN_TIMER 60
 #define BASE_HEALTH_REGEN_COOLDOWN_TIMER 180

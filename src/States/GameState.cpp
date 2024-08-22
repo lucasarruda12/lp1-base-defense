@@ -5,8 +5,6 @@
 #include <Entities/Enemy.hpp>
 #include <AssetManager.hpp>
 
-#include <iostream>
-
 GameState::GameState()
 : entities()
 , ui()
@@ -27,7 +25,6 @@ void GameState::processEvent(const sf::Event& event){
 }
 
 void GameState::update() {
-  std::cout << entities.getEnemiesKilled() << std::endl;
   gameTimer--;
 
   // O aumento da dificuldade do jogo com o tempo é feito
