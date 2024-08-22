@@ -31,6 +31,8 @@ Bullet::Bullet(sf::Vector2f initial, sf::Vector2f target, bool isPlayerBullet)
   }
 
   sf::Vector2f newTarget = target - initial;
+  // A ideia de fazer a bala se mover pra sempre numa direção foi setar o target
+  // dela pra um ponto muito longe naquela direção. Ela é deletada antes de chegar lá.
   this->target = CalculateUnitVector(newTarget)*1000.f + target;
 }
 

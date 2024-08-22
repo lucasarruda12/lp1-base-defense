@@ -5,8 +5,8 @@
 Base::Base()
 :PhysicalObject
 (
+  0,
   BASE_RADIUS,
-  50,
   sf::Vector2f(WINDOW_WIDTH/2, WINDOW_HEIGHT/2),
   sf::Vector2f(WINDOW_WIDTH/2, WINDOW_HEIGHT/2)
 )

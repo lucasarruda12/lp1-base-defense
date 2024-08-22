@@ -30,8 +30,8 @@ UserInterfaceManager::UserInterfaceManager()
   sf::Color::Red,
   BASE_RADIUS*2,
   UI_HEIGHT/4,
-  WINDOW_HEIGHT/2 + BASE_RADIUS + UI_BASE_HEALTH_VERTICAL_OFFSET,
-  WINDOW_WIDTH/2 - UI_WIDTH/4
+  WINDOW_HEIGHT/2 + BASE_RADIUS + 10,
+  WINDOW_WIDTH/2 - UI_WIDTH/3
 )
 ,baseShieldBar(
   5,
@@ -39,8 +39,8 @@ UserInterfaceManager::UserInterfaceManager()
   sf::Color::Blue,
   BASE_RADIUS*2,
   UI_HEIGHT/4,
-  WINDOW_HEIGHT/2 + BASE_RADIUS + UI_BASE_HEALTH_VERTICAL_OFFSET + 10,
-  WINDOW_WIDTH/2 - UI_WIDTH/4
+  WINDOW_HEIGHT/2 + BASE_RADIUS + 20,
+  WINDOW_WIDTH/2 - UI_WIDTH/3
 )
 ,background()
 ,cursor()
@@ -51,7 +51,7 @@ UserInterfaceManager::UserInterfaceManager()
   
   sf::FloatRect textBounds = killCounter.getLocalBounds();
   killCounter.setOrigin(textBounds.width/2.f, textBounds.height/2.f);
-  killCounter.setPosition(sf::Vector2f(WINDOW_WIDTH - UI_LEFT_MARGIN, WINDOW_HEIGHT - UI_TOP_MARGIN));
+  killCounter.setPosition(sf::Vector2f(WINDOW_WIDTH - UI_LEFT_MARGIN, 20 + UI_TOP_MARGIN));
   killCounter.setFillColor(sf::Color::White);
 }
 
@@ -63,8 +63,6 @@ void UserInterfaceManager::update(int playerHealth, int playerAmmo, int baseHeal
   baseShieldBar.setValue(baseShield);
 
   killCounter.setString(std::to_string(killCount));
-  sf::FloatRect textBounds = killCounter.getLocalBounds();
-  killCounter.setOrigin(textBounds.width/2.f, textBounds.height/2.f);
 }
 
 void UserInterfaceManager::renderBehind(sf::RenderWindow& window)
@@ -78,6 +76,10 @@ void UserInterfaceManager::renderFront(sf::RenderWindow& window)
   playerAmmoBar.render(window);
   baseHealthBar.render(window);
   baseShieldBar.render(window);
+
+  sf::FloatRect textBounds = killCounter.getLocalBounds();
+  killCounter.setOrigin(textBounds.width/2.f, textBounds.height/2.f);
+  killCounter.setPosition(sf::Vector2f(WINDOW_WIDTH - UI_LEFT_MARGIN, 20 + UI_TOP_MARGIN));
   window.draw(killCounter);
 
   sf::Vector2i mousePos = sf::Mouse::getPosition(window);
