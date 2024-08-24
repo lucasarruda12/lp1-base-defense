@@ -25,4 +25,13 @@ class AssetManager {
 
     static sf::SoundBuffer bolha1;
     static sf::SoundBuffer bolha2;
+
+    static sf::SoundBuffer recammo;
+    static sf::SoundBuffer recvida;
+
+    static sf::SoundBuffer grito1;
+    static sf::SoundBuffer grito2;
+
+    static sf::SoundBuffer derrota;
+    static sf::SoundBuffer uhuu;
 };

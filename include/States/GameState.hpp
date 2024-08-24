@@ -2,7 +2,8 @@
 
 #include <SFML/Graphics.hpp>
 #include <States/State.hpp>
-
+#include <SFML/Audio.hpp>
+#include <AssetManager.hpp>
 #include <EntityManager.hpp>
 #include <UserInterfaceManager.hpp>
 
@@ -19,4 +20,5 @@ class GameState : public State
     UserInterfaceManager ui;
     EntityManager entities;
     int gameTimer;
+    sf::Sound sound;
 };

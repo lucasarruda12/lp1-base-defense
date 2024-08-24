@@ -193,12 +193,6 @@ void EntityManager::checkPlayerEnemyDropCollision()
   }
 }
 
-int generateRandomNumber() {
-
-    int randomNum = (rand() % 2) + 1;
-    return randomNum;
-}
-
 void EntityManager::checkEnemyBulletCollision()
 {
   for (auto eit = enemies.begin(); eit != enemies.end();)
@@ -229,7 +223,7 @@ void EntityManager::checkEnemyBulletCollision()
       // aumenta o contador de inimigos mortos
       enemiesKilled++;
       
-      int randomSound = generateRandomNumber();
+      int randomSound = (rand() % 2) + 1;
 
     switch(randomSound) {
         case 1:

@@ -64,6 +64,17 @@ void Base::takeDamage(int amount)
   }
   else {
     health -= amount;
+    int randomSound = (rand() % 2) + 1;
+
+    switch(randomSound) {
+        case 1:
+            sound.setBuffer(AssetManager::grito1);
+            break;
+        case 2:
+            sound.setBuffer(AssetManager::grito2);
+            break;
+    }
+    sound.play();
   }
 
   shieldRegenCooldownTimer = BASE_HEALTH_REGEN_COOLDOWN_TIMER;
@@ -72,19 +83,25 @@ void Base::takeDamage(int amount)
   {
     health = 0;
   }
-}
-
-int generateRandomNumber() {
-
-    int randomNum = (rand() % 2) + 1;
-    return randomNum;
+  
+  if (health == 0)
+  {
+    sound.setBuffer(AssetManager::derrota);
+    sound.play();
+  }
 }
 
 void Base::heal(int amount)
 {
   shield += amount;
-
-  int randomSound = generateRandomNumber();
+  
+  if (shield > 5)
+  {
+    shield = 5;
+  }
+  else 
+  {
+    int randomSound = (rand() % 2) + 1;
 
     switch(randomSound) {
         case 1:
@@ -94,12 +111,7 @@ void Base::heal(int amount)
             sound.setBuffer(AssetManager::bolha2);
             break;
     }
-
     sound.play();
-  
-  if (shield > 5)
-  {
-    shield = 5;
   }
 }
 

@@ -22,6 +22,15 @@ sf::SoundBuffer AssetManager::pow2;
 sf::SoundBuffer AssetManager::bolha1;
 sf::SoundBuffer AssetManager::bolha2;
 
+sf::SoundBuffer AssetManager::recammo;
+sf::SoundBuffer AssetManager::recvida;
+
+sf::SoundBuffer AssetManager::derrota;
+sf::SoundBuffer AssetManager::uhuu;
+
+sf::SoundBuffer AssetManager::grito1;
+sf::SoundBuffer AssetManager::grito2;
+
 void AssetManager::loadAssets(){
   gameFont.loadFromFile("assets/Minecraftia-Regular.ttf");
   background.loadFromFile("assets/background.jpg");
@@ -41,5 +50,15 @@ void AssetManager::loadAssets(){
 
   bolha1.loadFromFile("assets/Audio/bolha1.wav");
   bolha2.loadFromFile("assets/Audio/bolha2.wav");
+
+  recammo.loadFromFile("assets/Audio/recammo.wav");
+  recvida.loadFromFile("assets/Audio/recvida.wav");
+  
+  derrota.loadFromFile("assets/Audio/derrota.wav");
+  uhuu.loadFromFile("assets/Audio/uhuu.wav");
+
+  grito1.loadFromFile("assets/Audio/grito1.wav");
+  grito2.loadFromFile("assets/Audio/grito2.wav");
+
 }
 

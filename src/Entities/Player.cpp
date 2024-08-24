@@ -54,6 +54,9 @@ void Player::takeDamage()
 void Player::heal(int amount)
 {
   this->health += amount;
+
+   sound.setBuffer(AssetManager::recvida);
+    sound.play();
   
   if (this->health > PLAYER_MAX_HEALTH)
   {
@@ -62,12 +65,6 @@ void Player::heal(int amount)
 }
 
 int Player::getAmmo(){ return ammo; }
-
-int generateRandomNumber() {
-
-    int randomNum = (rand() % 3) + 1;
-    return randomNum;
-}
 
 void Player::decreaseAmmo(int amount)
 {
@@ -78,7 +75,7 @@ void Player::decreaseAmmo(int amount)
     this->ammo = 0;
   }
 
-  int randomSound = generateRandomNumber();
+  int randomSound = (rand() % 3) + 1;
 
     switch(randomSound) {
         case 1:
@@ -100,6 +97,9 @@ void Player::decreaseAmmo(int amount)
 void Player::reload(int amount)
 {
   this->ammo += amount;
+
+    sound.setBuffer(AssetManager::recammo);
+    sound.play();
 
   if (this->ammo > PLAYER_MAX_AMMO)
   {
