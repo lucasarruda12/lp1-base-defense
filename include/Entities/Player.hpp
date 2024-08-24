@@ -10,7 +10,6 @@ class Player : public PhysicalObject
   private:
     sf::CircleShape hitbox;
     sf::Sprite sprite;
-    sf::SoundBuffer buffer;
     sf::Sound sound;
 
     int ammo;

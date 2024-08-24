@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 class AssetManager {
   public:
@@ -14,4 +15,8 @@ class AssetManager {
     static sf::Texture cursor;
     static sf::Texture ammo;
     static sf::Texture healthPack;
+
+    static sf::SoundBuffer piu1;
+    static sf::SoundBuffer piu2;
+    static sf::SoundBuffer piu3;
 };

@@ -16,6 +16,7 @@ Player::Player()
 ,health(PLAYER_MAX_HEALTH)
 ,sprite()
 ,hitbox()
+,sound()
 {
   hitbox.setRadius(PLAYER_HITBOX_RADIUS);
   hitbox.setFillColor(sf::Color::Green);
@@ -76,21 +77,21 @@ void Player::decreaseAmmo(int amount)
   {
     this->ammo = 0;
   }
+
   int randomSound = generateRandomNumber();
-    
+
     switch(randomSound) {
         case 1:
-            buffer.loadFromFile("assets/Audio/piu1.wav");
+            sound.setBuffer(AssetManager::piu1);
             break;
         case 2:
-            buffer.loadFromFile("assets/Audio/piu2.wav");
+            sound.setBuffer(AssetManager::piu2);
             break;
         case 3:
-            buffer.loadFromFile("assets/Audio/piu3.wav");
+            sound.setBuffer(AssetManager::piu3);
             break;
     }
 
-    sound.setBuffer(buffer);
     sound.play();
 }
 
