@@ -39,6 +39,7 @@ Bullet* Player::shoot(sf::Vector2f target)
   return b;
 }
 
+
 int Player::getHealth(){ return health; }
 
 void Player::takeDamage()
@@ -61,6 +62,12 @@ void Player::heal(int amount)
 
 int Player::getAmmo(){ return ammo; }
 
+int generateRandomNumber() {
+
+    int randomNum = (rand() % 3) + 1;
+    return randomNum;
+}
+
 void Player::decreaseAmmo(int amount)
 {
   this->ammo -= amount;
@@ -69,7 +76,25 @@ void Player::decreaseAmmo(int amount)
   {
     this->ammo = 0;
   }
+  int randomSound = generateRandomNumber();
+    
+    switch(randomSound) {
+        case 1:
+            buffer.loadFromFile("assets/Audio/piu1.wav");
+            break;
+        case 2:
+            buffer.loadFromFile("assets/Audio/piu2.wav");
+            break;
+        case 3:
+            buffer.loadFromFile("assets/Audio/piu3.wav");
+            break;
+    }
+
+    sound.setBuffer(buffer);
+    sound.play();
 }
+
+
 
 void Player::reload(int amount)
 {

@@ -3,12 +3,15 @@
 #include <SFML/Graphics.hpp>
 #include <Entities/PhysicalObject.hpp>
 #include <Entities/Bullet.hpp>
+#include <SFML/Audio.hpp>
 
 class Player : public PhysicalObject
 { 
   private:
     sf::CircleShape hitbox;
     sf::Sprite sprite;
+    sf::SoundBuffer buffer;
+    sf::Sound sound;
 
     int ammo;
     int health;

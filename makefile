@@ -3,7 +3,7 @@ CC := g++
 
 SFML :=
 
-LDFLAGS := -L$(SFML)/lib -lsfml-graphics -lsfml-window -lsfml-system
+LDFLAGS := -L$(SFML)/lib -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 CXXFLAGS := -Iinclude -I$(SFML)/include
 
 SRC_DIR := ./src
