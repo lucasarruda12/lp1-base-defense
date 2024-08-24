@@ -74,10 +74,29 @@ void Base::takeDamage(int amount)
   }
 }
 
+int generateRandomNumber() {
+
+    int randomNum = (rand() % 2) + 1;
+    return randomNum;
+}
+
 void Base::heal(int amount)
 {
   shield += amount;
 
+  int randomSound = generateRandomNumber();
+
+    switch(randomSound) {
+        case 1:
+            sound.setBuffer(AssetManager::bolha1);
+            break;
+        case 2:
+            sound.setBuffer(AssetManager::bolha2);
+            break;
+    }
+
+    sound.play();
+  
   if (shield > 5)
   {
     shield = 5;

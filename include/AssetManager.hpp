@@ -19,4 +19,10 @@ class AssetManager {
     static sf::SoundBuffer piu1;
     static sf::SoundBuffer piu2;
     static sf::SoundBuffer piu3;
+
+    static sf::SoundBuffer pow1;
+    static sf::SoundBuffer pow2;
+
+    static sf::SoundBuffer bolha1;
+    static sf::SoundBuffer bolha2;
 };

@@ -2,11 +2,15 @@
 
 #include <SFML/Graphics.hpp>
 #include <Entities/PhysicalObject.hpp>
+#include <SFML/Audio.hpp>
 
 class Base : public PhysicalObject
 {
   private:
     sf::Sprite sprite;
+    sf::SoundBuffer buffer;
+    sf::Sound sound;
+    
     int health;
     int shield;
     int shieldRegenTimer;

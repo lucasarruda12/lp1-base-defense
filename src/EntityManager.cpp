@@ -1,5 +1,6 @@
 #include <Constants.hpp>
 #include <EntityManager.hpp>
+#include <AssetManager.hpp>
 #include <random>
 
 EntityManager::EntityManager()
@@ -192,6 +193,12 @@ void EntityManager::checkPlayerEnemyDropCollision()
   }
 }
 
+int generateRandomNumber() {
+
+    int randomNum = (rand() % 2) + 1;
+    return randomNum;
+}
+
 void EntityManager::checkEnemyBulletCollision()
 {
   for (auto eit = enemies.begin(); eit != enemies.end();)
@@ -221,6 +228,20 @@ void EntityManager::checkEnemyBulletCollision()
     {
       // aumenta o contador de inimigos mortos
       enemiesKilled++;
+      
+      int randomSound = generateRandomNumber();
+
+    switch(randomSound) {
+        case 1:
+            sound.setBuffer(AssetManager::pow2);
+            break;
+        case 2:
+            sound.setBuffer(AssetManager::pow1);
+            break;
+    }
+
+    sound.play();
+
 
       // Cria uma caixinha de munição alguns pixels separado
       // de onde o inimigo morreu

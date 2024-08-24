@@ -6,6 +6,7 @@
 #include <Entities/Enemy.hpp>
 #include <Entities/EnemyDrop.hpp>
 #include <Entities/Base.hpp>
+#include <SFML/Audio.hpp>
 
 #include <list>
 using std::list;
@@ -18,6 +19,8 @@ class EntityManager
     list<Bullet*> bullets;
     list<Enemy*> enemies;
     list<EnemyDrop*> EnemyDrops;
+    sf::SoundBuffer buffer;
+    sf::Sound sound;
 
     int enemySpawnTimer;
     int maxEnemyCount;
