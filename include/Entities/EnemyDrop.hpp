@@ -22,6 +22,6 @@ class EnemyDrop
     EnemyDrop::Type getType() { return this->type; }
 
   private:
-    sf::CircleShape sprite;
+    sf::Sprite sprite;
     EnemyDrop::Type type;
 };

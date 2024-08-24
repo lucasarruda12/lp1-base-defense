@@ -1,5 +1,6 @@
 #include <Constants.hpp>
 #include <Entities/EnemyDrop.hpp>
+#include <AssetManager.hpp>
 
 EnemyDrop::EnemyDrop(sf::Vector2f position, EnemyDrop::Type new_type)
 :PhysicalObject
@@ -21,15 +22,13 @@ EnemyDrop::EnemyDrop(sf::Vector2f position, EnemyDrop::Type new_type)
 {
   if (new_type == EnemyDrop::Type::AmmoBox)
   {
-    sprite.setFillColor(sf::Color::White);
+    sprite.setTexture(AssetManager::ammo);
   }
 
   if (new_type == EnemyDrop::Type::HealthPack)
   {
-    sprite.setFillColor(sf::Color::Red);
+    sprite.setTexture(AssetManager::healthPack);
   }
-  
-  sprite.setRadius(this->radius);
 }
 
 void EnemyDrop::update()
